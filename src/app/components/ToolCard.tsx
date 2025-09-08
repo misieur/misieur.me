@@ -1,5 +1,5 @@
-import { Icons } from './Icons.js'
-import { Octicon } from './Octicon.jsx'
+import {Icons} from './Icons.js'
+import {Octicon} from './Octicon.jsx'
 
 interface Props {
 	title: string,

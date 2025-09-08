@@ -1,8 +1,8 @@
-import type { BlockPos, ChunkPos, PerlinNoise, Random } from 'deepslate/worldgen'
-import type { VersionId } from '../../services/index.js'
-import { checkVersion } from '../../services/index.js'
-import type { Color } from '../../Utils.js'
-import { clamp, isObject, stringToColor } from '../../Utils.js'
+import type {BlockPos, ChunkPos, PerlinNoise, Random} from 'deepslate/worldgen'
+import type {VersionId} from '../../services/index.js'
+import {checkVersion} from '../../services/index.js'
+import type {Color} from '../../Utils.js'
+import {clamp, isObject, stringToColor} from '../../Utils.js'
 
 export type Placement = [BlockPos, number]
 
@@ -36,7 +36,7 @@ export const featureColors: Color[] = [
 ]
 
 export function decorateChunk(pos: ChunkPos, state: any, ctx: PlacementContext): PlacedFeature[] {
-	if (checkVersion(ctx.version, undefined, '1.17')) {
+	if (checkVersion(ctx.version, undefined)) {
 		getPlacements([pos[0] * 16, 0, pos[1] * 16], state, ctx)
 	} else {
 		modifyPlacement([pos[0] * 16, 0, pos[1] * 16], state.placement, ctx)

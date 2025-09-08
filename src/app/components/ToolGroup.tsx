@@ -1,7 +1,7 @@
-import type { ComponentChildren } from 'preact'
-import type { Icons } from './Icons.jsx'
-import type { Octicon } from './Octicon.jsx'
-import { ToolCard } from './ToolCard.jsx'
+import type {ComponentChildren} from 'preact'
+import type {Icons} from './Icons.jsx'
+import type {Octicon} from './Octicon.jsx'
+import {ToolCard} from './ToolCard.jsx'
 
 interface Props {
 	title: string,

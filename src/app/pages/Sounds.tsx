@@ -1,10 +1,10 @@
-import type { Howl, HowlOptions } from 'howler'
-import { useEffect, useMemo, useRef, useState } from 'preact/hooks'
-import { Btn, ErrorPanel, Footer, SoundConfig, TextInput, VersionSwitcher } from '../components/index.js'
-import { useLocale, useTitle, useVersion } from '../contexts/index.js'
-import { useAsync } from '../hooks/index.js'
-import { fetchSounds } from '../services/index.js'
-import { hexId } from '../Utils.js'
+import type {Howl, HowlOptions} from 'howler'
+import {useEffect, useMemo, useRef, useState} from 'preact/hooks'
+import {Btn, ErrorPanel, SoundConfig, TextInput, VersionSwitcher} from '../components/index.js'
+import {useLocale, useTitle, useVersion} from '../contexts/index.js'
+import {useAsync} from '../hooks/index.js'
+import {fetchSounds} from '../services/index.js'
+import {hexId} from '../Utils.js'
 
 interface Props {
 	path?: string,
@@ -81,6 +81,5 @@ export function Sounds({}: Props) {
 				{soundKeys.map(s => <option key={s} value={s} />)}
 			</datalist>
 		</>}
-		<Footer donate={false} />
 	</main>
 }

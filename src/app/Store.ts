@@ -1,10 +1,10 @@
-import type { ColormapType } from './components/previews/Colormap.js'
-import { ColormapTypes } from './components/previews/Colormap.js'
-import type { ProjectMeta } from './contexts/index.js'
-import { DRAFT_PROJECT } from './contexts/index.js'
-import type { VersionId } from './services/index.js'
-import { DEFAULT_VERSION, VersionIds } from './services/index.js'
-import { safeJsonParse } from './Utils.js'
+import type {ColormapType} from './components/previews/Colormap.js'
+import {ColormapTypes} from './components/previews/Colormap.js'
+import type {ProjectMeta} from './contexts/index.js'
+import {DRAFT_PROJECT} from './contexts/index.js'
+import type {VersionId} from './services/index.js'
+import {DEFAULT_VERSION, VersionIds} from './services/index.js'
+import {safeJsonParse} from './Utils.js'
 
 export namespace Store {
 	export const ID_LANGUAGE = 'language'
@@ -52,7 +52,7 @@ export namespace Store {
 	}
 
 	export function getFormat() {
-		return localStorage.getItem(ID_FORMAT) ?? 'json'
+		return localStorage.getItem(ID_FORMAT) ?? 'yaml'
 	}
 
 	export function getHighlighting() {

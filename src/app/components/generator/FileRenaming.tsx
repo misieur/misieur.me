@@ -1,10 +1,10 @@
-import { useCallback, useState } from 'preact/hooks'
-import { Analytics } from '../../Analytics.js'
-import { useLocale } from '../../contexts/index.js'
-import { useModal } from '../../contexts/Modal.jsx'
-import { Btn } from '../Btn.js'
-import { TextInput } from '../forms/index.js'
-import { Modal } from '../Modal.js'
+import {useCallback, useState} from 'preact/hooks'
+import {Analytics} from '../../Analytics.js'
+import {useLocale} from '../../contexts/index.js'
+import {useModal} from '../../contexts/Modal.jsx'
+import {Btn} from '../Btn.js'
+import {TextInput} from '../forms/index.js'
+import {Modal} from '../Modal.js'
 
 interface Props {
 	oldId: string,

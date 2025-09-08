@@ -1,6 +1,6 @@
-import { useCallback } from 'preact/hooks'
-import type { CustomizedModel, CustomizedOreModel } from './CustomizedModel.js'
-import { CustomizedSlider } from './CustomizedSlider.jsx'
+import {useCallback} from 'preact/hooks'
+import type {CustomizedModel, CustomizedOreModel} from './CustomizedModel.js'
+import {CustomizedSlider} from './CustomizedSlider.jsx'
 
 interface Props {
 	model: CustomizedModel,

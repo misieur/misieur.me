@@ -1,13 +1,13 @@
-import { BlockPos, ChunkPos, LegacyRandom, PerlinNoise } from 'deepslate'
-import type { mat3 } from 'gl-matrix'
-import { useCallback, useMemo, useRef, useState } from 'preact/hooks'
-import { useLocale, useVersion } from '../../contexts/index.js'
-import { computeIfAbsent, iterateWorld2D, randomSeed, safeJsonParse } from '../../Utils.js'
-import { Btn } from '../index.js'
-import type { PlacedFeature, PlacementContext } from './Decorator.js'
-import { decorateChunk } from './Decorator.js'
-import type { PreviewProps } from './index.js'
-import { InteractiveCanvas2D } from './InteractiveCanvas2D.jsx'
+import {BlockPos, ChunkPos, LegacyRandom, PerlinNoise} from 'deepslate'
+import type {mat3} from 'gl-matrix'
+import {useCallback, useMemo, useRef, useState} from 'preact/hooks'
+import {useLocale, useVersion} from '../../contexts/index.js'
+import {computeIfAbsent, iterateWorld2D, randomSeed, safeJsonParse} from '../../Utils.js'
+import {Btn} from '../index.js'
+import type {PlacedFeature, PlacementContext} from './Decorator.js'
+import {decorateChunk} from './Decorator.js'
+import type {PreviewProps} from './index.js'
+import {InteractiveCanvas2D} from './InteractiveCanvas2D.jsx'
 
 export const DecoratorPreview = ({ docAndNode, shown }: PreviewProps) => {
 	const { locale } = useLocale()

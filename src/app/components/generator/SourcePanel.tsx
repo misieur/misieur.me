@@ -1,13 +1,19 @@
-import type { DocAndNode } from '@spyglassmc/core'
-import { fileUtil } from '@spyglassmc/core'
-import { useCallback, useEffect, useMemo, useRef, useState } from 'preact/hooks'
-import { useLocale } from '../../contexts/index.js'
-import { useDocAndNode, useSpyglass } from '../../contexts/Spyglass.jsx'
-import { useLocalStorage } from '../../hooks/index.js'
-import { getSourceFormats, getSourceIndent, getSourceIndents, parseSource, stringifySource } from '../../services/index.js'
-import { Store } from '../../Store.js'
-import { message } from '../../Utils.js'
-import { Btn, BtnMenu } from '../index.js'
+import type {DocAndNode} from '@spyglassmc/core'
+import {fileUtil} from '@spyglassmc/core'
+import {useCallback, useEffect, useMemo, useRef, useState} from 'preact/hooks'
+import {useLocale} from '../../contexts/index.js'
+import {useDocAndNode, useSpyglass} from '../../contexts/Spyglass.jsx'
+import {useLocalStorage} from '../../hooks/index.js'
+import {
+    getSourceFormats,
+    getSourceIndent,
+    getSourceIndents,
+    parseSource,
+    stringifySource
+} from '../../services/index.js'
+import {Store} from '../../Store.js'
+import {message} from '../../Utils.js'
+import {Btn, BtnMenu} from '../index.js'
 
 interface Editor {
 	getValue(): string

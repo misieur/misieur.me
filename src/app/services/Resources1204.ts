@@ -1,9 +1,24 @@
-import type { BlockDefinitionProvider, BlockFlagsProvider, BlockModelProvider, BlockPropertiesProvider, ItemStack, TextureAtlasProvider, UV } from 'deepslate-1.20.4/render'
-import { BlockDefinition, BlockModel, Identifier, ItemRenderer, TextureAtlas, upperPowerOfTwo } from 'deepslate-1.20.4/render'
+import type {
+    BlockDefinitionProvider,
+    BlockFlagsProvider,
+    BlockModelProvider,
+    BlockPropertiesProvider,
+    ItemStack,
+    TextureAtlasProvider,
+    UV
+} from 'deepslate-1.20.4/render'
+import {
+    BlockDefinition,
+    BlockModel,
+    Identifier,
+    ItemRenderer,
+    TextureAtlas,
+    upperPowerOfTwo
+} from 'deepslate-1.20.4/render'
 import config from '../Config.js'
-import { message } from '../Utils.js'
-import { fetchLanguage, fetchResources } from './DataFetcher.js'
-import type { VersionId } from './Versions.js'
+import {message} from '../Utils.js'
+import {fetchLanguage, fetchResources} from './DataFetcher.js'
+import type {VersionId} from './Versions.js'
 
 const Resources: Record<string, ResourceManager | Promise<ResourceManager>> = {}
 

@@ -1,4 +1,4 @@
-import type { DocAndNode } from '@spyglassmc/core'
+import type {DocAndNode} from '@spyglassmc/core'
 
 export * from './BiomeSourcePreview.js'
 export * from './BlockStatePreview.jsx'

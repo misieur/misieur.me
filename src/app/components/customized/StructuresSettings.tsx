@@ -1,6 +1,6 @@
-import type { CustomizedModel } from './CustomizedModel.js'
-import { CustomizedSlider } from './CustomizedSlider.jsx'
-import { CustomizedToggle } from './CustomizedToggle.jsx'
+import type {CustomizedModel} from './CustomizedModel.js'
+import {CustomizedSlider} from './CustomizedSlider.jsx'
+import {CustomizedToggle} from './CustomizedToggle.jsx'
 
 interface Props {
 	model: CustomizedModel,

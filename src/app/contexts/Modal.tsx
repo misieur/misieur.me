@@ -1,6 +1,6 @@
-import type { ComponentChildren, FunctionComponent } from 'preact'
-import { createContext } from 'preact'
-import { useCallback, useContext, useState } from 'preact/hooks'
+import type {ComponentChildren, FunctionComponent} from 'preact'
+import {createContext} from 'preact'
+import {useCallback, useContext, useState} from 'preact/hooks'
 
 interface ModalContext {
 	showModal: (component: FunctionComponent) => void

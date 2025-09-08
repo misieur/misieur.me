@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState } from 'preact/hooks'
+import {useCallback, useRef, useState} from 'preact/hooks'
 
 interface ActiveTimeoutOptions {
 	cooldown?: number,

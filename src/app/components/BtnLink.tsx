@@ -1,4 +1,4 @@
-import { Octicon } from './index.js'
+import {Octicon} from './index.js'
 
 interface Props {
 	link?: string,

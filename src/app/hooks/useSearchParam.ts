@@ -1,5 +1,5 @@
-import { useCallback, useEffect, useState } from 'preact/hooks'
-import { changeUrl } from '../Utils.js'
+import {useCallback, useEffect, useState} from 'preact/hooks'
+import {changeUrl} from '../Utils.js'
 
 const getValue = (search: string, param: string) => new URLSearchParams(search).get(param) ?? undefined
 
@@ -37,4 +37,4 @@ export function useSearchParam(param: string): [string | undefined, (value: stri
 	}, [value])
 
 	return [value, changeValue]
-};
+}

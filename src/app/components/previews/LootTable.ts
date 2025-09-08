@@ -1,12 +1,12 @@
-import type { ItemComponentsProvider } from 'deepslate'
-import { NbtByte, NbtDouble, NbtLong } from 'deepslate'
-import type { Random } from 'deepslate/core'
-import { Identifier, ItemStack, LegacyRandom } from 'deepslate/core'
-import { NbtCompound, NbtInt, NbtList, NbtString, NbtTag } from 'deepslate/nbt'
-import { ResolvedItem } from '../../services/ResolvedItem.js'
-import type { VersionId } from '../../services/Versions.js'
-import { checkVersion } from '../../services/Versions.js'
-import { clamp, getWeightedRandom, isObject, jsonToNbt } from '../../Utils.js'
+import type {ItemComponentsProvider} from 'deepslate'
+import {NbtByte, NbtDouble, NbtLong} from 'deepslate'
+import type {Random} from 'deepslate/core'
+import {Identifier, ItemStack, LegacyRandom} from 'deepslate/core'
+import {NbtCompound, NbtInt, NbtList, NbtString, NbtTag} from 'deepslate/nbt'
+import {ResolvedItem} from '../../services/ResolvedItem.js'
+import type {VersionId} from '../../services/Versions.js'
+import {checkVersion} from '../../services/Versions.js'
+import {clamp, getWeightedRandom, isObject, jsonToNbt} from '../../Utils.js'
 
 export interface SlottedItem {
 	slot: number,

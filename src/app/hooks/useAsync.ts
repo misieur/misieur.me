@@ -1,7 +1,7 @@
-import type { Inputs } from 'preact/hooks'
-import { useEffect } from 'preact/hooks'
-import type { AsyncCancel, AsyncState } from './index.js'
-import { useAsyncFn } from './index.js'
+import type {Inputs} from 'preact/hooks'
+import {useEffect} from 'preact/hooks'
+import type {AsyncCancel, AsyncState} from './index.js'
+import {useAsyncFn} from './index.js'
 
 export function useAsync<R>(
 	fn: () => Promise<R | typeof AsyncCancel>,

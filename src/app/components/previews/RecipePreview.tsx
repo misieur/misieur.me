@@ -1,13 +1,13 @@
-import { Identifier, ItemStack } from 'deepslate'
-import { useEffect, useMemo, useRef, useState } from 'preact/hooks'
-import { useLocale, useVersion } from '../../contexts/index.js'
-import { useAsync } from '../../hooks/useAsync.js'
-import type { VersionId } from '../../services/index.js'
-import { checkVersion, fetchAllPresets } from '../../services/index.js'
-import { jsonToNbt, safeJsonParse } from '../../Utils.js'
-import { Btn, BtnMenu } from '../index.js'
-import { ItemDisplay } from '../ItemDisplay.jsx'
-import type { PreviewProps } from './index.js'
+import {Identifier, ItemStack} from 'deepslate'
+import {useEffect, useMemo, useRef, useState} from 'preact/hooks'
+import {useLocale, useVersion} from '../../contexts/index.js'
+import {useAsync} from '../../hooks/useAsync.js'
+import type {VersionId} from '../../services/index.js'
+import {checkVersion, fetchAllPresets} from '../../services/index.js'
+import {jsonToNbt, safeJsonParse} from '../../Utils.js'
+import {Btn, BtnMenu} from '../index.js'
+import {ItemDisplay} from '../ItemDisplay.jsx'
+import type {PreviewProps} from './index.js'
 
 const ANIMATION_TIME = 1000
 

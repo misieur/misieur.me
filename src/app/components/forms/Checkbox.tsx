@@ -1,4 +1,4 @@
-import { hexId } from '../../Utils.js'
+import {hexId} from '../../Utils.js'
 
 interface Props {
 	label: string,

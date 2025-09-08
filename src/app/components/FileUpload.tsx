@@ -1,6 +1,6 @@
-import { useCallback, useRef } from 'preact/hooks'
-import { useLocale } from '../contexts/index.js'
-import { Btn } from './index.js'
+import {useCallback, useRef} from 'preact/hooks'
+import {useLocale} from '../contexts/index.js'
+import {Btn} from './index.js'
 
 interface Props {
 	value: File | undefined,

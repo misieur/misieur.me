@@ -1,5 +1,5 @@
-import { useMemo } from 'preact/hooks'
-import { useSearchParam } from './index.js'
+import {useMemo} from 'preact/hooks'
+import {useSearchParam} from './index.js'
 
 const TAG_KEY = 'tags'
 const TAG_SEP = '|'

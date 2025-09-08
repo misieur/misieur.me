@@ -1,13 +1,13 @@
-import type { ItemStack } from 'deepslate/core'
-import { useCallback, useEffect, useMemo, useRef, useState } from 'preact/hooks'
-import { useVersion } from '../contexts/Version.jsx'
-import { useAsync } from '../hooks/useAsync.js'
-import { fetchItemComponents } from '../services/index.js'
-import { ResolvedItem } from '../services/ResolvedItem.js'
-import { renderItem } from '../services/Resources.js'
-import { jsonToNbt } from '../Utils.js'
-import { ItemTooltip } from './ItemTooltip.jsx'
-import { Octicon } from './Octicon.jsx'
+import type {ItemStack} from 'deepslate/core'
+import {useCallback, useEffect, useMemo, useRef, useState} from 'preact/hooks'
+import {useVersion} from '../contexts/Version.jsx'
+import {useAsync} from '../hooks/useAsync.js'
+import {fetchItemComponents} from '../services/index.js'
+import {ResolvedItem} from '../services/ResolvedItem.js'
+import {renderItem} from '../services/Resources.js'
+import {jsonToNbt} from '../Utils.js'
+import {ItemTooltip} from './ItemTooltip.jsx'
+import {Octicon} from './Octicon.jsx'
 
 interface Props {
 	item: ItemStack,

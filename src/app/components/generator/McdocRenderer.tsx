@@ -1,25 +1,61 @@
 import * as core from '@spyglassmc/core'
-import { ColorFormat } from '@spyglassmc/core'
-import type { JsonPairNode } from '@spyglassmc/json'
+import {ColorFormat} from '@spyglassmc/core'
+import type {JsonPairNode} from '@spyglassmc/json'
 import * as json from '@spyglassmc/json'
-import { JsonArrayNode, JsonBooleanNode, JsonNode, JsonNumberNode, JsonObjectNode, JsonStringNode } from '@spyglassmc/json'
-import { localeQuote } from '@spyglassmc/locales'
-import type { ListType, LiteralType, McdocType, NumericType, PrimitiveArrayType, StringType, TupleType, UnionType } from '@spyglassmc/mcdoc'
-import { handleAttributes } from '@spyglassmc/mcdoc/lib/runtime/attribute/index.js'
-import type { SimplifiedEnum, SimplifiedMcdocType, SimplifiedMcdocTypeNoUnion, SimplifiedStructType, SimplifiedStructTypePairField } from '@spyglassmc/mcdoc/lib/runtime/checker/index.js'
-import { getValues } from '@spyglassmc/mcdoc/lib/runtime/completer/index.js'
-import { Identifier, ItemStack } from 'deepslate'
+import {
+    JsonArrayNode,
+    JsonBooleanNode,
+    JsonNode,
+    JsonNumberNode,
+    JsonObjectNode,
+    JsonStringNode
+} from '@spyglassmc/json'
+import {localeQuote} from '@spyglassmc/locales'
+import type {
+    ListType,
+    LiteralType,
+    McdocType,
+    NumericType,
+    PrimitiveArrayType,
+    StringType,
+    TupleType,
+    UnionType
+} from '@spyglassmc/mcdoc'
+import {handleAttributes} from '@spyglassmc/mcdoc/lib/runtime/attribute/index.js'
+import type {
+    SimplifiedEnum,
+    SimplifiedMcdocType,
+    SimplifiedMcdocTypeNoUnion,
+    SimplifiedStructType,
+    SimplifiedStructTypePairField
+} from '@spyglassmc/mcdoc/lib/runtime/checker/index.js'
+import {getValues} from '@spyglassmc/mcdoc/lib/runtime/completer/index.js'
+import {Identifier, ItemStack} from 'deepslate'
 import DOMPurify from 'dompurify'
-import { marked } from 'marked'
-import { useCallback, useEffect, useMemo, useState } from 'preact/hooks'
+import {marked} from 'marked'
+import {useCallback, useEffect, useMemo, useState} from 'preact/hooks'
 import config from '../../Config.js'
-import { useLocale } from '../../contexts/Locale.jsx'
-import { useFocus } from '../../hooks/useFocus.js'
-import { generateColor, hexId, intToHexRgb, randomInt, randomSeed } from '../../Utils.js'
-import { Btn } from '../Btn.jsx'
-import { ItemDisplay } from '../ItemDisplay.jsx'
-import { Octicon } from '../Octicon.jsx'
-import { formatIdentifier, getCategory, getChange, getDefault, getItemType, isDefaultCollapsedType, isFixedList, isInlineTuple, isListOrArray, isNumericType, isSelectRegistry, quickEqualTypes, simplifyType } from './McdocHelpers.js'
+import {useLocale} from '../../contexts/Locale.jsx'
+import {useFocus} from '../../hooks/useFocus.js'
+import {generateColor, hexId, intToHexRgb, randomInt, randomSeed} from '../../Utils.js'
+import {Btn} from '../Btn.jsx'
+import {ItemDisplay} from '../ItemDisplay.jsx'
+import {Octicon} from '../Octicon.jsx'
+import {
+    formatIdentifier,
+    getCategory,
+    getChange,
+    getDefault,
+    getItemType,
+    isDefaultCollapsedType,
+    isFixedList,
+    isInlineTuple,
+    isListOrArray,
+    isNumericType,
+    isSelectRegistry,
+    quickEqualTypes,
+    simplifyType
+} from './McdocHelpers.js'
 
 export interface McdocContext extends core.CheckerContext {
 	makeEdit: MakeEdit

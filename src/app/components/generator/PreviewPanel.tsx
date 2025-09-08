@@ -1,11 +1,24 @@
-import type { DocAndNode } from '@spyglassmc/core'
-import { useErrorBoundary } from 'preact/hooks'
-import { useDocAndNode } from '../../contexts/Spyglass.jsx'
-import { useVersion } from '../../contexts/Version.jsx'
-import { checkVersion } from '../../services/index.js'
-import { safeJsonParse } from '../../Utils.js'
-import { ErrorPanel } from '../ErrorPanel.jsx'
-import { BiomeSourcePreview, BlockStatePreview, DecoratorPreview, DensityFunctionPreview, DialogPreview, ItemModelPreview, LootTablePreview, ModelPreview, NoisePreview, NoiseSettingsPreview, RecipePreview, StructureSetPreview } from '../previews/index.js'
+import type {DocAndNode} from '@spyglassmc/core'
+import {useErrorBoundary} from 'preact/hooks'
+import {useDocAndNode} from '../../contexts/Spyglass.jsx'
+import {useVersion} from '../../contexts/Version.jsx'
+import {checkVersion} from '../../services/index.js'
+import {safeJsonParse} from '../../Utils.js'
+import {ErrorPanel} from '../ErrorPanel.jsx'
+import {
+    BiomeSourcePreview,
+    BlockStatePreview,
+    DecoratorPreview,
+    DensityFunctionPreview,
+    DialogPreview,
+    ItemModelPreview,
+    LootTablePreview,
+    ModelPreview,
+    NoisePreview,
+    NoiseSettingsPreview,
+    RecipePreview,
+    StructureSetPreview
+} from '../previews/index.js'
 
 export const HasPreview = ['loot_table', 'recipe', 'dialog', 'dimension', 'worldgen/density_function', 'worldgen/noise', 'worldgen/noise_settings', 'worldgen/configured_feature', 'worldgen/placed_feature', 'worldgen/structure_set', 'block_definition', 'item_definition', 'model']
 
@@ -70,7 +83,7 @@ export function PreviewContent({ id, docAndNode, shown }: PreviewContentProps) {
 		return <NoiseSettingsPreview {...{ docAndNode, shown }} />
 	}
 
-	if ((id === 'worldgen/placed_feature' ||  (id === 'worldgen/configured_feature' && checkVersion(version, '1.16', '1.17')))) {
+	if ((id === 'worldgen/placed_feature' ||  (id === 'worldgen/configured_feature' && checkVersion(version, '1.16')))) {
 		return <DecoratorPreview {...{ docAndNode, shown }} />
 	}
 

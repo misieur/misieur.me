@@ -1,13 +1,21 @@
-import { isObject } from '@spyglassmc/core'
-import type { ItemComponentsProvider, ItemModelProvider } from 'deepslate'
-import { ItemModel, NbtString } from 'deepslate'
-import type { BlockDefinitionProvider, BlockFlagsProvider, BlockModelProvider, BlockPropertiesProvider, ItemStack, TextureAtlasProvider, UV } from 'deepslate/render'
-import { BlockDefinition, BlockModel, Identifier, ItemRenderer, TextureAtlas, upperPowerOfTwo } from 'deepslate/render'
+import {isObject} from '@spyglassmc/core'
+import type {ItemComponentsProvider, ItemModelProvider} from 'deepslate'
+import {ItemModel, NbtString} from 'deepslate'
+import type {
+    BlockDefinitionProvider,
+    BlockFlagsProvider,
+    BlockModelProvider,
+    BlockPropertiesProvider,
+    ItemStack,
+    TextureAtlasProvider,
+    UV
+} from 'deepslate/render'
+import {BlockDefinition, BlockModel, Identifier, ItemRenderer, TextureAtlas, upperPowerOfTwo} from 'deepslate/render'
 import config from '../Config.js'
-import { jsonToNbt, message } from '../Utils.js'
-import { fetchLanguage, fetchResources } from './DataFetcher.js'
-import type { VersionId } from './Versions.js'
-import { checkVersion } from './Versions.js'
+import {jsonToNbt, message} from '../Utils.js'
+import {fetchLanguage, fetchResources} from './DataFetcher.js'
+import type {VersionId} from './Versions.js'
+import {checkVersion} from './Versions.js'
 
 const Resources: Record<string, ResourceManager | Promise<ResourceManager>> = {}
 
@@ -114,7 +122,7 @@ export class ResourceManager implements Resources {
 		const components = this.itemComponents.get(id.toString()) ?? new Map<string, unknown>()
 		const result = new Map([...components.entries()].map(([k, v]) => [k, jsonToNbt(v)]))
 		// Hack to make this version range work without needing another deepslate version
-		if (checkVersion(this.version, '1.20.5', '1.21.2')) {
+		if (checkVersion(this.version, '1.20.5')) {
 			result.set('minecraft:item_model', new NbtString(id.toString()))
 		}
 		return result

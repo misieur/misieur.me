@@ -1,8 +1,8 @@
-import type { NbtTag } from 'deepslate'
-import { Identifier, ItemStack } from 'deepslate'
-import { safeJsonParse } from '../Utils.js'
-import type { VersionId } from './Versions.js'
-import { checkVersion } from './Versions.js'
+import type {NbtTag} from 'deepslate'
+import {Identifier, ItemStack} from 'deepslate'
+import {safeJsonParse} from '../Utils.js'
+import type {VersionId} from './Versions.js'
+import {checkVersion} from './Versions.js'
 
 export class ResolvedItem extends ItemStack {
 

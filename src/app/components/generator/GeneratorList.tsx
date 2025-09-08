@@ -1,9 +1,9 @@
-import { useMemo, useState } from 'preact/hooks'
-import type { ConfigGenerator } from '../../Config.js'
+import {useMemo, useState} from 'preact/hooks'
+import type {ConfigGenerator} from '../../Config.js'
 import config from '../../Config.js'
-import { useLocale, useVersion } from '../../contexts/index.js'
-import { checkVersion } from '../../services/Versions.js'
-import { GeneratorCard, TextInput, VersionSwitcher } from '../index.js'
+import {useLocale, useVersion} from '../../contexts/index.js'
+import {checkVersion} from '../../services/Versions.js'
+import {GeneratorCard, TextInput, VersionSwitcher} from '../index.js'
 
 interface Props {
 	path?: string,
@@ -21,7 +21,7 @@ export function GeneratorList({ predicate }: Props) {
 		return config.generators.filter(gen => {
 			if (predicate === undefined || !predicate(gen)) return false
 			if (versionFilter === false) return true
-			return checkVersion(version, gen.minVersion, gen.maxVersion)
+			return checkVersion(version, gen.minVersion)
 		})
 	}, [version, versionFilter])
 

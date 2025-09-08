@@ -1,5 +1,5 @@
-import { Footer, GeneratorCard, GeneratorList, ToolGroup } from '../components/index.js'
-import { useLocale, useTitle } from '../contexts/index.js'
+import {Footer, GeneratorCard, GeneratorList, ToolGroup} from '../components/index.js'
+import {useLocale, useTitle} from '../contexts/index.js'
 
 interface Props {
 	path?: string

@@ -1,0 +1,462 @@
+{
+  "metrics": true,
+  "update-checker": true,
+  "server": {
+    "address": "auto",
+    "port": "auto"
+  },
+  "resource-pack": {
+    "uuid": "d69238f2-b7ce-30b0-8262-17cd9490f29d",
+    "auto_apply": {
+      "enabled": true,
+      "before_join": true,
+      "delay_ticks": 1
+    },
+    "kick-player-on-decline": true,
+    "kick-player-on-fail": true,
+    "hosting": {
+      "no-host": {
+        "enabled": false
+      },
+      "lobfile": {
+        "enabled": false
+      },
+      "self-host": {
+        "enabled": false,
+        "server-ip": "127.0.0.1",
+        "pack-port": 8163,
+        "append-port": true,
+        "protection": {
+          "block_non_game_requests": false,
+          "rate_limit": {
+            "enabled": true,
+            "max_requests": 3,
+            "period_seconds": 2,
+            "cooldown": {
+              "enabled": true,
+              "duration_minutes": 30,
+              "trigger_on_failed_times": 5
+            }
+          }
+        }
+      },
+      "external-host": {
+        "enabled": false,
+        "url": "",
+        "skip-url-file-type-check___DONT_ASK_HELP_IF_SET_TRUE": false
+      }
+    },
+    "title": {
+      "enabled": true
+    },
+    "atlas_support": true,
+    "fix_force_unicode_font_images": true,
+    "allow_other_plugins_resourcepacks": true,
+    "notify_other_plugins_resourcepacks": true,
+    "protect-player": {
+      "lock-player": true
+    },
+    "command": {
+      "usage-cooldown-seconds": 60
+    },
+    "custom-font": {
+      "enabled": false,
+      "name": "ipaexg.ttf",
+      "shift": "[0,0]",
+      "size": 11,
+      "oversample": 2
+    },
+    "thin-font": {
+      "enabled": false
+    },
+    "zip": {
+      "extract_internal_utility_assets": true,
+      "protect-file-from-unzip": {
+        "protection_1": true,
+        "protection_2": true,
+        "protection_3": true
+      },
+      "compress-png-files": true,
+      "compress-json-files": true,
+      "compress-shader-files": true,
+      "compress_sounds": {
+        "enabled": true,
+        "bitrate_quality": 100
+      },
+      "custom_armors_shaders_legacy": {
+        "vanilla": {
+          "overwrite_leather_layers": true,
+          "generate_shader": {
+            "1_21_4_lower": true,
+            "1_21_5_plus": true
+          }
+        },
+        "optifine": {
+          "generate_cit": {
+            "1_20_4_lower": false
+          }
+        }
+      },
+      "emotes": {
+        "1_21_5_plus_emotes_shaders": true
+      },
+      "models": {
+        "fix_dark_in_inventory": true,
+        "fix_missing_particle": true
+      },
+      "ignore-files-ext": [
+        "db",
+        "yml",
+        "xcf",
+        "psd",
+        "html",
+        "gz",
+        "rar",
+        "zip",
+        "7z"
+      ],
+      "contents-folders-priority": [
+        "vanilla",
+        "_iainternal"
+      ],
+      "merge_other_plugins_resourcepacks_folders": [
+        "ModelEngine/resource pack"
+      ]
+    },
+    "items": {
+      "CustomModelData-starting-value": {
+        "ALL": 10000,
+        "DIAMOND": 11000
+      }
+    },
+    "custom_blocks_sounds_patch": {
+      "enabled": true,
+      "step": true,
+      "other": true
+    },
+    "pre_1_21_2_shaders_fix": {
+      "enabled": true
+    }
+  },
+  "config_files": {
+    "lang": "en",
+    "dictionaries-lang": "en",
+    "force-sync-loading": false
+  },
+  "blocks": {
+    "custom": {
+      "note": true,
+      "mushroom": true,
+      "chorus": true,
+      "wire": false,
+      "fire": false
+    },
+    "worlds": [
+      "*",
+      "example_world_*",
+      "*_example_nether",
+      "!example_disabled_blocks_world",
+      "!example_disabled_blocks_world_*"
+    ],
+    "cancel-break-wrong-tool": {
+      "enabled": true,
+      "send-actionbar": true
+    },
+    "fix-liquids-flow": true,
+    "fix-floating-blocks": true,
+    "fix-glitched-blocks": {
+      "enabled": true,
+      "only-new-chunks": false
+    },
+    "convert-vanilla-blocks": {
+      "enabled": false,
+      "only-new-chunks": true
+    },
+    "remove-unused-palettes-on-region-save": false
+  },
+  "items": {
+    "fix-show-attack-and-damage-as-lore": true,
+    "hide-custom-durability-lore": true,
+    "fix_trades_guis_match_custom_items": {
+      "itemsadder_trade_machines": true,
+      "vanilla_villagers": false,
+      "other_plugins": true
+    },
+    "optimizations": {
+      "kick_on_quickbar_spam": {
+        "enabled": true,
+        "ms": 200,
+        "clicks": 6
+      }
+    },
+    "update-legacy-items": {
+      "enabled": true,
+      "update_durability": true
+    },
+    "auto_update": {
+      "enabled": true,
+      "fix_unstackable_items_on_click": true
+    }
+  },
+  "liquids": {
+    "enabled": true
+  },
+  "huds": {
+    "enabled": true,
+    "force_color": {
+      "enabled": false,
+      "color": "#FFFFFF"
+    }
+  },
+  "cooldown_bars": {
+    "enabled": true,
+    "refresh_ticks": 1,
+    "bossbar": {
+      "color": "WHITE",
+      "style": "SOLID"
+    }
+  },
+  "loots": {
+    "allow-loots-drop-from-spawners-using-silk-touch": true
+  },
+  "compatibility": {
+    "worldguard": {
+      "show_legacy_furniture_flags": false
+    },
+    "advanced_enchantments": {
+      "enable_custom_enchants_in_items_configs": false
+    }
+  },
+  "cache_font_images_and_effects_replacements": true,
+  "font_images": {
+    "chat": {
+      "enabled": true,
+      "add_hover_suggestion": true,
+      "tab_autocompletion_1_19_1_plus": true
+    },
+    "iaimage-book": {
+      "max-line-length": 18,
+      "placeholder-font": "minecraft:default"
+    },
+    "command": {
+      "enabled": true,
+      "commandblocks": true,
+      "excluded": [
+        "home",
+        "sethome",
+        "tpa"
+      ]
+    },
+    "customitem_name_and_lore": {
+      "enabled": true
+    },
+    "sign": {
+      "enabled": true
+    },
+    "book": {
+      "enabled": true
+    },
+    "anvil": {
+      "enabled": true
+    },
+    "inventory-title": {
+      "enabled": true
+    },
+    "scoreboard-teams": {
+      "enabled": false,
+      "update-every-ticks": 3600
+    }
+  },
+  "text_effects": {
+    "enabled": true,
+    "hide_scoreboard_numbers": false,
+    "hide_scoreboard_numbers_old_clients": false,
+    "legacy_colors_compatibility": true,
+    "chat": {
+      "enabled": true
+    },
+    "customitem_name_and_lore": {
+      "enabled": true
+    },
+    "sign": {
+      "enabled": true
+    },
+    "book": {
+      "enabled": true
+    },
+    "anvil": {
+      "enabled": true
+    }
+  },
+  "entities": {
+    "max-furniture-vehicles-per-chunk": 30,
+    "max_furniture_per_chunk": 20,
+    "custom_entities": {
+      "enabled": true,
+      "emotes": true,
+      "max_per_chunk": 5,
+      "expert_users": {
+        "delay_packets": false,
+        "extract_emotes_shaders": true,
+        "disguises_lag_compensation": true
+      }
+    },
+    "furniture": {
+      "auto_convert_to_item_display": false
+    }
+  },
+  "recipes": {
+    "hide-vanilla-unrecognized-recipe-errors": true,
+    "fix-packet-too-large-kick": false,
+    "show-no-permission-popup-in-recipebook": true,
+    "show-no-permission-chat-message": false,
+    "crafting": {
+      "enabled": true
+    },
+    "cooking": {
+      "enabled": true
+    },
+    "anvil": {
+      "enabled": true
+    },
+    "smithing": {
+      "enabled": true
+    },
+    "custom-recipes": {
+      "unlock": {
+        "automatically": true,
+        "all-on-join": false
+      }
+    },
+    "remove-vanilla-recipes": {
+      "enabled": true,
+      "list": {
+        "DIAMOND_SWORD": false,
+        "IRON_INGOT": false
+      }
+    }
+  },
+  "player_stats": {
+    "save_type": "CUSTOM_NBT"
+  },
+  "show_plugin_logo_on_enable": true,
+  "advanced": {
+    "legacy_shader_armor_conversion": {
+      "append_new_equipment_tag": {
+        "enabled": false
+      },
+      "completely_convert_to_new_equipment_tag": {
+        "enabled": false,
+        "new_armor_material": "IRON"
+      }
+    },
+    "ffmpeg": {
+      "enabled": true,
+      "download": true
+    },
+    "on_registries_changes": {
+      "auto_re_join": {
+        "enabled": true
+      },
+      "kick": {
+        "enabled": false
+      }
+    }
+  },
+  "debug": {
+    "benchmark": false,
+    "resourcepacks": {
+      "log_player_install": false,
+      "compression": {
+        "files": false,
+        "overlays": true
+      }
+    },
+    "items": {
+      "log-files-loading": false,
+      "log-files-reloading": false,
+      "log-items-loading": false,
+      "log-items-loading-disabled": false,
+      "log-font-images-loading": false,
+      "log-huds-loading": false,
+      "log-attribute-modifiers-loading": false,
+      "log-warnings": false,
+      "log-loots-loading": false,
+      "log-loots-loading-disabled": false,
+      "log-armors-loading": false
+    },
+    "recipes": {
+      "log-recipes-loading": false,
+      "log-recipes-loading-disabled": false,
+      "log-recipes-removed-vanilla": false,
+      "log-fix-packet-too-large": false
+    },
+    "blocks": {
+      "log-save-load": {
+        "enabled": false,
+        "min-ms": 0
+      },
+      "log-convert-vanilla-blocks": false,
+      "log-fix-bugged-blocks": false,
+      "log-unusual-block-break": false
+    },
+    "blocks-populators": {
+      "log-loading": false,
+      "log-loading-disabled": false,
+      "log-loading-no-populators": false,
+      "log-generation": false
+    },
+    "trees-populators": {
+      "log-loading": false,
+      "log-loading-disabled": false,
+      "log-loading-no-populators": false,
+      "log-generation": false
+    },
+    "surface-decorators": {
+      "log-loading": false,
+      "log-loading-disabled": false,
+      "log-loading-no-decorators": false,
+      "log-generation": false
+    },
+    "cave-decorators": {
+      "log-loading": false,
+      "log-loading-disabled": false,
+      "log-loading-no-decorators": false,
+      "log-generation": false
+    },
+    "player-stats": {
+      "log-save": false
+    },
+    "performance": {
+      "loading-ms": true
+    },
+    "huds": {
+      "log-triggers": false
+    },
+    "other": {
+      "log-dictionaries-loading": false,
+      "log-liquids-loading": false,
+      "log-minecraft_lang_overwrite-loading": false
+    },
+    "categories": {
+      "log-total-loaded": true,
+      "log-single-loaded": false,
+      "log-single-loaded-overwrite": false,
+      "log-single-skip": false,
+      "log-icon-failed-load": false
+    },
+    "entities": {
+      "log-files-loading": false,
+      "log-entities-loading": false,
+      "log-entities-loading-disabled": false,
+      "log_bones_spawning": false
+    },
+    "issues": {
+      "log_font_image_replace_json_syntax_exception": true
+    },
+    "scripts": {
+      "log_compilation": true,
+      "log_execution": true
+    }
+  }
+}

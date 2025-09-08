@@ -1,4 +1,4 @@
-import { route } from 'preact-router'
+import {route} from 'preact-router'
 
 interface Props {
 	path: string

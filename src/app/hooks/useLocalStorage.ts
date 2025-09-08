@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'preact/hooks'
+import {useCallback, useState} from 'preact/hooks'
 
 type Result<T> = [T, (value: T | null | undefined) => void]
 

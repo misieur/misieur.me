@@ -1,13 +1,13 @@
-import { BlockDefinition, BlockModel, Identifier, Structure, StructureRenderer } from 'deepslate/render'
-import type { mat4 } from 'gl-matrix'
-import { useCallback, useRef } from 'preact/hooks'
-import { useVersion } from '../../contexts/index.js'
-import { useAsync } from '../../hooks/useAsync.js'
-import { AsyncCancel } from '../../hooks/useAsyncFn.js'
-import { getResources, ResourceWrapper } from '../../services/Resources.js'
-import { safeJsonParse } from '../../Utils.js'
-import type { PreviewProps } from './index.js'
-import { InteractiveCanvas3D } from './InteractiveCanvas3D.jsx'
+import {BlockDefinition, BlockModel, Identifier, Structure, StructureRenderer} from 'deepslate/render'
+import type {mat4} from 'gl-matrix'
+import {useCallback, useRef} from 'preact/hooks'
+import {useVersion} from '../../contexts/index.js'
+import {useAsync} from '../../hooks/useAsync.js'
+import {AsyncCancel} from '../../hooks/useAsyncFn.js'
+import {getResources, ResourceWrapper} from '../../services/Resources.js'
+import {safeJsonParse} from '../../Utils.js'
+import type {PreviewProps} from './index.js'
+import {InteractiveCanvas3D} from './InteractiveCanvas3D.jsx'
 
 const PREVIEW_ID = Identifier.parse('misode:preview')
 const PREVIEW_DEFINITION = new BlockDefinition({ '': { model: PREVIEW_ID.toString() }}, undefined)

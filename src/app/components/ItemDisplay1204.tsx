@@ -1,13 +1,13 @@
-import type { ItemStack } from 'deepslate-1.20.4/core'
-import { Identifier } from 'deepslate-1.20.4/core'
-import { useEffect, useRef, useState } from 'preact/hooks'
-import { useVersion } from '../contexts/Version.jsx'
-import { useAsync } from '../hooks/useAsync.js'
-import { fetchRegistries } from '../services/index.js'
-import { renderItem } from '../services/Resources1204.js'
-import { ItemTooltip1204 } from './ItemTooltip1204.jsx'
-import { Octicon } from './Octicon.jsx'
-import { itemHasGlint } from './previews/LootTable1204.js'
+import type {ItemStack} from 'deepslate-1.20.4/core'
+import {Identifier} from 'deepslate-1.20.4/core'
+import {useEffect, useRef, useState} from 'preact/hooks'
+import {useVersion} from '../contexts/Version.jsx'
+import {useAsync} from '../hooks/useAsync.js'
+import {fetchRegistries} from '../services/index.js'
+import {renderItem} from '../services/Resources1204.js'
+import {ItemTooltip1204} from './ItemTooltip1204.jsx'
+import {Octicon} from './Octicon.jsx'
+import {itemHasGlint} from './previews/LootTable1204.js'
 
 interface Props {
 	item: ItemStack,

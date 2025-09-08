@@ -1,10 +1,10 @@
-import { Identifier, ItemStack } from 'deepslate'
-import { ItemDisplay } from '../ItemDisplay.jsx'
-import { TextInput } from '../index.js'
-import { CustomizedInput } from './CustomizedInput.jsx'
-import type { CustomizedModel } from './CustomizedModel.js'
-import { CustomizedSlider } from './CustomizedSlider.jsx'
-import { CustomizedToggle } from './CustomizedToggle.jsx'
+import {Identifier, ItemStack} from 'deepslate'
+import {ItemDisplay} from '../ItemDisplay.jsx'
+import {TextInput} from '../index.js'
+import {CustomizedInput} from './CustomizedInput.jsx'
+import type {CustomizedModel} from './CustomizedModel.js'
+import {CustomizedSlider} from './CustomizedSlider.jsx'
+import {CustomizedToggle} from './CustomizedToggle.jsx'
 
 interface Props {
 	model: CustomizedModel,

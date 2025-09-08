@@ -1,12 +1,12 @@
-import { ItemRenderer, ItemStack, NbtString } from 'deepslate'
-import { Identifier, ItemModel } from 'deepslate/render'
-import { useVersion } from '../../contexts/index.js'
-import { useAsync } from '../../hooks/useAsync.js'
-import { AsyncCancel } from '../../hooks/useAsyncFn.js'
-import { getResources, ResourceWrapper } from '../../services/Resources.js'
-import { isObject, safeJsonParse } from '../../Utils.js'
-import { ErrorPanel } from '../ErrorPanel.jsx'
-import type { PreviewProps } from './index.js'
+import {ItemRenderer, ItemStack, NbtString} from 'deepslate'
+import {Identifier, ItemModel} from 'deepslate/render'
+import {useVersion} from '../../contexts/index.js'
+import {useAsync} from '../../hooks/useAsync.js'
+import {AsyncCancel} from '../../hooks/useAsyncFn.js'
+import {getResources, ResourceWrapper} from '../../services/Resources.js'
+import {isObject, safeJsonParse} from '../../Utils.js'
+import {ErrorPanel} from '../ErrorPanel.jsx'
+import type {PreviewProps} from './index.js'
 
 const PREVIEW_ID = Identifier.parse('misode:preview')
 const RENDER_SIZE = 512

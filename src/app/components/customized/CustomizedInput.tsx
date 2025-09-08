@@ -1,6 +1,6 @@
-import type { ComponentChildren } from 'preact'
-import { deepClone, deepEqual } from '../../Utils.js'
-import { Octicon } from '../index.js'
+import type {ComponentChildren} from 'preact'
+import {deepClone, deepEqual} from '../../Utils.js'
+import {Octicon} from '../index.js'
 
 interface Props<T> {
 	label: ComponentChildren,

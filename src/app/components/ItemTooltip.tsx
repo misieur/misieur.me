@@ -1,10 +1,10 @@
-import type { MobEffectInstance, NbtTag } from 'deepslate'
-import { ItemStack, NbtCompound, NbtList, PotionContents } from 'deepslate'
-import { Identifier } from 'deepslate/core'
-import { useVersion } from '../contexts/Version.jsx'
-import type { ResolvedItem } from '../services/ResolvedItem.js'
-import { intToDisplayHexRgb, makeDescriptionId, mergeTextComponentStyles } from '../Utils.js'
-import { TextComponent } from './TextComponent.jsx'
+import type {MobEffectInstance, NbtTag} from 'deepslate'
+import {ItemStack, NbtCompound, NbtList, PotionContents} from 'deepslate'
+import {Identifier} from 'deepslate/core'
+import {useVersion} from '../contexts/Version.jsx'
+import type {ResolvedItem} from '../services/ResolvedItem.js'
+import {intToDisplayHexRgb, makeDescriptionId, mergeTextComponentStyles} from '../Utils.js'
+import {TextComponent} from './TextComponent.jsx'
 
 interface Props {
 	item: ResolvedItem,

@@ -1,4 +1,4 @@
-import { Octicon } from './index.js'
+import {Octicon} from './index.js'
 
 type BtnProps = {
 	icon?: keyof typeof Octicon,

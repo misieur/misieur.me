@@ -1,8 +1,8 @@
 import config from '../Config.js'
-import { Store } from '../Store.js'
-import { message } from '../Utils.js'
-import type { VersionId } from './Versions.js'
-import { checkVersion } from './Versions.js'
+import {Store} from '../Store.js'
+import {message} from '../Utils.js'
+import type {VersionId} from './Versions.js'
+import {checkVersion} from './Versions.js'
 
 const CACHE_NAME = 'misode-v2'
 const CACHE_LATEST_VERSION = 'cached_latest_version'
@@ -137,6 +137,19 @@ export async function fetchPreset(versionId: VersionId, registry: string, id: st
 	const version = config.versions.find(v => v.id === versionId)!
 	await validateCache(version)
 	try {
+		// 1) Allow local custom presets under /public/presets/<registry>/<id>.json
+		// This enables users to host their own presets within this repo without relying on external data.min.json summaries.
+		// When present, we prefer the local preset.
+		try {
+			const localUrl = `${location.origin}/presets/${registry}/${id}.json`
+			const localRes = await fetch(localUrl)
+			if (localRes.ok) {
+				return await localRes.text()
+			}
+		} catch (_) {
+			// ignore and fall back to mcmeta source
+		}
+
 		let url
 		if (id.startsWith('immersive_weathering:')) {
 			url = `https://raw.githubusercontent.com/AstralOrdana/Immersive-Weathering/main/src/main/resources/data/immersive_weathering/block_growths/${id.slice(21)}.json`
@@ -161,6 +174,39 @@ export async function fetchAllPresets(versionId: VersionId, registry: string) {
 	} catch (e) {
 		throw new Error(`Error occurred while fetching all ${registry} presets: ${message(e)}`)
 	}
+}
+
+export async function fetchLocalPresetIds(key: string): Promise<string[] | undefined> {
+	// Try multiple possible manifest locations to keep it flexible.
+	const candidates: string[] = []
+	// Treat key as a registry path, e.g. "dimension" or "config"
+	candidates.push(
+		`${location.origin}/presets/${key}/index.json`,
+		`${location.origin}/presets/${key}/config.json`,
+	)
+	// If key looks like a namespaced id (e.g. "config:config"), also try /presets/<ns>/<path>.
+	if (key.includes(':')) {
+		const [ns, path] = key.split(':', 2)
+		candidates.push(
+			`${location.origin}/presets/${ns}/${path}.json`,
+			`${location.origin}/presets/${ns}/${path}/index.json`,
+			`${location.origin}/presets/${ns}/${path}/config.json`,
+		)
+	}
+	for (const url of candidates) {
+		try {
+			const res = await fetch(url)
+			if (res.ok) {
+				const data = await res.json()
+				if (Array.isArray(data)) return data
+				if (Array.isArray((data?.presets))) return data.presets
+				if (Array.isArray((data?.ids))) return data.ids
+			}
+		} catch (_) {
+			// try next candidate
+		}
+	}
+	return undefined
 }
 
 export type SoundEvents = {

@@ -1,6 +1,6 @@
-import type { Bugfix } from '../../services/DataFetcher.js'
-import { Badge } from '../Badge.jsx'
-import { Card } from '../Card.jsx'
+import type {Bugfix} from '../../services/DataFetcher.js'
+import {Badge} from '../Badge.jsx'
+import {Card} from '../Card.jsx'
 
 interface Props {
 	fix: Bugfix
