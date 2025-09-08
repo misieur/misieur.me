@@ -197,7 +197,6 @@ export function SchemaGenerator({ gen, allowedVersions }: Props) {
  const { value: presets } = useAsync(async () => {
 		const registries = await fetchRegistries(version)
 		let entries = registries.get(gen.id) ?? []
-		// Merge local custom presets if available
 		try {
 			const local = await fetchLocalPresetIds(gen.id)
 			if (local && local.length) {

@@ -137,9 +137,6 @@ export async function fetchPreset(versionId: VersionId, registry: string, id: st
 	const version = config.versions.find(v => v.id === versionId)!
 	await validateCache(version)
 	try {
-		// 1) Allow local custom presets under /public/presets/<registry>/<id>.json
-		// This enables users to host their own presets within this repo without relying on external data.min.json summaries.
-		// When present, we prefer the local preset.
 		try {
 			const localUrl = `${location.origin}/presets/${registry}/${id}.json`
 			const localRes = await fetch(localUrl)
@@ -147,7 +144,6 @@ export async function fetchPreset(versionId: VersionId, registry: string, id: st
 				return await localRes.text()
 			}
 		} catch (_) {
-			// ignore and fall back to mcmeta source
 		}
 
 		let url
@@ -177,14 +173,11 @@ export async function fetchAllPresets(versionId: VersionId, registry: string) {
 }
 
 export async function fetchLocalPresetIds(key: string): Promise<string[] | undefined> {
-	// Try multiple possible manifest locations to keep it flexible.
 	const candidates: string[] = []
-	// Treat key as a registry path, e.g. "dimension" or "config"
 	candidates.push(
 		`${location.origin}/presets/${key}/index.json`,
 		`${location.origin}/presets/${key}/config.json`,
 	)
-	// If key looks like a namespaced id (e.g. "config:config"), also try /presets/<ns>/<path>.
 	if (key.includes(':')) {
 		const [ns, path] = key.split(':', 2)
 		candidates.push(
@@ -203,7 +196,6 @@ export async function fetchLocalPresetIds(key: string): Promise<string[] | undef
 				if (Array.isArray((data?.ids))) return data.ids
 			}
 		} catch (_) {
-			// try next candidate
 		}
 	}
 	return undefined
