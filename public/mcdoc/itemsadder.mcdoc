@@ -3,7 +3,7 @@ struct Item {
 }
 
 enum(string) BossBarColors {
-	PINK = "PINK",
+  PINK = "PINK",
   BLUE = "BLUE",
   RED = "RED",
   GREEN = "GREEN",
@@ -48,436 +48,759 @@ dispatch minecraft:resource[itemsadder:content_config] to struct ItemsadderConte
 }
 
 dispatch minecraft:resource[itemsadder:config] to struct ItemsadderConfig {
+  /// Work in progress
   metrics: boolean,
+  /// Work in progress
   "update-checker": boolean,
+  /// Work in progress
   server: struct {
+    /// Work in progress
     address: ("auto" | string),
+    /// Work in progress
     port: ("auto" | int),
   },
+  /// Work in progress
   "resource-pack": struct {
+    /// Work in progress
     uuid: string,
+    /// Work in progress
     auto_apply: struct {
+      /// Work in progress
       enabled: boolean,
+      /// Work in progress
       before_join: boolean,
+      /// Work in progress
       delay_ticks: int,
     },
+    /// Work in progress
     "kick-player-on-decline": boolean,
+    /// Work in progress
     "kick-player-on-fail": boolean,
+    /// Work in progress
     hosting: struct {
+      /// Work in progress
       "no-host": struct {
+        /// Work in progress
         enabled: boolean,
       },
+      /// Work in progress
       lobfile: struct {
+        /// Work in progress
         enabled: boolean,
       },
+      /// Work in progress
       "self-host": struct {
+        /// Work in progress
         enabled: boolean,
+        /// Work in progress
         "server-ip": string,
+        /// Work in progress
         "pack-port": int,
+        /// Work in progress
         "append-port": boolean,
+        /// Work in progress
         protection: struct {
+          /// Work in progress
           block_non_game_requests: boolean,
+          /// Work in progress
           rate_limit: struct {
+            /// Work in progress
             enabled: boolean,
+            /// Work in progress
             max_requests: int,
+            /// Work in progress
             period_seconds: int,
+            /// Work in progress
             cooldown: struct {
+              /// Work in progress
               enabled: boolean,
+              /// Work in progress
               duration_minutes: int,
+              /// Work in progress
               trigger_on_failed_times: int,
             },
           },
         },
       },
+      /// Work in progress
       "external-host": struct {
+        /// Work in progress
         enabled: boolean,
+        /// Work in progress
         url: string,
+        /// Work in progress
         "skip-url-file-type-check___DONT_ASK_HELP_IF_SET_TRUE": boolean,
       },
     },
+    /// Work in progress
     title: struct {
+      /// Work in progress
       enabled: boolean,
     },
+    /// Work in progress
     atlas_support: boolean,
+    /// Work in progress
     fix_force_unicode_font_images: boolean,
+    /// Work in progress
     allow_other_plugins_resourcepacks: boolean,
+    /// Work in progress
     notify_other_plugins_resourcepacks: boolean,
+    /// Work in progress
     "protect-player": struct {
+      /// Work in progress
       "lock-player": boolean,
     },
+    /// Work in progress
     command: struct {
+      /// Work in progress
       "usage-cooldown-seconds": int,
     },
+    /// Work in progress
     "custom-font": struct {
+      /// Work in progress
       enabled: boolean,
+      /// Work in progress
       name: string,
+      /// Work in progress
       shift: string,
+      /// Work in progress
       size: float,
+      /// Work in progress
       oversample: float,
     },
+    /// Work in progress
     "thin-font": struct {
+      /// Work in progress
       enabled: boolean,
     },
+    /// Work in progress
     zip: struct {
+      /// Work in progress
       extract_internal_utility_assets: boolean,
+      /// Work in progress
       "protect-file-from-unzip": struct {
+        /// Work in progress
         protection_1: boolean,
+        /// Work in progress
         protection_2: boolean,
+        /// Work in progress
         protection_3: boolean,
       },
+      /// Work in progress
       "compress-png-files": boolean,
+      /// Work in progress
       "compress-json-files": boolean,
+      /// Work in progress
       "compress-shader-files": boolean,
+      /// Work in progress
       compress_sounds: struct {
+        /// Work in progress
         enabled: boolean,
+        /// Work in progress
         bitrate_quality: int,
       },
+      /// Work in progress
       custom_armors_shaders_legacy: struct {
+        /// Work in progress
         vanilla: struct {
+          /// Work in progress
           overwrite_leather_layers: boolean,
+          /// Work in progress
           generate_shader: struct {
+            /// Work in progress
             "1_21_4_lower": boolean,
+            /// Work in progress
             "1_21_5_plus": boolean,
           },
         },
+        /// Work in progress
         optifine: struct {
+          /// Work in progress
           generate_cit: struct {
+            /// Work in progress
             "1_20_4_lower": boolean,
           },
         },
       },
+      /// Work in progress
       emotes: struct {
+        /// Work in progress
         "1_21_5_plus_emotes_shaders": boolean,
       },
+      /// Work in progress
       models: struct {
+        /// Work in progress
         fix_dark_in_inventory: boolean,
+        /// Work in progress
         fix_missing_particle: boolean,
       },
+      /// Work in progress
       "ignore-files-ext": [string],
+      /// Work in progress
       "contents-folders-priority": [string],
+      /// Work in progress
       merge_other_plugins_resourcepacks_folders: [string],
     },
+    /// Work in progress
     items: struct {
+      /// Work in progress
       "CustomModelData-starting-value": struct {
         [(BukkitMaterial | "ALL")]: int,
       },
     },
+    /// Work in progress
     custom_blocks_sounds_patch: struct {
+      /// Work in progress
       enabled: boolean,
+      /// Work in progress
       step: boolean,
+      /// Work in progress
       other: boolean,
     },
+    /// Work in progress
     pre_1_21_2_shaders_fix: struct {
+      /// Work in progress
       enabled: boolean,
     },
   },
+  /// Work in progress
   config_files: struct {
+    /// Work in progress
     lang: string,
+    /// Work in progress
     "dictionaries-lang": string,
+    /// Work in progress
     "force-sync-loading": boolean,
   },
+  /// Work in progress
   blocks: struct {
+    /// Work in progress
     custom: struct {
+      /// Work in progress
       note: boolean,
+      /// Work in progress
       mushroom: boolean,
+      /// Work in progress
       chorus: boolean,
+      /// Work in progress
       wire: boolean,
+      /// Work in progress
       fire: boolean,
     },
+    /// Work in progress
     worlds: [string],
+    /// Work in progress
     "cancel-break-wrong-tool": struct {
+      /// Work in progress
       enabled: boolean,
+      /// Work in progress
       "send-actionbar": boolean,
     },
+    /// Work in progress
     "fix-liquids-flow": boolean,
+    /// Work in progress
     "fix-floating-blocks": boolean,
+    /// Work in progress
     "fix-glitched-blocks": struct {
+      /// Work in progress
       enabled: boolean,
+      /// Work in progress
       "only-new-chunks": boolean,
     },
+    /// Work in progress
     "convert-vanilla-blocks": struct {
+      /// Work in progress
       enabled: boolean,
+      /// Work in progress
       "only-new-chunks": boolean,
     },
+    /// Work in progress
     "remove-unused-palettes-on-region-save": boolean,
   },
+  /// Work in progress
   items: struct {
+    /// Work in progress
     "fix-show-attack-and-damage-as-lore": boolean,
+    /// Work in progress
     "hide-custom-durability-lore": boolean,
+    /// Work in progress
     fix_trades_guis_match_custom_items: struct {
+      /// Work in progress
       itemsadder_trade_machines: boolean,
+      /// Work in progress
       vanilla_villagers: boolean,
+      /// Work in progress
       other_plugins: boolean,
     },
+    /// Work in progress
     optimizations: struct {
+      /// Work in progress
       kick_on_quickbar_spam: struct {
+        /// Work in progress
         enabled: boolean,
+        /// Work in progress
         ms: int,
+        /// Work in progress
         clicks: int,
       },
     },
+    /// Work in progress
     "update-legacy-items": struct {
+      /// Work in progress
       enabled: boolean,
+      /// Work in progress
       update_durability: boolean,
     },
+    /// Work in progress
     auto_update: struct {
+      /// Work in progress
       enabled: boolean,
+      /// Work in progress
       fix_unstackable_items_on_click: boolean,
     },
   },
+  /// Work in progress
   liquids: struct {
+    /// Work in progress
     enabled: boolean,
   },
+  /// Work in progress
   huds: struct {
+    /// Work in progress
     enabled: boolean,
+    /// Work in progress
     force_color: struct {
+      /// Work in progress
       enabled: boolean,
+      /// Work in progress
       color: #[color="hex_rgb"] string,
     },
   },
+  /// Work in progress
   cooldown_bars: struct {
+    /// Work in progress
     enabled: boolean,
+    /// Work in progress
     refresh_ticks: int,
+    /// Work in progress
     bossbar: struct {
+      /// Work in progress
       color: BossBarColors,
+      /// Work in progress
       style: BossBarStyles,
     },
   },
+  /// Work in progress
   loots: struct {
+    /// Work in progress
     "allow-loots-drop-from-spawners-using-silk-touch": boolean,
   },
+  /// Work in progress
   compatibility: struct {
+    /// Work in progress
     worldguard: struct {
+      /// Work in progress
       show_legacy_furniture_flags: boolean,
     },
+    /// Work in progress
     advanced_enchantments: struct {
+      /// Work in progress
       enable_custom_enchants_in_items_configs: boolean,
     },
   },
+  /// Work in progress
   cache_font_images_and_effects_replacements: boolean,
+  /// Work in progress
   font_images: struct {
+    /// Work in progress
     chat: struct {
+      /// Work in progress
       enabled: boolean,
+      /// Work in progress
       add_hover_suggestion: boolean,
+      /// Work in progress
       tab_autocompletion_1_19_1_plus: boolean,
     },
+    /// Work in progress
     "iaimage-book": struct {
+      /// Work in progress
       "max-line-length": int,
+      /// Work in progress
       "placeholder-font": string,
     },
+    /// Work in progress
     command: struct {
+      /// Work in progress
       enabled: boolean,
+      /// Work in progress
       commandblocks: boolean,
+      /// Work in progress
       excluded: [string],
     },
+    /// Work in progress
     customitem_name_and_lore: struct {
+      /// Work in progress
       enabled: boolean,
     },
+    /// Work in progress
     sign: struct {
+      /// Work in progress
       enabled: boolean,
     },
+    /// Work in progress
     book: struct {
+      /// Work in progress
       enabled: boolean,
     },
+    /// Work in progress
     anvil: struct {
+      /// Work in progress
       enabled: boolean,
     },
+    /// Work in progress
     "inventory-title": struct {
+      /// Work in progress
       enabled: boolean,
     },
+    /// Work in progress
     "scoreboard-teams": struct {
+      /// Work in progress
       enabled: boolean,
+      /// Work in progress
       "update-every-ticks": int,
     },
   },
+  /// Work in progress
   text_effects: struct {
+    /// Work in progress
     enabled: boolean,
+    /// Work in progress
     hide_scoreboard_numbers: boolean,
+    /// Work in progress
     hide_scoreboard_numbers_old_clients: boolean,
+    /// Work in progress
     legacy_colors_compatibility: boolean,
+    /// Work in progress
     chat: struct {
+      /// Work in progress
       enabled: boolean,
     },
+    /// Work in progress
     customitem_name_and_lore: struct {
+      /// Work in progress
       enabled: boolean,
     },
+    /// Work in progress
     sign: struct {
+      /// Work in progress
       enabled: boolean,
     },
+    /// Work in progress
     book: struct {
+      /// Work in progress
       enabled: boolean,
     },
+    /// Work in progress
     anvil: struct {
+      /// Work in progress
       enabled: boolean,
     },
   },
+  /// Work in progress
   entities: struct {
+    /// Work in progress
     "max-furniture-vehicles-per-chunk": int,
+    /// Work in progress
     max_furniture_per_chunk: int,
+    /// Work in progress
     custom_entities: struct {
+      /// Work in progress
       enabled: boolean,
+      /// Work in progress
       emotes: boolean,
+      /// Work in progress
       max_per_chunk: int,
+      /// Work in progress
       expert_users: struct {
+        /// Work in progress
         delay_packets: boolean,
+        /// Work in progress
         extract_emotes_shaders: boolean,
+        /// Work in progress
         disguises_lag_compensation: boolean,
       },
     },
+    /// Work in progress
     furniture: struct {
+      /// Work in progress
       auto_convert_to_item_display: boolean,
     },
   },
+  /// Work in progress
   recipes: struct {
+    /// Work in progress
     "hide-vanilla-unrecognized-recipe-errors": boolean,
+    /// Work in progress
     "fix-packet-too-large-kick": boolean,
+    /// Work in progress
     "show-no-permission-popup-in-recipebook": boolean,
+    /// Work in progress
     "show-no-permission-chat-message": boolean,
+    /// Work in progress
     crafting: struct {
+      /// Work in progress
       enabled: boolean,
     },
+    /// Work in progress
     cooking: struct {
+      /// Work in progress
       enabled: boolean,
     },
+    /// Work in progress
     anvil: struct {
+      /// Work in progress
       enabled: boolean,
     },
+    /// Work in progress
     smithing: struct {
+      /// Work in progress
       enabled: boolean,
     },
+    /// Work in progress
     "custom-recipes": struct {
+      /// Work in progress
       unlock: struct {
+        /// Work in progress
         automatically: boolean,
+        /// Work in progress
         "all-on-join": boolean,
       },
     },
+    /// Work in progress
     "remove-vanilla-recipes": struct {
+      /// Work in progress
       enabled: boolean,
+      /// Work in progress
       list: struct {
         [BukkitMaterial]: boolean,
       },
     },
   },
+  /// Work in progress
   player_stats: struct {
+    /// Work in progress
     save_type: PlayerStatsSaveType,
   },
+  /// Work in progress
   "show_plugin_logo_on_enable": boolean, // If something doesn't work just put quotes around the key
+  /// Work in progress
   advanced: struct {
+    /// Work in progress
     legacy_shader_armor_conversion: struct {
+      /// Work in progress
       append_new_equipment_tag: struct {
+        /// Work in progress
         enabled: boolean,
       },
+      /// Work in progress
       completely_convert_to_new_equipment_tag: struct {
+        /// Work in progress
         enabled: boolean,
+        /// Work in progress
         new_armor_material: ArmorMaterial,
       },
     },
+    /// Work in progress
     ffmpeg: struct {
+      /// Work in progress
       enabled: boolean,
+      /// Work in progress
       download: boolean,
     },
+    /// Work in progress
     on_registries_changes: struct {
+      /// Work in progress
       auto_re_join: struct {
+        /// Work in progress
         enabled: boolean,
       },
+      /// Work in progress
       kick: struct {
+        /// Work in progress
         enabled: boolean,
       },
     },
   },
+  /// Work in progress
   debug: struct {
+    /// Work in progress
     benchmark: boolean,
+    /// Work in progress
     resourcepacks: struct {
+      /// Work in progress
       log_player_install: boolean,
+      /// Work in progress
       compression: struct {
+        /// Work in progress
         files: boolean,
+        /// Work in progress
         overlays: boolean,
       },
     },
+    /// Work in progress
     items: struct {
+      /// Work in progress
       "log-files-loading": boolean,
+      /// Work in progress
       "log-files-reloading": boolean,
+      /// Work in progress
       "log-items-loading": boolean,
+      /// Work in progress
       "log-items-loading-disabled": boolean,
+      /// Work in progress
       "log-font-images-loading": boolean,
+      /// Work in progress
       "log-huds-loading": boolean,
+      /// Work in progress
       "log-attribute-modifiers-loading": boolean,
+      /// Work in progress
       "log-warnings": boolean,
+      /// Work in progress
       "log-loots-loading": boolean,
+      /// Work in progress
       "log-loots-loading-disabled": boolean,
+      /// Work in progress
       "log-armors-loading": boolean,
     },
+    /// Work in progress
     recipes: struct {
+      /// Work in progress
       "log-recipes-loading": boolean,
+      /// Work in progress
       "log-recipes-loading-disabled": boolean,
+      /// Work in progress
       "log-recipes-removed-vanilla": boolean,
+      /// Work in progress
       "log-fix-packet-too-large": boolean,
     },
+    /// Work in progress
     blocks: struct {
+      /// Work in progress
       "log-save-load": struct {
+        /// Work in progress
         enabled: boolean,
+        /// Work in progress
         "min-ms": int,
       },
+      /// Work in progress
       "log-convert-vanilla-blocks": boolean,
+      /// Work in progress
       "log-fix-bugged-blocks": boolean,
+      /// Work in progress
       "log-unusual-block-break": boolean,
     },
+    /// Work in progress
     "blocks-populators": struct {
+      /// Work in progress
       "log-loading": boolean,
+      /// Work in progress
       "log-loading-disabled": boolean,
+      /// Work in progress
       "log-loading-no-populators": boolean,
+      /// Work in progress
       "log-generation": boolean,
     },
+    /// Work in progress
     "trees-populators": struct {
+      /// Work in progress
       "log-loading": boolean,
+      /// Work in progress
       "log-loading-disabled": boolean,
+      /// Work in progress
       "log-loading-no-populators": boolean,
+      /// Work in progress
       "log-generation": boolean,
     },
+    /// Work in progress
     "surface-decorators": struct {
+      /// Work in progress
       "log-loading": boolean,
+      /// Work in progress
       "log-loading-disabled": boolean,
+      /// Work in progress
       "log-loading-no-decorators": boolean,
+      /// Work in progress
       "log-generation": boolean,
     },
+    /// Work in progress
     "cave-decorators": struct {
+      /// Work in progress
       "log-loading": boolean,
+      /// Work in progress
       "log-loading-disabled": boolean,
+      /// Work in progress
       "log-loading-no-decorators": boolean,
+      /// Work in progress
       "log-generation": boolean,
     },
+    /// Work in progress
     "player-stats": struct {
+      /// Work in progress
       "log-save": boolean,
     },
+    /// Work in progress
     performance: struct {
+      /// Work in progress
       "loading-ms": boolean,
     },
+    /// Work in progress
     huds: struct {
+      /// Work in progress
       "log-triggers": boolean,
     },
+    /// Work in progress
     other: struct {
+      /// Work in progress
       "log-dictionaries-loading": boolean,
+      /// Work in progress
       "log-liquids-loading": boolean,
+      /// Work in progress
       "log-minecraft_lang_overwrite-loading": boolean,
     },
+    /// Work in progress
     categories: struct {
+      /// Work in progress
       "log-total-loaded": boolean,
+      /// Work in progress
       "log-single-loaded": boolean,
+      /// Work in progress
       "log-single-loaded-overwrite": boolean,
+      /// Work in progress
       "log-single-skip": boolean,
+      /// Work in progress
       "log-icon-failed-load": boolean,
     },
+    /// Work in progress
     entities: struct {
+      /// Work in progress
       "log-files-loading": boolean,
+      /// Work in progress
       "log-entities-loading": boolean,
+      /// Work in progress
       "log-entities-loading-disabled": boolean,
+      /// Work in progress
       log_bones_spawning: boolean,
     },
+    /// Work in progress
     issues: struct {
+      /// Work in progress
       log_font_image_replace_json_syntax_exception: boolean,
     },
+    /// Work in progress
     scripts: struct {
+      /// Work in progress
       log_compilation: boolean,
+      /// Work in progress
       log_execution: boolean,
     },
   },
