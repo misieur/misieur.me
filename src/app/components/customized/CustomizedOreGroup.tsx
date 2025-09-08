@@ -1,9 +1,9 @@
-import { Identifier, ItemStack } from 'deepslate'
-import { deepClone } from '../../Utils.js'
-import { ItemDisplay } from '../ItemDisplay.jsx'
-import { CustomizedInput } from './CustomizedInput.jsx'
-import type { CustomizedModel, CustomizedOreModel } from './CustomizedModel.js'
-import { CustomizedOre } from './CustomizedOre.jsx'
+import {Identifier, ItemStack} from 'deepslate'
+import {deepClone} from '../../Utils.js'
+import {ItemDisplay} from '../ItemDisplay.jsx'
+import {CustomizedInput} from './CustomizedInput.jsx'
+import type {CustomizedModel, CustomizedOreModel} from './CustomizedModel.js'
+import {CustomizedOre} from './CustomizedOre.jsx'
 
 interface Props {
 	label: string,

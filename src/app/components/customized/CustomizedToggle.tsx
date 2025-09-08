@@ -1,5 +1,5 @@
-import type { ComponentChildren } from 'preact'
-import { CustomizedInput } from './CustomizedInput.jsx'
+import type {ComponentChildren} from 'preact'
+import {CustomizedInput} from './CustomizedInput.jsx'
 
 interface Props {
 	label: string,

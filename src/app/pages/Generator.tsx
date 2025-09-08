@@ -1,12 +1,12 @@
-import { getCurrentUrl, route } from 'preact-router'
-import { useMemo } from 'preact/hooks'
+import {getCurrentUrl, route} from 'preact-router'
+import {useMemo} from 'preact/hooks'
 import config from '../Config.js'
-import { getGenerator } from '../Utils.js'
-import { SchemaGenerator } from '../components/generator/SchemaGenerator.jsx'
-import { ErrorPanel, Octicon } from '../components/index.js'
-import { useLocale, useTitle, useVersion } from '../contexts/index.js'
-import type { VersionId } from '../services/index.js'
-import { checkVersion } from '../services/index.js'
+import {getGenerator} from '../Utils.js'
+import {SchemaGenerator} from '../components/generator/SchemaGenerator.jsx'
+import {ErrorPanel, Octicon} from '../components/index.js'
+import {useLocale, useTitle, useVersion} from '../contexts/index.js'
+import type {VersionId} from '../services/index.js'
+import {checkVersion} from '../services/index.js'
 
 export const SHARE_KEY = 'share'
 
@@ -24,14 +24,14 @@ export function Generator({}: Props) {
 
 	const allowedVersions = useMemo(() => {
 		return config.versions
-			.filter(v => checkVersion(v.id, gen.minVersion, gen.maxVersion))
+			.filter(v => checkVersion(v.id, gen.minVersion))
 			.map(v => v.id as VersionId)
 			.reverse()
 	}, [gen.minVersion, gen.maxVersion])
 
 	useTitle(locale('title.generator', locale(`generator.${gen.id}`)), allowedVersions)
 
-	if (!checkVersion(version, gen.minVersion, gen.maxVersion)) {
+	if (!checkVersion(version, gen.minVersion)) {
 		const lower = !checkVersion(version, gen.minVersion)
 		const proposedVersion = (lower ? gen.minVersion : gen.maxVersion) as VersionId
 		return <main>

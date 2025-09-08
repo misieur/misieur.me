@@ -1,10 +1,10 @@
-import { Identifier, ItemStack } from 'deepslate'
-import type { ComponentChild, ComponentChildren } from 'preact'
-import { useEffect, useRef, useState } from 'preact/hooks'
-import { clamp, safeJsonParse } from '../../Utils.js'
-import { ItemDisplay } from '../ItemDisplay.jsx'
-import { TextComponent } from '../TextComponent.jsx'
-import type { PreviewProps } from './index.js'
+import {Identifier, ItemStack} from 'deepslate'
+import type {ComponentChild, ComponentChildren} from 'preact'
+import {useEffect, useRef, useState} from 'preact/hooks'
+import {clamp, safeJsonParse} from '../../Utils.js'
+import {ItemDisplay} from '../ItemDisplay.jsx'
+import {TextComponent} from '../TextComponent.jsx'
+import type {PreviewProps} from './index.js'
 
 export const DialogPreview = ({ docAndNode }: PreviewProps) => {
 	const overlay = useRef<HTMLDivElement>(null)

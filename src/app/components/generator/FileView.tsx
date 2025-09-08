@@ -1,10 +1,10 @@
-import type { DocAndNode } from '@spyglassmc/core'
-import { JsonFileNode } from '@spyglassmc/json'
-import { useErrorBoundary } from 'preact/hooks'
-import { useDocAndNode, useSpyglass } from '../../contexts/Spyglass.jsx'
-import { message } from '../../Utils.js'
-import { ErrorPanel } from '../ErrorPanel.jsx'
-import { JsonFileView } from './JsonFileView.jsx'
+import type {DocAndNode} from '@spyglassmc/core'
+import {JsonFileNode} from '@spyglassmc/json'
+import {useErrorBoundary} from 'preact/hooks'
+import {useDocAndNode, useSpyglass} from '../../contexts/Spyglass.jsx'
+import {message} from '../../Utils.js'
+import {ErrorPanel} from '../ErrorPanel.jsx'
+import {JsonFileView} from './JsonFileView.jsx'
 
 type FileViewProps = {
 	docAndNode: DocAndNode | undefined,

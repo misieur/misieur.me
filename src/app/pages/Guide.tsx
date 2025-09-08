@@ -1,7 +1,7 @@
 import config from '../Config.js'
-import { Footer } from '../components/Footer.jsx'
-import { Octicon } from '../components/Octicon.jsx'
-import { useTitle } from '../contexts/Title.jsx'
+import {Footer} from '../components/Footer.jsx'
+import {Octicon} from '../components/Octicon.jsx'
+import {useTitle} from '../contexts/Title.jsx'
 
 interface Props {
 	path?: string

@@ -1,9 +1,9 @@
-import { useCallback } from 'preact/hooks'
-import { Analytics } from '../../Analytics.js'
-import { useLocale, useProject } from '../../contexts/index.js'
-import { useModal } from '../../contexts/Modal.jsx'
-import { Btn } from '../Btn.js'
-import { Modal } from '../Modal.js'
+import {useCallback} from 'preact/hooks'
+import {Analytics} from '../../Analytics.js'
+import {useLocale, useProject} from '../../contexts/index.js'
+import {useModal} from '../../contexts/Modal.jsx'
+import {Btn} from '../Btn.js'
+import {Modal} from '../Modal.js'
 
 export function ProjectDeletion() {
 	const { locale } = useLocale()

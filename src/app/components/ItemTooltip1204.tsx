@@ -1,12 +1,12 @@
-import type { ItemStack } from 'deepslate-1.20.4/core'
-import { AttributeModifierOperation, Enchantment, Identifier, MobEffectInstance, Potion } from 'deepslate-1.20.4/core'
-import { NbtList, NbtType } from 'deepslate-1.20.4/nbt'
-import { useLocale } from '../contexts/Locale.jsx'
-import { useVersion } from '../contexts/Version.jsx'
-import { useAsync } from '../hooks/useAsync.js'
-import { getLanguage, getTranslation } from '../services/Resources.js'
-import { intToDisplayHexRgb, message } from '../Utils.js'
-import { TextComponent } from './TextComponent.jsx'
+import type {ItemStack} from 'deepslate-1.20.4/core'
+import {AttributeModifierOperation, Enchantment, Identifier, MobEffectInstance, Potion} from 'deepslate-1.20.4/core'
+import {NbtList, NbtType} from 'deepslate-1.20.4/nbt'
+import {useLocale} from '../contexts/Locale.jsx'
+import {useVersion} from '../contexts/Version.jsx'
+import {useAsync} from '../hooks/useAsync.js'
+import {getLanguage, getTranslation} from '../services/Resources.js'
+import {intToDisplayHexRgb, message} from '../Utils.js'
+import {TextComponent} from './TextComponent.jsx'
 
 interface Props {
 	item: ItemStack,

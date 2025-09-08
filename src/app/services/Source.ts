@@ -1,7 +1,7 @@
-import { NbtTag } from 'deepslate'
+import {NbtTag} from 'deepslate'
 import yaml from 'js-yaml'
-import { Store } from '../Store.js'
-import { jsonToNbt, message, safeJsonParse } from '../Utils.js'
+import {Store} from '../Store.js'
+import {jsonToNbt, message, safeJsonParse} from '../Utils.js'
 
 const INDENTS: Record<string, number | string | undefined> = {
 	'2_spaces': 2,

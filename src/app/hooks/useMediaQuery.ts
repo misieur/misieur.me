@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'preact/hooks'
+import {useEffect, useState} from 'preact/hooks'
 
 export function useMediaQuery(query: string): boolean {
 	const [prefers, setPrefers] = useState(matchMedia(query).matches)

@@ -1,7 +1,7 @@
-import { marked } from 'marked'
-import type { Change } from '../../services/index.js'
-import { Card } from '../Card.jsx'
-import { Badge } from './index.js'
+import {marked} from 'marked'
+import type {Change} from '../../services/index.js'
+import {Card} from '../Card.jsx'
+import {Badge} from './index.js'
 
 type Props = {
 	change: Change,

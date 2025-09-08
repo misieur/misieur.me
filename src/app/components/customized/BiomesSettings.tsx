@@ -1,11 +1,11 @@
-import { useMemo } from 'preact/hooks'
-import { deepClone } from '../../Utils.js'
-import { useAsync } from '../../hooks/useAsync.js'
-import { fetchRegistries } from '../../services/DataFetcher.js'
-import { Octicon, TextInput } from '../index.js'
-import { CustomizedInput } from './CustomizedInput.jsx'
-import type { CustomizedModel } from './CustomizedModel.js'
-import { CustomizedSlider } from './CustomizedSlider.jsx'
+import {useMemo} from 'preact/hooks'
+import {deepClone} from '../../Utils.js'
+import {useAsync} from '../../hooks/useAsync.js'
+import {fetchRegistries} from '../../services/DataFetcher.js'
+import {Octicon, TextInput} from '../index.js'
+import {CustomizedInput} from './CustomizedInput.jsx'
+import type {CustomizedModel} from './CustomizedModel.js'
+import {CustomizedSlider} from './CustomizedSlider.jsx'
 
 interface Props {
 	model: CustomizedModel,

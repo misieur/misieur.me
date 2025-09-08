@@ -1,5 +1,5 @@
-import type { JSX } from 'preact'
-import { useEffect, useRef } from 'preact/hooks'
+import type {JSX} from 'preact'
+import {useEffect, useRef} from 'preact/hooks'
 
 type InputProps = JSX.HTMLAttributes<HTMLInputElement>
 

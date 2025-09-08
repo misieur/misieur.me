@@ -1,7 +1,7 @@
-import { Footer, Octicon } from '../components/index.js'
+import {Footer, Octicon} from '../components/index.js'
 import config from '../Config.js'
-import { useLocale } from '../contexts/Locale.jsx'
-import { useTitle } from '../contexts/Title.jsx'
+import {useLocale} from '../contexts/Locale.jsx'
+import {useTitle} from '../contexts/Title.jsx'
 
 interface Props {
 	path?: string

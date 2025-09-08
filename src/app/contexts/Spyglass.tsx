@@ -1,12 +1,12 @@
-import type { DocAndNode } from '@spyglassmc/core'
-import type { ComponentChildren } from 'preact'
-import { createContext } from 'preact'
-import type { Inputs } from 'preact/hooks'
-import { useContext, useEffect, useState } from 'preact/hooks'
-import { useAsync } from '../hooks/useAsync.js'
-import type { SpyglassService } from '../services/Spyglass.js'
-import { SpyglassClient } from '../services/Spyglass.js'
-import { useVersion } from './Version.jsx'
+import type {DocAndNode} from '@spyglassmc/core'
+import type {ComponentChildren} from 'preact'
+import {createContext} from 'preact'
+import type {Inputs} from 'preact/hooks'
+import {useContext, useEffect, useState} from 'preact/hooks'
+import {useAsync} from '../hooks/useAsync.js'
+import type {SpyglassService} from '../services/Spyglass.js'
+import {SpyglassClient} from '../services/Spyglass.js'
+import {useVersion} from './Version.jsx'
 
 interface SpyglassContext {
 	client: SpyglassClient

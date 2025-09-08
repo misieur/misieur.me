@@ -1,6 +1,6 @@
-import { hashString } from '../Utils.js'
-import { useLocale } from '../contexts/Locale.jsx'
-import { Octicon } from './index.js'
+import {hashString} from '../Utils.js'
+import {useLocale} from '../contexts/Locale.jsx'
+import {Octicon} from './index.js'
 
 interface Props {
 	label: string,

@@ -1,7 +1,7 @@
-import { useLocale } from '../../contexts/Locale.jsx'
-import { useAsync } from '../../hooks/useAsync.js'
-import { fetchBugfixes } from '../../services/DataFetcher.js'
-import { Issue } from './Issue.jsx'
+import {useLocale} from '../../contexts/Locale.jsx'
+import {useAsync} from '../../hooks/useAsync.js'
+import {fetchBugfixes} from '../../services/DataFetcher.js'
+import {Issue} from './Issue.jsx'
 
 interface Props {
 	version: string

@@ -1,8 +1,8 @@
-import { useMemo } from 'preact/hooks'
-import { useLocale } from '../contexts/Locale.jsx'
-import { useVersion } from '../contexts/Version.jsx'
-import { useAsync } from '../hooks/useAsync.js'
-import { getLanguage, replaceTranslation } from '../services/Resources.js'
+import {useMemo} from 'preact/hooks'
+import {useLocale} from '../contexts/Locale.jsx'
+import {useVersion} from '../contexts/Version.jsx'
+import {useAsync} from '../hooks/useAsync.js'
+import {getLanguage, replaceTranslation} from '../services/Resources.js'
 
 interface StyleData {
 	color?: string,

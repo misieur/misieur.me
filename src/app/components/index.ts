@@ -1,4 +1,3 @@
-export * from './Ad.js'
 export * from './Btn.js'
 export * from './BtnInput.js'
 export * from './BtnLink.js'

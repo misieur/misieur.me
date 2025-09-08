@@ -1,11 +1,11 @@
-import { useMemo } from 'preact/hooks'
-import type { ConfigGenerator } from '../../Config.js'
+import {useMemo} from 'preact/hooks'
+import type {ConfigGenerator} from '../../Config.js'
 import config from '../../Config.js'
-import { useLocale } from '../../contexts/Locale.jsx'
-import type { VersionId } from '../../services/Versions.js'
-import { checkVersion } from '../../services/Versions.js'
-import { cleanUrl } from '../../Utils.js'
-import { Badge, Card, Icons, ToolCard } from '../index.js'
+import {useLocale} from '../../contexts/Locale.jsx'
+import type {VersionId} from '../../services/Versions.js'
+import {checkVersion} from '../../services/Versions.js'
+import {cleanUrl} from '../../Utils.js'
+import {Badge, Card, Icons, ToolCard} from '../index.js'
 
 const VERSION_SEP = ' • '
 
@@ -35,7 +35,7 @@ export function GeneratorCard({ id, minimal }: Props) {
 	const versions = useMemo(() => {
 		if (!gen) return []
 		return config.versions
-			.filter(v => checkVersion(v.id, gen.minVersion, gen.maxVersion))
+			.filter(v => checkVersion(v.id, gen.minVersion))
 			.map(v => v.id as VersionId)
 	}, [gen])
 

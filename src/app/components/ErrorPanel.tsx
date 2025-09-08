@@ -1,13 +1,13 @@
-import type { ComponentChildren } from 'preact'
-import { getCurrentUrl } from 'preact-router'
-import { useEffect, useMemo, useState } from 'preact/hooks'
-import { useProject } from '../contexts/Project.jsx'
-import { useSpyglass } from '../contexts/Spyglass.jsx'
-import { useVersion } from '../contexts/Version.jsx'
-import { useAsync } from '../hooks/useAsync.js'
-import { latestVersion } from '../services/DataFetcher.js'
-import { getGenerator, SOURCE_REPO_URL } from '../Utils.js'
-import { Octicon } from './index.js'
+import type {ComponentChildren} from 'preact'
+import {getCurrentUrl} from 'preact-router'
+import {useEffect, useMemo, useState} from 'preact/hooks'
+import {useProject} from '../contexts/Project.jsx'
+import {useSpyglass} from '../contexts/Spyglass.jsx'
+import {useVersion} from '../contexts/Version.jsx'
+import {useAsync} from '../hooks/useAsync.js'
+import {latestVersion} from '../services/DataFetcher.js'
+import {getGenerator, SOURCE_REPO_URL} from '../Utils.js'
+import {Octicon} from './index.js'
 
 type ErrorPanelProps = {
 	error: string | Error,

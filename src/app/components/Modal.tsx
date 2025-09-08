@@ -1,7 +1,6 @@
-import type { JSX } from 'preact'
-import { useCallback, useEffect } from 'preact/hooks'
-import { useModal } from '../contexts/Modal.jsx'
-import { LOSE_FOCUS } from '../hooks/index.js'
+import {useCallback, useEffect} from 'preact/hooks'
+import {useModal} from '../contexts/Modal.jsx'
+import {LOSE_FOCUS} from '../hooks/index.js'
 
 const MODALS_KEY = 'data-modals'
 

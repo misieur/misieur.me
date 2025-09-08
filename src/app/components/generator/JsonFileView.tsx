@@ -1,12 +1,12 @@
-import type { DocAndNode, Range } from '@spyglassmc/core'
-import { dissectUri } from '@spyglassmc/java-edition/lib/binder/index.js'
-import type { JsonNode } from '@spyglassmc/json'
-import { JsonFileNode } from '@spyglassmc/json'
-import { useCallback, useMemo } from 'preact/hooks'
-import { useSpyglass } from '../../contexts/Spyglass.jsx'
-import { getRootType, simplifyType } from './McdocHelpers.js'
-import type { McdocContext } from './McdocRenderer.jsx'
-import { McdocRoot } from './McdocRenderer.jsx'
+import type {DocAndNode, Range} from '@spyglassmc/core'
+import {dissectUri} from '@spyglassmc/java-edition/lib/binder/index.js'
+import type {JsonNode} from '@spyglassmc/json'
+import {JsonFileNode} from '@spyglassmc/json'
+import {useCallback, useMemo} from 'preact/hooks'
+import {useSpyglass} from '../../contexts/Spyglass.jsx'
+import {getRootType, simplifyType} from './McdocHelpers.js'
+import type {McdocContext} from './McdocRenderer.jsx'
+import {McdocRoot} from './McdocRenderer.jsx'
 
 type JsonFileViewProps = {
 	docAndNode: DocAndNode,

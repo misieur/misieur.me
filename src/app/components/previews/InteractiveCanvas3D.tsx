@@ -1,5 +1,5 @@
-import { mat4, vec3 } from 'gl-matrix'
-import { useEffect, useRef } from 'preact/hooks'
+import {mat4, vec3} from 'gl-matrix'
+import {useEffect, useRef} from 'preact/hooks'
 
 interface Props {
 	onSetup: (canvas: HTMLCanvasElement) => void,

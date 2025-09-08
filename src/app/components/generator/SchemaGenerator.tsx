@@ -9,12 +9,12 @@ import { useModal } from '../../contexts/Modal.jsx'
 import { useSpyglass, watchSpyglassUri } from '../../contexts/Spyglass.jsx'
 import { AsyncCancel, useActiveTimeout, useAsync, useLocalStorage, useSearchParam } from '../../hooks/index.js'
 import type { VersionId } from '../../services/index.js'
-import { checkVersion, fetchDependencyMcdoc, fetchPreset, fetchRegistries, getSnippet, shareSnippet } from '../../services/index.js'
+import { checkVersion, fetchDependencyMcdoc, fetchPreset, fetchRegistries, fetchLocalPresetIds, getSnippet, shareSnippet } from '../../services/index.js'
 import { DEPENDENCY_URI } from '../../services/Spyglass.js'
 import { Store } from '../../Store.js'
 import { cleanUrl, genPath } from '../../Utils.js'
 import { FancyMenu } from '../FancyMenu.jsx'
-import { Ad, Btn, BtnMenu, ErrorPanel, FileCreation, FileView, Footer, HasPreview, Octicon, PreviewPanel, ProjectPanel, SourcePanel, TextInput, VersionSwitcher } from '../index.js'
+import { Btn, BtnMenu, ErrorPanel, FileCreation, FileView, HasPreview, Octicon, PreviewPanel, ProjectPanel, SourcePanel, TextInput, VersionSwitcher } from '../index.js'
 import { getRootDefault } from './McdocHelpers.js'
 
 export const SHARE_KEY = 'share'
@@ -194,9 +194,15 @@ export function SchemaGenerator({ gen, allowedVersions }: Props) {
 		}
 	}, [gen.id, service, uri, saveFile])
 
-	const { value: presets } = useAsync(async () => {
+ const { value: presets } = useAsync(async () => {
 		const registries = await fetchRegistries(version)
-		const entries = registries.get(gen.id) ?? []
+		let entries = registries.get(gen.id) ?? []
+		try {
+			const local = await fetchLocalPresetIds(gen.id)
+			if (local && local.length) {
+				entries = [...entries, ...local.map(e => e.startsWith('minecraft:') ? e.slice(10) : e)]
+			}
+		} catch (_) {}
 		return entries.map(e => e.startsWith('minecraft:') ? e.slice(10) : e)
 	}, [version, gen.id])
 
@@ -382,7 +388,6 @@ export function SchemaGenerator({ gen, allowedVersions }: Props) {
 
 	return <>
 		<main class={`${previewShown ? 'has-preview' : ''} ${projectShown ? 'has-project' : ''}`} style={`--project-panel-width: ${realPanelWidth}px`}>
-			{!gen.tags?.includes('partners') && <Ad id="data-pack-generator" type="text" />}
 			<div class="controls generator-controls">
 				{gen.wiki && <a class="btn btn-link tooltipped tip-se" aria-label={locale('learn_on_the_wiki')} href={gen.wiki} target="_blank">
 					{Octicon.mortar_board}
@@ -404,7 +409,6 @@ export function SchemaGenerator({ gen, allowedVersions }: Props) {
 			{docError
 				? <ErrorPanel error={docError} />
 				: <FileView docAndNode={docLoading ? undefined : docAndNode} />}
-			<Footer donate={!gen.tags?.includes('partners')} />
 		</main>
 		<div class="popup-actions right-actions" style={`--offset: -${8 + actionsShown * 50}px;`}>
 			<div class={`popup-action action-preview${hasPreview ? ' shown' : ''} tooltipped tip-nw`} aria-label={locale(previewShown ? 'hide_preview' : 'show_preview')} onClick={togglePreview}>

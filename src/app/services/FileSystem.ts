@@ -1,5 +1,5 @@
 import * as core from '@spyglassmc/core'
-import { message } from '../Utils.js'
+import {message} from '../Utils.js'
 
 // Copied from spyglass because it isn't exported
 type Listener = (...args: any[]) => any

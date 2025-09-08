@@ -1,6 +1,6 @@
-import type { ComponentChildren } from 'preact'
-import { useCallback, useMemo, useRef, useState } from 'preact/hooks'
-import { useFocus } from '../hooks/index.js'
+import type {ComponentChildren} from 'preact'
+import {useCallback, useMemo, useRef, useState} from 'preact/hooks'
+import {useFocus} from '../hooks/index.js'
 
 interface Props {
 	placeholder?: string

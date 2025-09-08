@@ -1,12 +1,12 @@
-import { getCurrentUrl, Link } from 'preact-router'
-import { useCallback } from 'preact/hooks'
-import type { ConfigGenerator } from '../Config.js'
+import {getCurrentUrl, Link} from 'preact-router'
+import {useCallback} from 'preact/hooks'
+import type {ConfigGenerator} from '../Config.js'
 import config from '../Config.js'
-import { useLocale, useTheme, useTitle, useVersion } from '../contexts/index.js'
-import { cleanUrl, getGenerator, SOURCE_REPO_URL } from '../Utils.js'
-import { FancyMenu } from './FancyMenu.jsx'
-import { searchGenerators } from './generator/GeneratorList.jsx'
-import { Btn, BtnMenu, Icons, Octicon } from './index.js'
+import {useLocale, useTheme, useTitle, useVersion} from '../contexts/index.js'
+import {cleanUrl, getGenerator, SOURCE_REPO_URL} from '../Utils.js'
+import {FancyMenu} from './FancyMenu.jsx'
+import {searchGenerators} from './generator/GeneratorList.jsx'
+import {Btn, BtnMenu, Icons, Octicon} from './index.js'
 
 const Themes: Record<string, keyof typeof Octicon> = {
 	system: 'device_desktop',

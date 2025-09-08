@@ -1,5 +1,5 @@
-import type { CustomizedModel } from './CustomizedModel.js'
-import { CustomizedOreGroup } from './CustomizedOreGroup.jsx'
+import type {CustomizedModel} from './CustomizedModel.js'
+import {CustomizedOreGroup} from './CustomizedOreGroup.jsx'
 
 interface Props {
 	model: CustomizedModel,
