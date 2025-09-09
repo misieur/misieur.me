@@ -18,11 +18,18 @@
   "generators": [
     {
       "id": "itemsadder:modern_item_config",
-      "url": "itemsadder/content",
-      "path": "content",
+      "url": "itemsadder/modern_items",
+      "path": "items",
+      "tags": ["itemsadder", "modern_items"],
+      "dependency": "itemsadder",
+      "wiki": "https://wiki.itemsadder.com/plugin-usage/adding-content/emojis"
+    },
+    {
+      "id": "itemsadder:emoji_config",
+      "url": "itemsadder/emoji",
+      "path": "emoji",
       "tags": ["itemsadder", "content"],
       "dependency": "itemsadder",
-      "minVersion": "1.21.4",
       "wiki": "https://wiki.itemsadder.com/plugin-usage/adding-content"
     },
     {
@@ -31,7 +38,6 @@
       "path": "config",
       "tags": ["itemsadder", "config"],
       "dependency": "itemsadder",
-      "minVersion": "1.21.4",
       "wiki": "https://wiki.itemsadder.com/"
     }
   ],

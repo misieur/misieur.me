@@ -86,6 +86,23 @@ struct StringMap {
   [string]: string,
 }
 
+struct FontImage {
+  path: string,
+  /// The is the final height in pixels of the emoji. **Scale ratio must ALWAYS be higher than Y position**
+  scale_ratio?: int,
+  /// The y position in pixels of the emoji. **Scale ratio must ALWAYS be higher than Y position**
+  y_position?: int,
+  permission?: string,
+  show_in_gui?: boolean,
+  suggest_in_command?: boolean,
+  chat?: struct {
+    hover?: struct {
+      enabled: boolean,
+      /// Use `:emoji_name:` to put emojis and `\n` for new lines if you have big emojis.
+      override_text: string,
+    },
+  },
+}
 
 
 enum(string) BossBarColors {
@@ -130,6 +147,16 @@ dispatch minecraft:resource[itemsadder:modern_item_config] to struct ItemsadderC
   },
   items?: struct {
     [string]: Item,
+  },
+}
+
+dispatch minecraft:resource[itemsadder:emoji_config] to struct ItemsadderEmojiConfig {
+  info: struct {
+    /// Your namespace (/contents/<namespace>/)
+    namespace: string
+  },
+  font_images?: struct {
+    [string]: FontImage,
   },
 }
 
