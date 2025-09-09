@@ -13,6 +13,8 @@ export function Home({}: Props) {
 
 	return <main>
 		<div class="legacy-container">
+            <h1 className="main-title">Welcome to Misieur's website!</h1>
+            <p className="main-subtitle">Some useful tools and generators I made are available below</p>
 			<div class="card-group">
 				{smallScreen ? /* mobile */ <>
 					<PopularGenerators />

@@ -136,6 +136,19 @@ header {
 	background-color: var(--background-2);
 }
 
+.main-title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+}
+
+.main-subtitle {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 5rem;
+}
+
 .title h1 {
 	color: var(--nav);
 }
