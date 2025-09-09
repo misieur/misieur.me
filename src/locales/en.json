@@ -61,7 +61,7 @@
   "generate_new_color": "Generate new color",
   "generate_new_seed": "Generate new seed",
   "generate_new_uuid": "Generate new UUID",
-  "generator.itemsadder:content_config": "ItemsAdder Content Files Config",
+  "generator.itemsadder:modern_item_config": "ItemsAdder Modern Items Config",
   "generator.itemsadder:config": "ItemsAdder's Config",
   "generators.all": "All Generators",
   "generators.popular": "Popular Generators",

@@ -17,7 +17,7 @@
   ],
   "generators": [
     {
-      "id": "itemsadder:content_config",
+      "id": "itemsadder:modern_item_config",
       "url": "itemsadder/content",
       "path": "content",
       "tags": ["itemsadder", "content"],

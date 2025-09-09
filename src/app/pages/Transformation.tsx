@@ -4,9 +4,9 @@ import {useCallback, useMemo, useRef, useState} from 'preact/hooks'
 import {Footer, NumberInput, Octicon, RangeInput} from '../components/index.js'
 import {InteractiveCanvas3D} from '../components/previews/InteractiveCanvas3D.jsx'
 import {useLocale, useTitle} from '../contexts/index.js'
-import {useActiveTimeout} from '../hooks/useActiveTimout.js'
+import {useActiveTimeout} from '../hooks/index.js'
 import {useAsync} from '../hooks/useAsync.js'
-import {loadImage} from '../services/DataFetcher.js'
+import {loadImage} from '../services/index.js'
 import {composeMatrix, svdDecompose} from '../Utils.js'
 
 const XYZ = ['x', 'y', 'z'] as const
@@ -31,8 +31,7 @@ export function Transformation({}: Props) {
 		canvas.height = 64
 		const ctx = canvas.getContext('2d')!
 		ctx.drawImage(img, 0, 0)
-		const data = ctx.getImageData(0, 0, 64, 64)
-		return data
+		return ctx.getImageData(0, 0, 64, 64)
 	})
 
 	const [matrix, setMatrix] = useState(new Matrix4())
@@ -79,10 +78,25 @@ export function Transformation({}: Props) {
 		setMatrix(composeMatrix(translation, value, scale, rightRotation))
 	}, [translation, scale, rightRotation])
 
+    function updateQuatPreserveEdited(q: quat, editedIndex: number) {
+        if (editedIndex === 3) return q
+        let x = q[0], y = q[1], z = q[2]
+        let lenSq = x*x + y*y + z*z
+        if (lenSq > 1) {
+            const s = 1 / Math.sqrt(lenSq)
+            x *= s; y *= s; z *= s
+            q[0] = x; q[1] = y; q[2] = z
+            lenSq = 1
+        }
+        const sign = q[3] >= 0 ? 1 : -1
+        q[3] = sign * Math.sqrt(Math.max(0, 1 - lenSq))
+        return q
+    }
+
 	const changeLeftRotation = useCallback((i: number, value: number) => {
 		const copy = quat.clone(leftRotation)
 		copy[i] = value
-		if (normalizeLeft) quat.normalize(copy, copy)
+		if (normalizeLeft) updateQuatPreserveEdited(copy, i)
 		updateLeftRotation(copy)
 	}, [leftRotation, normalizeLeft, updateLeftRotation])
 
@@ -103,7 +117,7 @@ export function Transformation({}: Props) {
 	const changeRightRotation = useCallback((i: number, value: number) => {
 		const copy = quat.clone(rightRotation)
 		copy[i] = value
-		if (normalizeRight) quat.normalize(copy, copy)
+		if (normalizeRight) updateQuatPreserveEdited(copy, i)
 		updateRightRotation(copy)
 	}, [rightRotation, normalizeRight, updateRightRotation])
 

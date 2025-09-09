@@ -35,7 +35,7 @@ function PopularGenerators() {
 	const { locale } = useLocale()
 	return <ToolGroup title={locale('generators.popular')} link="/generators/">
 		<GeneratorCard minimal id="itemsadder:config" />
-		<GeneratorCard minimal id="itemsadder:content_config" />
+		<GeneratorCard minimal id="itemsadder:modern_item_config" />
 		<ToolCard title={locale('generators.all')} link="/generators/" titleIcon="arrow_right" />
 	</ToolGroup>
 }
@@ -47,5 +47,8 @@ function Tools() {
 		<ToolCard title="Transformation preview"
 			link="/transformation/"
 			desc="Visualize transformations for display entities" />
+		<ToolCard title="HitBox Utils"
+			link="https://github.com/misieur/Hitbox-utils"
+			desc="A BlockBench Plugin made to create and edit hitbox models" />
 	</ToolGroup>
 }

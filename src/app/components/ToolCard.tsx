@@ -6,11 +6,15 @@ interface Props {
 	titleIcon?: keyof typeof Octicon | keyof typeof Icons,
 	link: string,
 	icon?: keyof typeof Icons,
-	desc?: string,
+	desc?: string
 }
 export function ToolCard({ title, desc, link, icon, titleIcon }: Props) {
+	const isExternalLink = /^https?:\/\//i.test(link)
+	const target = isExternalLink ? '_blank' : undefined
+	const rel = isExternalLink ? 'noopener noreferrer' : undefined
+
 	if (icon || desc) {
-		return <a class="tool-card" href={link}>
+		return <a class="tool-card" href={link} target={target} rel={rel}>
 			{icon && Icons[icon]}
 			<div>
 				<ToolHead title={title} titleIcon={titleIcon} />
@@ -19,7 +23,7 @@ export function ToolCard({ title, desc, link, icon, titleIcon }: Props) {
 		</a>
 	}
 
-	return <a class="tool-card" href={link}>
+	return <a class="tool-card" href={link} target={target} rel={rel}>
 		<ToolHead title={title} titleIcon={titleIcon} />
 	</a>
 }
