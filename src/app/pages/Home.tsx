@@ -51,6 +51,9 @@ function Tools() {
 		<ToolCard title="👀 Transformation preview"
 			link="/transformation/"
 			desc="Visualize transformations for display entities" />
+		<ToolCard title="✈️ Offline Audio Convertor"
+			link="/audio-convertor/"
+			desc="Convert your audio files to OGG format"/>
 		<ToolCard title="🧊 HitBox Utils"
 			link="https://github.com/misieur/Hitbox-utils"
 			desc="A BlockBench Plugin made to create and edit hitbox models" />

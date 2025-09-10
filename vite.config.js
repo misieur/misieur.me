@@ -27,6 +27,7 @@ export default defineConfig({
 		esbuildOptions: {
 			target: 'es2021',
 		},
+		exclude: ['@ffmpeg/ffmpeg'],
 	},
 	build: {
 		sourcemap: true,
@@ -59,6 +60,7 @@ export default defineConfig({
 					template,
 				})),
 			],
+			external: ['@ffmpeg/ffmpeg'],
 		},
 	},
 	json: {
