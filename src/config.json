@@ -20,23 +20,44 @@
       "id": "itemsadder:modern_item_config",
       "url": "itemsadder/modern_items",
       "path": "items",
-      "tags": ["itemsadder", "modern_items"],
+      "tags": [
+        "itemsadder",
+        "modern_items"
+      ],
       "dependency": "itemsadder",
-      "wiki": "https://wiki.itemsadder.com/plugin-usage/adding-content/emojis"
+      "wiki": "https://wiki.itemsadder.com/plugin-usage/adding-content"
     },
     {
       "id": "itemsadder:emoji_config",
       "url": "itemsadder/emoji",
       "path": "emoji",
-      "tags": ["itemsadder", "content"],
+      "tags": [
+        "itemsadder",
+        "content"
+      ],
       "dependency": "itemsadder",
-      "wiki": "https://wiki.itemsadder.com/plugin-usage/adding-content"
+      "wiki": "https://wiki.itemsadder.com/plugin-usage/adding-content/emojis"
     },
     {
       "id": "itemsadder:config",
       "url": "itemsadder/config",
       "path": "config",
-      "tags": ["itemsadder", "config"],
+      "tags": [
+        "itemsadder",
+        "config"
+      ],
+      "dependency": "itemsadder",
+      "wiki": "https://wiki.itemsadder.com/"
+    },
+    {
+      "id": "itemsadder:ia_gui_config",
+      "url": "itemsadder/ia_gui",
+      "path": "ia_gui",
+      "tags": [
+        "itemsadder",
+        "gui",
+        "config"
+      ],
       "dependency": "itemsadder",
       "wiki": "https://wiki.itemsadder.com/"
     }

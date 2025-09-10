@@ -13,8 +13,8 @@ export function Home({}: Props) {
 
 	return <main>
 		<div class="legacy-container">
-            <h1 className="main-title">Welcome to Misieur's website!</h1>
-            <p className="main-subtitle">You can find some useful tools and generators below</p>
+			<h1 className="main-title">Welcome to Misieur's website!</h1>
+			<p className="main-subtitle">You can find some useful tools and generators below</p>
 			<div class="card-group">
 				{smallScreen ? /* mobile */ <>
 					<PopularGenerators />
@@ -39,6 +39,7 @@ function PopularGenerators() {
 		<GeneratorCard minimal id="itemsadder:config" />
 		<GeneratorCard minimal id="itemsadder:emoji_config" />
 		<GeneratorCard minimal id="itemsadder:modern_item_config" />
+		<GeneratorCard minimal id="itemsadder:ia_gui_config"/>
 		<ToolCard title={locale('generators.all')} link="/generators/" titleIcon="arrow_right" />
 	</ToolGroup>
 }

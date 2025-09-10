@@ -1,0 +1,155 @@
+{
+  "settings": {
+    "cut_titles_with_length_grether_than": 25,
+    "categories_view": {
+      "font_image": {
+        "name": "_iainternal:blank_menu",
+        "x_position_pixels": -16
+      },
+      "title_position_pixels": 0,
+      "title_color": "&0",
+      "icons": {
+        "search": {
+          "item": "_iainternal:icon_search"
+        }
+      }
+    },
+    "category_view": {
+      "font_image": {
+        "name": "_iainternal:blank_menu",
+        "x_position_pixels": -16
+      },
+      "title_position_pixels": 0,
+      "title_color": "&0",
+      "icons": {
+        "back": {
+          "item": "_iainternal:icon_cancel"
+        },
+        "previous_page": {
+          "item": "_iainternal:icon_back_orange"
+        },
+        "next_page": {
+          "item": "_iainternal:icon_next_orange"
+        }
+      }
+    },
+    "crafting_preview": {
+      "no_recipe_font_image": {
+        "name": "_iainternal:no_recipe",
+        "x_position_pixels": -16
+      },
+      "craft_font_image": {
+        "name": "_iainternal:crafting",
+        "x_position_pixels": -16
+      },
+      "cook_font_image": {
+        "name": "_iainternal:cooking",
+        "x_position_pixels": -16
+      },
+      "anvil_repair_font_image": {
+        "name": "_iainternal:anvil_repair",
+        "x_position_pixels": -16
+      },
+      "smithing_font_image": {
+        "name": "_iainternal:smithing",
+        "x_position_pixels": -16
+      },
+      "title_position_pixels": 17,
+      "title_color": "&0",
+      "icons": {
+        "previous_recipe": {
+          "item": "_iainternal:icon_left_blue"
+        },
+        "next_recipe": {
+          "item": "_iainternal:icon_right_blue"
+        },
+        "get_item": {
+          "item": "_iainternal:icon_arrow_chest"
+        },
+        "loot_blocks": {
+          "item": "DIAMOND_PICKAXE"
+        },
+        "blocks_populators": {
+          "item": "CHEST"
+        },
+        "surface_populators": {
+          "item": "GRASS"
+        },
+        "trees_populators": {
+          "item": "OAK_SAPLING"
+        },
+        "seed_result": {
+          "item": "WHEAT_SEEDS"
+        },
+        "loot_mobs": {
+          "item": "CREEPER_HEAD"
+        },
+        "loot_fishing": {
+          "item": "FISHING_ROD"
+        },
+        "vehicle_fuel": {
+          "item": "COAL"
+        }
+      }
+    }
+  },
+  "categories": {
+    "all": {
+      "enabled": true,
+      "icon": "iasurvival:ruby_block",
+      "name": "display-category-all",
+      "show_all_items": true,
+      "permission": "ia.menu.seecategory.all",
+      "hide_items": [
+        "_iainternal:icon_left_grey",
+        "_iainternal:icon_left_blue",
+        "_iainternal:icon_right_grey",
+        "_iainternal:icon_right_blue",
+        "_iainternal:icon_up_grey",
+        "_iainternal:icon_up_blue",
+        "_iainternal:icon_next_white",
+        "_iainternal:icon_next_orange",
+        "_iainternal:icon_back_white",
+        "_iainternal:icon_back_orange",
+        "_iainternal:icon_cancel",
+        "_iainternal:icon_confirm",
+        "_iainternal:icon_lock",
+        "_iainternal:icon_unlock",
+        "_iainternal:icon_web",
+        "mcicons:icon_left_grey",
+        "mcicons:icon_left_blue",
+        "mcicons:icon_right_grey",
+        "mcicons:icon_right_blue",
+        "mcicons:icon_up_grey",
+        "mcicons:icon_up_blue",
+        "mcicons:icon_next_white",
+        "mcicons:icon_next_orange",
+        "mcicons:icon_back_white",
+        "mcicons:icon_back_orange",
+        "mcicons:icon_cancel",
+        "mcicons:icon_confirm",
+        "mcicons:icon_lock",
+        "mcicons:icon_unlock",
+        "mcicons:icon_web",
+        "iageneric:light_blue_coupon",
+        "iageneric:turquoise_coupon",
+        "iageneric:purple_coupon",
+        "iageneric:green_coupon",
+        "iageneric:red_coupon",
+        "iageneric:black_coupon",
+        "iageneric:white_coupon",
+        "iageneric:golden_coupon",
+        "iageneric:blue_ring",
+        "iageneric:light_blue_ring",
+        "iageneric:turquoise_ring",
+        "iageneric:purple_ring",
+        "iageneric:green_ring",
+        "iageneric:red_ring",
+        "iageneric:black_ring",
+        "iageneric:white_ring",
+        "iageneric:golden_ring",
+        "iageneric:marriage_ring"
+      ]
+    }
+  }
+}
