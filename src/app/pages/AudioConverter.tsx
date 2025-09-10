@@ -7,7 +7,7 @@ interface Props {
 	path?: string;
 }
 
-export function AudioConvertor({}: Props) {
+export function AudioConverter({}: Props) {
 	const [ffmpeg] = useState(() => new FFmpeg())
 	const [loading, setLoading] = useState(false)
 	const [outputUrl, setOutputUrl] = useState<string | null>(null)
@@ -43,8 +43,8 @@ export function AudioConvertor({}: Props) {
 
 	return (
 		<main>
-			<div class="legacy-container audio-convertor-box">
-				<h1 class="main-title">Offline Audio Convertor</h1>
+			<div class="legacy-container audio-converter-box">
+				<h1 class="main-title">Offline Audio Converter</h1>
 				<p class="main-subtitle">Convert your audio files to OGG format</p>
 				<form onSubmit={handleConvert}>
 					<input type="file" id="fileInput" accept="audio/*" class="input-file" />

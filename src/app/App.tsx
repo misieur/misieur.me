@@ -17,7 +17,7 @@ import {
     Sounds,
     Transformation,
     EmbedPage,
-    AudioConvertor,
+    AudioConverter,
     Worldgen
 } from './pages/index.js'
 import {cleanUrl} from './Utils.js'
@@ -45,7 +45,7 @@ export function App() {
 			<Guides path="/guides" />
 			<Guide path="/guides/:id" />
 			<EmbedPage path="/embed" />
-            <AudioConvertor path="/audio-convertor" />
+            <AudioConverter path="/audio-converter" />
 			<Generator default />
 		</Router>
 	</>

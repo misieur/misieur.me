@@ -1566,7 +1566,7 @@ main.has-project {
     margin: 0 auto;
 }
 
-.audio-convertor-box {
+.audio-converter-box {
     background-color: var(--background-2);
     color: var(--text-1);
     border-radius: 12px;
@@ -1589,9 +1589,9 @@ main.has-project {
     margin-top: 5px;
 }
 
-.audio-convertor-box input[type="text"],
-.audio-convertor-box input[type="number"],
-.audio-convertor-box input[type="file"] {
+.audio-converter-box input[type="text"],
+.audio-converter-box input[type="number"],
+.audio-converter-box input[type="file"] {
     background-color: var(--background-1);
     color: var(--text-1);
     border: 2px solid var(--background-3);
@@ -1601,18 +1601,18 @@ main.has-project {
     margin-bottom: 1rem;
 }
 
-.audio-convertor-box input[type="text"]:focus,
-.audio-convertor-box input[type="number"]:focus,
-.audio-convertor-box input[type="file"]:focus {
+.audio-converter-box input[type="text"]:focus,
+.audio-converter-box input[type="number"]:focus,
+.audio-converter-box input[type="file"]:focus {
     border-color: var(--accent-primary);
     outline: none;
 }
 
-.audio-convertor-box input[type="file"]::file-selector-button:hover {
+.audio-converter-box input[type="file"]::file-selector-button:hover {
     background-color: var(--background-5);
 }
 
-.audio-convertor-box input[type="file"]::file-selector-button {
+.audio-converter-box input[type="file"]::file-selector-button {
     background-color: var(--background-3);
     color: var(--text-1);
     border: none;
@@ -1622,19 +1622,19 @@ main.has-project {
     cursor: pointer;
 }
 
-.audio-convertor-box input[type="file"] {
+.audio-converter-box input[type="file"] {
     display: block;
     text-align: center;
     margin: 0 auto 2rem;
     width: 100%;
 }
 
-:root.dark .audio-convertor-box {
+:root.dark .audio-converter-box {
     background-color: var(--background-3);
     color: var(--text-1);
 }
 
-.audio-convertor-box select {
+.audio-converter-box select {
     background-color: var(--background-1);
     color: var(--text-1);
     border: 2px solid var(--background-3);
@@ -1643,7 +1643,7 @@ main.has-project {
     font-size: 1rem;
 }
 
-.audio-convertor-box select:focus {
+.audio-converter-box select:focus {
     border-color: var(--accent-primary);
     outline: none;
 }

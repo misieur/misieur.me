@@ -51,8 +51,8 @@ function Tools() {
 		<ToolCard title="👀 Transformation preview"
 			link="/transformation/"
 			desc="Visualize transformations for display entities" />
-		<ToolCard title="✈️ Offline Audio Convertor"
-			link="/audio-convertor/"
+		<ToolCard title="✈️ Offline Audio Converter"
+			link="/audio-converter/"
 			desc="Convert your audio files to OGG format"/>
 		<ToolCard title="🧊 HitBox Utils"
 			link="https://github.com/misieur/Hitbox-utils"
