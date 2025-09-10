@@ -16,6 +16,7 @@ import {
     LegacyPartners,
     Sounds,
     Transformation,
+    EmbedPage,
     Worldgen
 } from './pages/index.js'
 import {cleanUrl} from './Utils.js'
@@ -42,6 +43,7 @@ export function App() {
 			<Convert path="/convert/:formats" />
 			<Guides path="/guides" />
 			<Guide path="/guides/:id" />
+			<EmbedPage path="/embed" />
 			<Generator default />
 		</Router>
 	</>

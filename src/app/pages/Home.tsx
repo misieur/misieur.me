@@ -14,7 +14,7 @@ export function Home({}: Props) {
 	return <main>
 		<div class="legacy-container">
             <h1 className="main-title">Welcome to Misieur's website!</h1>
-            <p className="main-subtitle">Some useful tools and generators I made are available below</p>
+            <p className="main-subtitle">You can find some useful tools and generators below</p>
 			<div class="card-group">
 				{smallScreen ? /* mobile */ <>
 					<PopularGenerators />
@@ -54,7 +54,7 @@ function Tools() {
 			link="https://github.com/misieur/Hitbox-utils"
 			desc="A BlockBench Plugin made to create and edit hitbox models" />
 		<ToolCard title={'⬜ Minecraft Rank Generator'}
-			link={'https://itemsadder.github.io/minecraft-rank-generator/'}
+			link={'embed?url=https://itemsadder.github.io/minecraft-rank-generator/'}
 			desc={'The ItemsAdder\'s Official tool to create custom ranks'} />
 	</ToolGroup>
 }
