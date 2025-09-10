@@ -47,11 +47,14 @@ function Tools() {
 	const { locale } = useLocale()
 
 	return <ToolGroup title={locale('tools')}>
-		<ToolCard title="Transformation preview 👀"
+		<ToolCard title="👀 Transformation preview"
 			link="/transformation/"
 			desc="Visualize transformations for display entities" />
-		<ToolCard title="HitBox Utils 🧊"
+		<ToolCard title="🧊 HitBox Utils"
 			link="https://github.com/misieur/Hitbox-utils"
 			desc="A BlockBench Plugin made to create and edit hitbox models" />
+		<ToolCard title={'⬜ Minecraft Rank Generator'}
+			link={'https://itemsadder.github.io/minecraft-rank-generator/'}
+			desc={'The ItemsAdder\'s Official tool to create custom ranks'} />
 	</ToolGroup>
 }
