@@ -79,27 +79,6 @@ function getVersions(m) {
 }
 
 function template({ files, title }) {
-    const scripts =
-        (files.js || [])
-            .map(f => `<script type="module" src="/${f.fileName}"></script>`)
-            .join('\n')
-
-    const styles =
-        (files.css || [])
-            .map(f => `<link rel="stylesheet" href="/${f.fileName}">`)
-            .join('\n')
-
-    return `<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>${title}</title>
-  ${styles}
-</head>
-<body>
-  <div id="app"></div>
-  ${scripts}
-</body>
-</html>`
+	const source = files.html.find(f => f.fileName === 'index.html').source
+	return source.replace(/<title>.*<\/title>/, `<title>${title}</title>`)
 }
