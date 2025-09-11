@@ -5,20 +5,12 @@ import '../styles/nodes.css'
 import {Analytics} from './Analytics.js'
 import {Header} from './components/index.js'
 import {
-    Changelog,
-    Convert,
-    Customized,
     Generator,
     Generators,
-    Guide,
-    Guides,
     Home,
-    LegacyPartners,
-    Sounds,
     Transformation,
     EmbedPage,
     AudioConverter,
-    Worldgen
 } from './pages/index.js'
 import {cleanUrl} from './Utils.js'
 

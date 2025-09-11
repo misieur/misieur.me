@@ -39,7 +39,7 @@ export default defineConfig({
 					title: '404',
 					template,
 				}),
-				...['generators', 'worldgen', 'partners', 'sounds', 'changelog', 'versions', 'guides', 'transformation', 'customized'].map(id => html({
+				...['generators', 'transformation', 'audio-converter', 'embed'].map(id => html({
 					fileName: `${id}/index.html`,
 					title: `${English[`title.${id}`] ?? ''} - ${getVersions()}`,
 					template,
@@ -47,16 +47,6 @@ export default defineConfig({
 				...config.generators.map(m => html({
 					fileName: `${m.url}/index.html`,
 					title: `${English[m.id] ?? ''} Generator${m.category === true ? 's' : ''} - ${getVersions(m)}`,
-					template,
-				})),
-				...convertFormats.flatMap(s => convertFormats.filter(t => s !== t).map(t => [s, t])).map(([s, t]) => html({
-					fileName: `convert/${s}-to-${t}/index.html`,
-					title: `${English[`convert.format.${s}`]} to ${English[`convert.format.${t}`]} Converter - ${getVersions({ minVersion: '1.20.5' })}`,
-					template,
-				})),
-				...config.legacyGuides.map(g => html({
-					fileName: `guides/${g.id}/index.html`,
-					title: `${g.title} - ${getVersions()}`,
 					template,
 				})),
 			],
