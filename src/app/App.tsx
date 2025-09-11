@@ -5,12 +5,12 @@ import '../styles/nodes.css'
 import {Analytics} from './Analytics.js'
 import {Header} from './components/index.js'
 import {
-    Generator,
-    Generators,
-    Home,
-    Transformation,
-    EmbedPage,
-    AudioConverter,
+	Generator,
+	Generators,
+	Home,
+	Transformation,
+	EmbedPage,
+	AudioConverter,
 } from './pages/index.js'
 import {cleanUrl} from './Utils.js'
 
@@ -26,18 +26,9 @@ export function App() {
 		<Router onChange={changeRoute}>
 			<Home path="/" />
 			<Generators path="/generators" />
-			<Worldgen path="/worldgen" />
-			<LegacyPartners path="/partners/:id" />
-			<Sounds path="/sounds" />
-			<Changelog path="/changelog" />
 			<Transformation path="/transformation" />
-			<Customized path="/customized" />
-			<Convert path="/convert" />
-			<Convert path="/convert/:formats" />
-			<Guides path="/guides" />
-			<Guide path="/guides/:id" />
 			<EmbedPage path="/embed" />
-            <AudioConverter path="/audio-converter" />
+			<AudioConverter path="/audio-converter" />
 			<Generator default />
 		</Router>
 	</>

@@ -1,6 +1,6 @@
 interface Props {
     path?: string;
-    url: string;
+    url?: string;
 }
 
 export function EmbedPage({ url }: Props) {
