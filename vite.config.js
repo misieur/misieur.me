@@ -25,7 +25,6 @@ export default defineConfig({
 		esbuildOptions: {
 			target: 'es2021',
 		},
-		exclude: ['@ffmpeg/ffmpeg'],
 	},
 	build: {
 		sourcemap: true,
@@ -48,7 +47,6 @@ export default defineConfig({
 					template,
 				})),
 			],
-			external: ['@ffmpeg/ffmpeg'],
 		},
 	},
 	json: {
@@ -81,6 +79,25 @@ function getVersions(m) {
 }
 
 function template({ files, title }) {
-	const source = files.html.find(f => f.fileName === 'index.html').source
-	return source.replace(/<title>.*<\/title>/, `<title>${title}</title>`)
+    const scripts = (files?.js || [])
+        .map(({ fileName }) => `<script type="module" src="${fileName}"></script>`)
+        .join('\n')
+
+    const links = (files?.css || [])
+        .map(({ fileName }) => `<link rel="stylesheet" href="${fileName}">`)
+        .join('\n')
+
+    return `<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>${title}</title>
+  ${links}
+</head>
+<body>
+  <div id="root"></div>
+  ${scripts}
+</body>
+</html>`
 }
