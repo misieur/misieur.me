@@ -15,8 +15,6 @@
   "author": "Misieur",
   "license": "MIT",
   "dependencies": {
-    "@ffmpeg/ffmpeg": "^0.12.15",
-    "@ffmpeg/util": "^0.12.2",
     "@giscus/react": "^2.2.3",
     "@spyglassmc/core": "^0.4.33",
     "@spyglassmc/java-edition": "^0.3.44",
