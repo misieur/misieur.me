@@ -11,6 +11,7 @@ import {
 	Transformation,
 	EmbedPage,
 	AudioConverter,
+	ItemTooltipGenerator,
 } from './pages/index.js'
 import {cleanUrl} from './Utils.js'
 
@@ -29,6 +30,7 @@ export function App() {
 			<Transformation path="/transformation" />
 			<EmbedPage path="/embed" />
 			<AudioConverter path="/audio-converter" />
+			<ItemTooltipGenerator path="/item-tooltip-generator" />
 			<Generator default />
 		</Router>
 	</>

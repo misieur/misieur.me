@@ -15,7 +15,8 @@
 		"noUnusedLocals": true,
 		"noUnusedParameters": true,
 		"noImplicitReturns": true,
-    "jsx": "preserve",
+    "jsx": "react-jsx",
+    "jsxImportSource": "preact",
     "jsxFactory": "h",
     "jsxFragmentFactory": "Fragment"
   },

@@ -143,6 +143,13 @@ header {
     margin-bottom: 1.5rem;
 }
 
+.smaller-main-title {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+}
+
 .main-subtitle {
     text-align: center;
     font-size: 1.5rem;
@@ -1566,17 +1573,9 @@ main.has-project {
     margin: 0 auto;
 }
 
-.audio-converter-box {
-    background-color: var(--background-2);
-    color: var(--text-1);
-    border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    padding: 2rem;
-    margin: 2rem auto;
-    max-width: 480px;
-}
 
 .download-link {
+    text-decoration: underline;
     display: flex;
     align-items: center;
     gap: 8px;
@@ -1589,9 +1588,19 @@ main.has-project {
     margin-top: 5px;
 }
 
-.audio-converter-box input[type="text"],
-.audio-converter-box input[type="number"],
-.audio-converter-box input[type="file"] {
+.tool-box {
+    background-color: var(--background-2);
+    color: var(--text-1);
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    padding: 2rem;
+    margin: 2rem auto;
+    max-width: 480px;
+}
+
+.tool-box input[type="text"],
+.tool-box input[type="number"],
+.tool-box input[type="file"] {
     background-color: var(--background-1);
     color: var(--text-1);
     border: 2px solid var(--background-3);
@@ -1601,18 +1610,18 @@ main.has-project {
     margin-bottom: 1rem;
 }
 
-.audio-converter-box input[type="text"]:focus,
-.audio-converter-box input[type="number"]:focus,
-.audio-converter-box input[type="file"]:focus {
+.tool-box input[type="text"]:focus,
+.tool-box input[type="number"]:focus,
+.tool-box input[type="file"]:focus {
     border-color: var(--accent-primary);
     outline: none;
 }
 
-.audio-converter-box input[type="file"]::file-selector-button:hover {
+.tool-box input[type="file"]::file-selector-button:hover {
     background-color: var(--background-5);
 }
 
-.audio-converter-box input[type="file"]::file-selector-button {
+.tool-box input[type="file"]::file-selector-button {
     background-color: var(--background-3);
     color: var(--text-1);
     border: none;
@@ -1622,19 +1631,36 @@ main.has-project {
     cursor: pointer;
 }
 
-.audio-converter-box input[type="file"] {
+.tool-box input[type="file"] {
     display: block;
     text-align: center;
     margin: 0 auto 2rem;
     width: 100%;
 }
 
-:root.dark .audio-converter-box {
+input[type="color"] {
+    width: 40px;
+    height: calc(1rem + 1rem + 4px);
+    border: 2px solid var(--background-3);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    cursor: pointer;
+    padding: 0;
+    background: none;
+}
+
+input[type="color"]:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--accent-primary, #4A90E2);
+    border: 2px solid var(--accent-primary, #4A90E2);
+}
+
+:root.dark .tool-box {
     background-color: var(--background-3);
     color: var(--text-1);
 }
 
-.audio-converter-box select {
+.tool-box select {
     background-color: var(--background-1);
     color: var(--text-1);
     border: 2px solid var(--background-3);
@@ -1643,23 +1669,64 @@ main.has-project {
     font-size: 1rem;
 }
 
-.audio-converter-box select:focus {
+.color-input-row {
+    display: flex;
+    align-items: flex-end;
+    gap: 16px;
+}
+
+.color-input-row input[type="text"] {
+    margin-bottom: 0;
+    align-self: flex-end;
+}
+
+.tool-box select:focus {
     border-color: var(--accent-primary);
     outline: none;
 }
 
-.audio-settings {
+.tool-settings {
     display: flex;
     flex-direction: column;
     gap: 1rem;
     margin-bottom: 1.5rem;
 }
 
-.audio-settings label {
+.tool-settings label {
     display: flex;
     flex-direction: column;
     font-weight: 500;
     gap: 0.5rem;
+}
+
+.color-picker {
+    width: 200px;
+    height: 120px;
+    margin-bottom: 0;
+}
+
+.color-picker .react-colorful {
+    width: 100%;
+    height: 100%;
+}
+
+.color-picker .react-colorful__saturation {
+    height: 100px;
+    border-radius: 4px 4px 0 0;
+}
+
+.color-picker .react-colorful__hue,
+.color-picker .react-colorful__alpha {
+    height: 14px;
+}
+
+.color-picker .react-colorful__pointer {
+    width: 12px;
+    height: 12px;
+}
+
+.hex-color {
+    font-family: 'Consolas', 'Fira Mono', 'Menlo', 'Monaco', 'Courier New', monospace;
 }
 
 .worldgen {

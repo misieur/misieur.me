@@ -1,5 +1,5 @@
-import { useState } from 'preact/hooks'
-import { Footer } from '../components/index.js'
+import {useState} from 'preact/hooks'
+import {Footer} from '../components/index.js'
 import {FFmpeg} from '../../ffmpeg/ffmpeg/dist/esm/index.js'
 import {fetchFile} from '../../ffmpeg/util/dist/esm/index.js'
 
@@ -34,7 +34,7 @@ export function AudioConverter({}: Props) {
 		]
 		await ffmpeg.exec(cmd)
 		const data = await ffmpeg.readFile('output.ogg')
-		const blob = new Blob([data.buffer], { type: 'audio/ogg' })
+		const blob = new Blob([data.buffer], {type: 'audio/ogg'})
 		const url = URL.createObjectURL(blob)
 		setOutputUrl(url)
 		setOutputFileName(file.name.replace(/\.[^/.]+$/, '.ogg'))
@@ -43,31 +43,35 @@ export function AudioConverter({}: Props) {
 
 	return (
 		<main>
-			<div class="legacy-container audio-converter-box">
+			<div class="legacy-container tool-box">
 				<h1 class="main-title">Offline Audio Converter</h1>
 				<p class="main-subtitle">Convert your audio files to OGG format</p>
 				<form onSubmit={handleConvert}>
-					<input type="file" id="fileInput" accept="audio/*" class="input-file" />
-					<div class="audio-settings">
+					<input type="file" id="fileInput" accept="audio/*" class="input-file"/>
+					<div class="tool-settings">
 						<label>
                             Channels
-							<select value={channels} onChange={e => setChannels((e.currentTarget.value as '1'|'2'))}>
+							<select value={channels} onChange={e => setChannels((e.currentTarget.value as '1' | '2'))}>
 								<option value="1">Mono</option>
 								<option value="2">Stereo</option>
 							</select>
 						</label>
 						{channels === '2' && (
 							<p class="warning-message">
-                                ⚠️ Stereo audio is not supported by Minecraft. Use mono for compatibility.
+                                ⚠️ Stereo audio has some <a href="https://bugs.mojang.com/browse/MC/issues/MC-146721"
+									target="_blank" rel="noopener noreferrer">audio
+                                problems</a> in minecraft I do recommend using mono audio.
 							</p>
 						)}
 						<label>
                             Bitrate
-							<input type="text" value={bitrate} onInput={e => setBitrate((e.target as HTMLInputElement).value)} />
+							<input type="text" value={bitrate}
+								onInput={e => setBitrate((e.target as HTMLInputElement).value)}/>
 						</label>
 						<label>
                             Sample Rate
-							<input type="text" value={sampleRate} onInput={e => setSampleRate((e.target as HTMLInputElement).value)} />
+							<input type="text" value={sampleRate}
+								onInput={e => setSampleRate((e.target as HTMLInputElement).value)}/>
 						</label>
 					</div>
 					<button type="submit" disabled={loading} class="main-button">
@@ -81,7 +85,7 @@ export function AudioConverter({}: Props) {
 						</a>
 					</p>
 				)}
-				<Footer />
+				<Footer/>
 			</div>
 		</main>
 	)

@@ -14,7 +14,7 @@ import {checkVersion} from './services/index.js'
 export const SOURCE_REPO_URL = 'https://github.com/misieur/misieur.github.io'
 
 export function isPromise(obj: any): obj is Promise<any> {
-	return typeof (obj as any)?.then === 'function' 
+	return typeof (obj as any)?.then === 'function'
 }
 
 export function isObject(obj: any): obj is Record<string, any> {
@@ -132,7 +132,7 @@ export function versionContent(content: string, version: string) {
 		}
 		content = content.substring(0, start) + sub + content.substring(end + 2)
 		cursor = start
-		
+
 	}
 	return content
 }
@@ -233,9 +233,9 @@ export const deepClone = rfdc()
 
 /**
  * MIT License
- * 
+ *
  * Copyright (c) 2017 Evgeny Poberezkin
- * 
+ *
  * https://github.com/epoberezkin/fast-deep-equal/blob/master/LICENSE
  */
 export function deepEqual(a: any, b: any) {

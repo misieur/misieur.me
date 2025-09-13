@@ -36,7 +36,7 @@ export default defineConfig({
 					title: '404',
 					template,
 				}),
-				...['generators', 'transformation', 'audio-converter', 'embed'].map(id => html({
+				...['generators', 'transformation', 'audio-converter', 'embed', 'item-tooltip-generator'].map(id => html({
 					fileName: `${id}/index.html`,
 					title: `${English[`title.${id}`] ?? ''} - ${getVersions()}`,
 					template,
