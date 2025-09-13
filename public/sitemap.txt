@@ -1,3 +1,8 @@
 https://misieur.tech
 https://misieur.tech/itemsadder/config/
+https://misieur.tech/itemsadder/emoji/
+https://misieur.tech/itemsadder/modern_items/
+https://misieur.tech/itemsadder/ia_gui/
+https://misieur.tech/audio-converter/
+https://misieur.tech/item-tooltip-generator
 https://misieur.tech/transformation/

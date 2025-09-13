@@ -1,5 +1,4 @@
 import config from '../Config.js'
-import {Store} from '../Store.js'
 import {message} from '../Utils.js'
 import type {VersionId} from './Versions.js'
 import {checkVersion} from './Versions.js'
@@ -13,10 +12,6 @@ export const latestVersion = __LATEST_VERSION__ ?? ''
 const mcmetaUrl = 'https://raw.githubusercontent.com/misode/mcmeta'
 const mcmetaTarballUrl = 'https://github.com/misode/mcmeta/tarball'
 const vanillaMcdocUrl = 'https://raw.githubusercontent.com/SpyglassMC/vanilla-mcdoc'
-const changesUrl = 'https://raw.githubusercontent.com/misode/technical-changes'
-const fixesUrl = 'https://raw.githubusercontent.com/misode/mcfixes'
-const versionDiffUrl = 'https://mcmeta-diff.misode.workers.dev'
-const whatsNewUrl = 'https://whats-new.misode.workers.dev'
 
 type McmetaTypes = 'summary' | 'data' | 'data-json' | 'assets' | 'assets-json' | 'registries' | 'atlas'
 
@@ -174,16 +169,14 @@ export async function fetchAllPresets(versionId: VersionId, registry: string) {
 
 export async function fetchLocalPresetIds(key: string): Promise<string[] | undefined> {
 	const candidates: string[] = []
-	candidates.push(
-		`${location.origin}/presets/${key}/index.json`,
-		`${location.origin}/presets/${key}/config.json`,
-	)
 	if (key.includes(':')) {
 		const [ns, path] = key.split(':', 2)
 		candidates.push(
 			`${location.origin}/presets/${ns}/${path}.json`,
-			`${location.origin}/presets/${ns}/${path}/index.json`,
-			`${location.origin}/presets/${ns}/${path}/config.json`,
+		)
+	} else {
+		candidates.push(
+			`${location.origin}/presets/${key}.json`,
 		)
 	}
 	for (const url of candidates) {
@@ -199,27 +192,6 @@ export async function fetchLocalPresetIds(key: string): Promise<string[] | undef
 		}
 	}
 	return undefined
-}
-
-export type SoundEvents = {
-	[key: string]: {
-		sounds: (string | { name: string })[],
-	},
-}
-export async function fetchSounds(versionId: VersionId): Promise<SoundEvents> {
-	const version = config.versions.find(v => v.id === versionId)!
-	await validateCache(version)
-	try {
-		const url = `${mcmeta(version, 'summary')}/sounds/data.min.json`
-		return await cachedFetch(url)
-	} catch (e) {
-		throw new Error(`Error occurred while fetching sounds for ${version}: ${message(e)}`)
-	}
-}
-
-export function getSoundUrl(versionId: VersionId, path: string) {
-	const version = config.versions.find(v => v.id === versionId)!
-	return `${mcmeta(version, 'assets')}/assets/minecraft/sounds/${path}.ogg`
 }
 
 export type VersionMeta = {
@@ -245,11 +217,6 @@ export async function fetchVersions(): Promise<VersionMeta[]> {
 	} catch (e) {
 		throw new Error(`Error occured while fetching versions: ${message(e)}`)
 	}
-}
-
-export function getAssetUrl(versionId: VersionId, type: string, path: string): string {
-	const version = config.versions.find(v => v.id === versionId)!
-	return `${mcmeta(version, 'assets')}/assets/minecraft/${type}/${path}.png`
 }
 
 export async function fetchResources(versionId: VersionId) {
@@ -281,24 +248,6 @@ export async function loadImage(src: string) {
 	})
 }
 
-/*
-async function loadImage(src: string) {
-	const buffer = await cachedFetch(src, { decode: r => r.arrayBuffer() })
-	const blob = new Blob([buffer], { type: 'image/png' })
-	const img = new Image()
-	img.src = URL.createObjectURL(blob)
-	return new Promise<ImageData>((res) => {
-		img.onload = () => {
-			const canvas = document.createElement('canvas')
-			const ctx = canvas.getContext('2d')!
-			ctx.drawImage(img, 0, 0)
-			const imgData = ctx.getImageData(0, 0, img.width, img.height)
-			res(imgData)
-		}
-	})
-}
-*/
-
 interface DeprecatedInfo {
 	removed: string[]
 	renamed: Record<string, string>
@@ -323,111 +272,6 @@ export async function fetchLanguage(versionId: VersionId, lang: string = 'en_us'
 		return translations
 	} catch (e) {
 		throw new Error(`Error occured while fetching language: ${message(e)}`)
-	}
-}
-
-export interface Change {
-	group: string,
-	version: string,
-	order: number,
-	tags: string[],
-	content: string,
-}
-
-export async function fetchChangelogs(): Promise<Change[]> {
-	try {
-		const [changes, versions] = await Promise.all([
-			cachedFetch<Omit<Change, 'order'>[]>(`${changesUrl}/generated/changes.json`, { refresh: true }),
-			fetchVersions(),
-		])
-		const versionMap = new Map(versions.map((v, i) => [v.id, versions.length - i]))
-		return changes.map(c => ({ ...c, order: versionMap.get(c.version) ?? 0 }))
-	} catch (e) {
-		throw new Error(`Error occured while fetching technical changes: ${message(e)}`)
-	}
-}
-
-export interface Bugfix {
-	id: string,
-	summary: string,
-	labels: string[],
-	status: string,
-	confirmation_status: string,
-	categories: string[],
-	priority: string,
-	fix_versions: string[],
-	creation_date: string,
-	resolution_date: string,
-	updated_date: string,
-	watches: number,
-	votes: number,
-}
-
-export async function fetchBugfixes(version: string): Promise<Bugfix[]> {
-	try {
-		const fixes = await cachedFetch<Bugfix[]>(`${fixesUrl}/main/versions/${version}.json`, { refresh: true })
-		return fixes
-	} catch (e) {
-		throw new Error(`Error occured while fetching bugfixes for version ${version}: ${message(e)}`)
-	}
-}
-
-export interface GitHubCommitFile {
-	sha: string,
-	filename: string,
-	previous_filename?: string,
-	status: 'added' | 'modified' | 'removed' | 'renamed',
-	additions: number,
-	deletions: number,
-	changes: number,
-	patch: string,
-}
-
-export interface GitHubCommit {
-	sha: string,
-	html_url: string,
-	parents: {
-		sha: string,
-	}[],
-	stats: {
-		total: number,
-		additions: number,
-		deletions: number,
-	},
-	files: GitHubCommitFile[],
-}
-
-export async function fetchVersionDiff(version: string) {
-	try {
-		const diff = await cachedFetch<GitHubCommit>(`${versionDiffUrl}/${version}`, { refresh: true })
-		return diff
-	} catch (e) {
-		throw new Error(`Error occured while fetching diff for version ${version}: ${message(e)}`)
-	}
-}
-
-export interface WhatsNewItem {
-	id: string,
-	title: string,
-	body: string,
-	url: string,
-	createdAt: string,
-	seenAt?: string,
-}
-
-export async function fetchWhatsNew(): Promise<WhatsNewItem[]> {
-	try {
-		const whatsNew = await cachedFetch<WhatsNewItem[]>(whatsNewUrl, { refresh: true })
-		const seenState = Store.getWhatsNewSeen()
-		for (const { id, time } of seenState) {
-			const item = whatsNew.find(i => i.id === id)
-			if (item) {
-				item.seenAt = time
-			}
-		}
-		return whatsNew
-	} catch (e) {
-		throw new Error(`Error occured while fetching what's new: ${message(e)}`)
 	}
 }
 
