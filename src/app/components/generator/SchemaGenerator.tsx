@@ -4,7 +4,7 @@ import type { Method } from '../../Analytics.js'
 import { Analytics } from '../../Analytics.js'
 import type { ConfigGenerator } from '../../Config.js'
 import config from '../../Config.js'
-import { DRAFT_PROJECT, useLocale, useProject, useVersion } from '../../contexts/index.js'
+import { useLocale, useProject } from '../../contexts/index.js' // removed useVersion
 import { useModal } from '../../contexts/Modal.jsx'
 import { useSpyglass, watchSpyglassUri } from '../../contexts/Spyglass.jsx'
 import { AsyncCancel, useActiveTimeout, useAsync, useLocalStorage, useSearchParam } from '../../hooks/index.js'
@@ -14,7 +14,7 @@ import { DEPENDENCY_URI } from '../../services/Spyglass.js'
 import { Store } from '../../Store.js'
 import { cleanUrl, genPath } from '../../Utils.js'
 import { FancyMenu } from '../FancyMenu.jsx'
-import { Btn, BtnMenu, ErrorPanel, FileCreation, FileView, HasPreview, Octicon, PreviewPanel, ProjectPanel, SourcePanel, TextInput, VersionSwitcher } from '../index.js'
+import { Btn, BtnMenu, ErrorPanel, FileCreation, FileView, HasPreview, Octicon, PreviewPanel, ProjectPanel, SourcePanel, TextInput } from '../index.js' // VersionSwitcher will be removed from JSX
 import { getRootDefault } from './McdocHelpers.js'
 
 export const SHARE_KEY = 'share'
@@ -26,10 +26,9 @@ interface Props {
 }
 export function SchemaGenerator({ gen, allowedVersions }: Props) {
 	const { locale } = useLocale()
-	const { version, changeVersion, changeTargetVersion } = useVersion()
 	const { service } = useSpyglass()
 	const { showModal } = useModal()
-	const { project, projectUri, setProjectUri, updateProject } = useProject()
+	const {projectUri, setProjectUri } = useProject()
 	const [error, setError] = useState<Error | string | null>(null)
 	const [errorBoundary, errorRetry] = useErrorBoundary()
 	if (errorBoundary) {
@@ -39,6 +38,8 @@ export function SchemaGenerator({ gen, allowedVersions }: Props) {
 		}
 		return <main><ErrorPanel error={generatorError} onDismiss={errorRetry} /></main>
 	}
+
+	const version = allowedVersions?.[0] ?? ''
 
 	useEffect(() => Store.visitGenerator(gen.id), [gen.id])
 
@@ -57,7 +58,7 @@ export function SchemaGenerator({ gen, allowedVersions }: Props) {
 			}
 		}
 		return service.getUnsavedFileUri(gen)
-	}, [service, version, gen, projectUri])
+	}, [service, gen, projectUri])
 
 	const [currentPreset, setCurrentPreset] = useSearchParam('preset')
 	const [sharedSnippetId, setSharedSnippetId] = useSearchParam(SHARE_KEY)
@@ -73,20 +74,12 @@ export function SchemaGenerator({ gen, allowedVersions }: Props) {
 			text = await loadPreset(currentPreset)
 		} else if (sharedSnippetId) {
 			const snippet = await getSnippet(sharedSnippetId)
-			let cancel = false
-			if (snippet.version && snippet.version !== version) {
-				changeVersion(snippet.version, false)
-				cancel = true
-			}
 			if (snippet.type && snippet.type !== gen.id) {
 				const snippetGen = config.generators.find(g => g.id === snippet.type)
 				if (snippetGen) {
 					route(`${cleanUrl(snippetGen.url)}?${SHARE_KEY}=${snippet.id}`)
-					cancel = true
+					return AsyncCancel
 				}
-			}
-			if (cancel) {
-				return AsyncCancel
 			}
 			if (snippet.show_preview && !previewShown) {
 				setPreviewShown(true)
@@ -194,7 +187,7 @@ export function SchemaGenerator({ gen, allowedVersions }: Props) {
 		}
 	}, [gen.id, service, uri, saveFile])
 
- const { value: presets } = useAsync(async () => {
+	const { value: presets } = useAsync(async () => {
 		const registries = await fetchRegistries(version)
 		let entries = registries.get(gen.id) ?? []
 		try {
@@ -226,7 +219,6 @@ export function SchemaGenerator({ gen, allowedVersions }: Props) {
 	const selectPreset = (id: string) => {
 		Analytics.loadPreset(gen.id, id)
 		setSharedSnippetId(undefined, true)
-		changeTargetVersion(version, true)
 		setCurrentPreset(id)
 	}
 
@@ -240,14 +232,6 @@ export function SchemaGenerator({ gen, allowedVersions }: Props) {
 		}
 	}
 
-	const selectVersion = (version: VersionId) => {
-		setSharedSnippetId(undefined, true)
-		changeVersion(version)
-		if (project && project.name !== DRAFT_PROJECT.name && project.version !== version) {
-			updateProject({ version })
-		}
-	}
-
 	const [shareUrl, setShareUrl] = useState<string | undefined>(undefined)
 	const [shareLoading, setShareLoading] = useState(false)
 	const [shareShown, setShareShown] = useState(false)
@@ -258,7 +242,7 @@ export function SchemaGenerator({ gen, allowedVersions }: Props) {
 			return
 		}
 		if (currentPreset) {
-			setShareUrl(`${location.origin}/${gen.url}/?version=${version}&preset=${currentPreset}`)
+			setShareUrl(`${location.origin}/${gen.url}/?preset=${currentPreset}`)
 			setShareShown(true)
 			copySharedId()
 		} else if (doc) {
@@ -396,7 +380,6 @@ export function SchemaGenerator({ gen, allowedVersions }: Props) {
 				<FancyMenu placeholder={locale('search')} getResults={getPresets} relative={false} class="right-0 mt-2">
 					<Btn icon="archive" label={locale('presets')} />
 				</FancyMenu>
-				<VersionSwitcher value={version} onChange={selectVersion} allowed={allowedVersions} />
 				<BtnMenu icon="kebab_horizontal" tooltip={locale('more')}>
 					<Btn icon="history" label={locale('reset_default')} onClick={reset} />
 					<Btn icon="arrow_left" label={locale('undo')} onClick={undo} />

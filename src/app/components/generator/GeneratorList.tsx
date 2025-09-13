@@ -1,9 +1,8 @@
 import {useMemo, useState} from 'preact/hooks'
 import type {ConfigGenerator} from '../../Config.js'
 import config from '../../Config.js'
-import {useLocale, useVersion} from '../../contexts/index.js'
-import {checkVersion} from '../../services/Versions.js'
-import {GeneratorCard, TextInput, VersionSwitcher} from '../index.js'
+import {useLocale} from '../../contexts/index.js'
+import {GeneratorCard, TextInput} from '../index.js'
 
 interface Props {
 	path?: string,
@@ -11,30 +10,19 @@ interface Props {
 }
 export function GeneratorList({ predicate }: Props) {
 	const { locale } = useLocale()
-	const { version, changeVersion } = useVersion()
 
 	const [search, setSearch] = useState('')
 
-	const [versionFilter, setVersionFiler] = useState(true)
-
-	const versionedGenerators = useMemo(() => {
-		return config.generators.filter(gen => {
-			if (predicate === undefined || !predicate(gen)) return false
-			if (versionFilter === false) return true
-			return checkVersion(version, gen.minVersion)
-		})
-	}, [version, versionFilter])
-
 	const filteredGenerators = useMemo(() => {
-		const results = versionedGenerators
+		const results = config.generators
+			.filter(gen => predicate === undefined ? false : predicate(gen))
 			.map(g => ({ ...g, name: locale(`generator.${g.id}`).toLowerCase() }))
 		return searchGenerators(results, search)
-	}, [versionedGenerators, search, locale])
+	}, [search, locale, predicate])
 
 	return <div class="generator-list">
 		<div class="navigation">
 			<TextInput class="btn btn-input query-search" placeholder={locale('generators.search')} value={search} onChange={setSearch} autofocus />
-			<VersionSwitcher value={versionFilter ? version : undefined} onChange={v => {changeVersion(v); setVersionFiler(true)}} hasAny onAny={() => setVersionFiler(false)} />
 		</div>
 		{filteredGenerators.length === 0 ? <>
 			<span class="note">{locale('generators.no_results')}</span>
