@@ -1,7 +1,7 @@
 import lz from 'lz-string'
 import type {VersionId} from './Versions.js'
 
-const API_PREFIX = 'https://snippets.misode.workers.dev'
+const API_PREFIX = 'https://api.misieur.me'
 
 const ShareCache = new Map<string, string>()
 
@@ -11,7 +11,7 @@ export async function shareSnippet(type: string, version: VersionId, text: strin
 		const body = JSON.stringify({ data, type, version, show_preview })
 		let id = ShareCache.get(body)
 		if (!id) {
-			const snippet = await fetchApi('/', body)
+			const snippet = await fetchApi('/upload', body)
 			ShareCache.set(body, snippet.id)
 			id = snippet.id as string
 		}
@@ -26,7 +26,7 @@ export async function shareSnippet(type: string, version: VersionId, text: strin
 
 export async function getSnippet(id: string) {
 	try {
-		const snippet = await fetchApi(`/${id}`)
+		const snippet = await fetchApi(`/download/${id}`)
 		return {
 			...snippet,
 			text: lz.decompressFromBase64(snippet.data) ?? '{}',
