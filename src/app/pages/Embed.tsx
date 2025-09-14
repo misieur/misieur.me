@@ -3,7 +3,7 @@ interface Props {
 	url?: string;
 }
 
-export function EmbedPage({ url }: Props) {
+export function EmbedPage({url}: Props) {
 	function isSafeUrl(url: string): boolean {
 		try {
 			const parsed = new URL(url)
@@ -20,7 +20,7 @@ export function EmbedPage({ url }: Props) {
 	if (!isSafeUrl(url)) {
 		return <main>
 			<div className="legacy-container">
-				<h1 style={{ textAlign: 'center', fontSize: '1.8em' }}>
+				<h1 style={{textAlign: 'center', fontSize: '1.8em'}}>
 					<a href={url} target="_blank" rel="noopener noreferrer">
                         Invalid or untrusted embed URL
 					</a>
@@ -32,7 +32,7 @@ export function EmbedPage({ url }: Props) {
 	return (
 		<main>
 			<div className="legacy-container">
-				<h1 style={{ textAlign: 'center', fontSize: '1.8em' }}>
+				<h1 style={{textAlign: 'center', fontSize: '1.8em'}}>
 					<a href={url} target="_blank" rel="noopener noreferrer">
                         Link ↗
 					</a>
@@ -41,7 +41,7 @@ export function EmbedPage({ url }: Props) {
 				<iframe
 					src={url}
 					title="Embedded Page"
-					style={{ width: '100%', height: '800px', border: 'none' }}
+					style={{width: '100%', height: '800px', border: 'none'}}
 					allowFullScreen
 				/>
 			</div>

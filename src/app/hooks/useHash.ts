@@ -19,7 +19,7 @@ export function useHash(): [string, (hash: string) => unknown] {
 
 	const changeHash = useCallback((newHash: string) => {
 		if (newHash !== hash) {
-			changeUrl({ hash: newHash })
+			changeUrl({hash: newHash})
 		}
 	}, [hash])
 

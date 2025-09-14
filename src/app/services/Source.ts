@@ -84,7 +84,8 @@ export function sortData(data: any): any {
 }
 
 const priority = ['type', 'parent']
+
 function customOrder(a: string, b: string) {
 	return (priority.indexOf(a) + 1 || Infinity) - (priority.indexOf(b) + 1 || Infinity)
-		|| a.localeCompare(b)
+        || a.localeCompare(b)
 }

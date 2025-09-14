@@ -20,11 +20,12 @@ type RotationMode = typeof RotationModes[number]
 interface Props {
 	path?: string,
 }
+
 export function Transformation({}: Props) {
-	const { locale } = useLocale()
+	const {locale} = useLocale()
 	useTitle(locale('title.transformation'))
 
-	const { value: cubeTexture } = useAsync(async () => {
+	const {value: cubeTexture} = useAsync(async () => {
 		const img = await loadImage('/images/cube.png')
 		const canvas = document.createElement('canvas')
 		canvas.width = 64
@@ -81,11 +82,15 @@ export function Transformation({}: Props) {
 	function updateQuatPreserveEdited(q: quat, editedIndex: number) {
 		if (editedIndex === 3) return q
 		let x = q[0], y = q[1], z = q[2]
-		let lenSq = x*x + y*y + z*z
+		let lenSq = x * x + y * y + z * z
 		if (lenSq > 1) {
 			const s = 1 / Math.sqrt(lenSq)
-			x *= s; y *= s; z *= s
-			q[0] = x; q[1] = y; q[2] = z
+			x *= s
+			y *= s
+			z *= s
+			q[0] = x
+			q[1] = y
+			q[2] = z
 			lenSq = 1
 		}
 		const sign = q[3] >= 0 ? 1 : -1
@@ -126,7 +131,7 @@ export function Transformation({}: Props) {
 	const leftRotationAxisAngle = useMemo(() => {
 		const axis = vec3.create()
 		const angle = quat.getAxisAngle(axis, leftRotation)
-		return { axis, angle }
+		return {axis, angle}
 	}, [leftRotation])
 
 	const changeLeftRotationAxisAngle = useCallback((i: number, value: number) => {
@@ -142,7 +147,7 @@ export function Transformation({}: Props) {
 	const rightRotationAxisAngle = useMemo(() => {
 		const axis = vec3.create()
 		const angle = quat.getAxisAngle(axis, rightRotation)
-		return { axis, angle }
+		return {axis, angle}
 	}, [rightRotation])
 
 	const changeRightRotationAxisAngle = useCallback((i: number, value: number) => {
@@ -188,52 +193,67 @@ export function Transformation({}: Props) {
 				<div class="transformation-section">
 					<div class="transformation-title">
 						<span>{locale('transformation.translation')}</span>
-						<button class="tooltipped tip-se" aria-label={locale('reset')} onClick={() => updateTranslation(new Vector(0, 0, 0))}>{Octicon['history']}</button>
-						<button class="tooltipped tip-se" aria-label={locale('transformation.copy_decomposed')} onClick={onCopyDecomposed}>{Octicon[copiedDecomposed ? 'check' : 'copy']}</button>
+						<button class="tooltipped tip-se" aria-label={locale('reset')}
+							onClick={() => updateTranslation(new Vector(0, 0, 0))}>{Octicon['history']}</button>
+						<button class="tooltipped tip-se" aria-label={locale('transformation.copy_decomposed')}
+							onClick={onCopyDecomposed}>{Octicon[copiedDecomposed ? 'check' : 'copy']}</button>
 					</div>
 					{XYZ.map((c) =>
-						<Slider label={c} value={translation[c]} onChange={v => changeTranslation(c, v)} />
+						<Slider label={c} value={translation[c]} onChange={v => changeTranslation(c, v)}/>
 					)}
 				</div>
 				<div class="transformation-section">
 					<div class="transformation-title">
 						<span>{locale('transformation.left_rotation')}</span>
-						<button class="tooltipped tip-se" aria-label={locale('reset')} onClick={() => updateLeftRotation(quat.create())}>{Octicon['history']}</button>
-						<button class="tooltipped tip-se" aria-label={locale('normalize')} onClick={() => setNormalizeLeft(!normalizeLeft)}>{Octicon[normalizeLeft ? 'lock' : 'unlock']}</button>
-						<button class="tooltipped tip-se" aria-label={locale('transformation.rotation_mode', locale(`transformation.rotation_mode.${rotationMode}`))} onClick={() => setRotationMode(rotationMode === 'quaternion' ? 'axis_angle' : 'quaternion')}>{Octicon['arrow_switch']}</button>
+						<button class="tooltipped tip-se" aria-label={locale('reset')}
+							onClick={() => updateLeftRotation(quat.create())}>{Octicon['history']}</button>
+						<button class="tooltipped tip-se" aria-label={locale('normalize')}
+							onClick={() => setNormalizeLeft(!normalizeLeft)}>{Octicon[normalizeLeft ? 'lock' : 'unlock']}</button>
+						<button class="tooltipped tip-se"
+							aria-label={locale('transformation.rotation_mode', locale(`transformation.rotation_mode.${rotationMode}`))}
+							onClick={() => setRotationMode(rotationMode === 'quaternion' ? 'axis_angle' : 'quaternion')}>{Octicon['arrow_switch']}</button>
 					</div>
 					{rotationMode === 'quaternion'
 						? XYZW.map((c, i) =>
-							<Slider label={c} value={leftRotation[i]} onChange={v => changeLeftRotation(i, v)} />)
+							<Slider label={c} value={leftRotation[i]} onChange={v => changeLeftRotation(i, v)}/>)
 						: <>
 							{XYZ.map((c, i) =>
-								<Slider label={c} value={leftRotationAxisAngle.axis[i]} onChange={v => changeLeftRotationAxisAngle(i, v)} />)}
-							<Slider label="θ" value={leftRotationAxisAngle.angle} min={0} max={Math.PI*2} onChange={v => changeLeftRotationAxisAngle(3, v)} />
+								<Slider label={c} value={leftRotationAxisAngle.axis[i]}
+									onChange={v => changeLeftRotationAxisAngle(i, v)}/>)}
+							<Slider label="θ" value={leftRotationAxisAngle.angle} min={0} max={Math.PI * 2}
+								onChange={v => changeLeftRotationAxisAngle(3, v)}/>
 						</>}
 				</div>
 				<div class="transformation-section">
 					<div class="transformation-title">
 						<span>{locale('transformation.scale')}</span>
-						<button class="tooltipped tip-se" aria-label={locale('reset')} onClick={() => updateScale(new Vector(1, 1, 1))}>{Octicon['history']}</button>
+						<button class="tooltipped tip-se" aria-label={locale('reset')}
+							onClick={() => updateScale(new Vector(1, 1, 1))}>{Octicon['history']}</button>
 					</div>
 					{XYZ.map((c) =>
-						<Slider label={c} value={scale[c]} onChange={v => changeScale(c, v)} />
+						<Slider label={c} value={scale[c]} onChange={v => changeScale(c, v)}/>
 					)}
 				</div>
 				<div class="transformation-section">
 					<div class="transformation-title">
 						<span>{locale('transformation.right_rotation')}</span>
-						<button class="tooltipped tip-se" aria-label={locale('reset')} onClick={() => updateRightRotation(quat.create())}>{Octicon['history']}</button>
-						<button class="tooltipped tip-se" aria-label={locale('normalize')} onClick={() => setNormalizeRight(!normalizeRight)}>{Octicon[normalizeRight ? 'lock' : 'unlock']}</button>
-						<button class="tooltipped tip-se" aria-label={locale('transformation.rotation_mode', locale(`transformation.rotation_mode.${rotationMode}`))} onClick={() => setRotationMode(rotationMode === 'quaternion' ? 'axis_angle' : 'quaternion')}>{Octicon['arrow_switch']}</button>
+						<button class="tooltipped tip-se" aria-label={locale('reset')}
+							onClick={() => updateRightRotation(quat.create())}>{Octicon['history']}</button>
+						<button class="tooltipped tip-se" aria-label={locale('normalize')}
+							onClick={() => setNormalizeRight(!normalizeRight)}>{Octicon[normalizeRight ? 'lock' : 'unlock']}</button>
+						<button class="tooltipped tip-se"
+							aria-label={locale('transformation.rotation_mode', locale(`transformation.rotation_mode.${rotationMode}`))}
+							onClick={() => setRotationMode(rotationMode === 'quaternion' ? 'axis_angle' : 'quaternion')}>{Octicon['arrow_switch']}</button>
 					</div>
 					{rotationMode === 'quaternion'
 						? XYZW.map((c, i) =>
-							<Slider label={c} value={rightRotation[i]} onChange={v => changeRightRotation(i, v)} />)
+							<Slider label={c} value={rightRotation[i]} onChange={v => changeRightRotation(i, v)}/>)
 						: <>
 							{XYZ.map((c, i) =>
-								<Slider label={c} value={rightRotationAxisAngle.axis[i]} onChange={v => changeRightRotationAxisAngle(i, v)}/>)}
-							<Slider label="θ" value={rightRotationAxisAngle.angle} min={0} max={Math.PI*2} onChange={v => changeRightRotationAxisAngle(3, v)} />
+								<Slider label={c} value={rightRotationAxisAngle.axis[i]}
+									onChange={v => changeRightRotationAxisAngle(i, v)}/>)}
+							<Slider label="θ" value={rightRotationAxisAngle.angle} min={0} max={Math.PI * 2}
+								onChange={v => changeRightRotationAxisAngle(3, v)}/>
 						</>}
 				</div>
 			</div>
@@ -241,21 +261,23 @@ export function Transformation({}: Props) {
 				<div class="transformation-section">
 					<div class="transformation-title">
 						<span>{locale('transformation.matrix')}</span>
-						<button class="tooltipped tip-se" aria-label={locale('reset')} onClick={() => updateMatrix(new Matrix4())}>{Octicon['history']}</button>
-						<button class="tooltipped tip-se" aria-label={locale('transformation.copy_composed')} onClick={onCopyComposed}>{Octicon[copiedComposed ? 'check' : 'copy']}</button>
+						<button class="tooltipped tip-se" aria-label={locale('reset')}
+							onClick={() => updateMatrix(new Matrix4())}>{Octicon['history']}</button>
+						<button class="tooltipped tip-se" aria-label={locale('transformation.copy_composed')}
+							onClick={onCopyComposed}>{Octicon[copiedComposed ? 'check' : 'copy']}</button>
 					</div>
 					{Array(16).fill(0).map((_, i) =>
-						<Slider value={matrix.data[i]} onChange={v => changeMatrix(i, v)} disabled={i % 4 === 3} />
+						<Slider value={matrix.data[i]} onChange={v => changeMatrix(i, v)} disabled={i % 4 === 3}/>
 					)}
 				</div>
 			</div>
 		</div>
 		<div class="popup-preview shown">
 			<div class="transformation-preview full-preview">
-				<InteractiveCanvas3D onSetup={onSetup} onResize={onResize} onDraw={onDraw} />
+				<InteractiveCanvas3D onSetup={onSetup} onResize={onResize} onDraw={onDraw}/>
 			</div>
 		</div>
-		<Footer />
+		<Footer/>
 	</main>
 }
 
@@ -267,11 +289,13 @@ interface SliderProps {
 	max?: number
 	disabled?: boolean
 }
-function Slider({ label, value, onChange, min, max, disabled }: SliderProps) {
+
+function Slider({label, value, onChange, min, max, disabled}: SliderProps) {
 	return <div class="transformation-input">
 		{label && <label>{label}</label>}
-		<NumberInput value={value.toFixed(3)} onChange={onChange} disabled={disabled} readonly={disabled} />
-		<RangeInput min={min ?? -1} max={max ?? 1} step={0.01} value={value} onChange={onChange} disabled={disabled} readonly={disabled} />
+		<NumberInput value={value.toFixed(3)} onChange={onChange} disabled={disabled} readonly={disabled}/>
+		<RangeInput min={min ?? -1} max={max ?? 1} step={0.01} value={value} onChange={onChange} disabled={disabled}
+			readonly={disabled}/>
 	</div>
 }
 
@@ -384,25 +408,25 @@ class MeshRenderer extends Renderer {
 			const normal = q.normal()
 			q.forEach(v => v.normal = normal)
 		}
-		this.mesh.rebuild(this.gl, { pos: true, texture: true, normal: true })
+		this.mesh.rebuild(this.gl, {pos: true, texture: true, normal: true})
 
 		this.grid = new Mesh()
 		this.grid.addLine(0, 0, 0, 1, 0, 0, [1, 0, 0])
 		this.grid.addLine(0, 0, 0, 0, 1, 0, [0, 1, 0])
 		this.grid.addLine(0, 0, 0, 0, 0, 1, [0, 0, 1])
-		this.grid.rebuild(this.gl, { pos: true, color: true })
+		this.grid.rebuild(this.gl, {pos: true, color: true})
 	}
 
 	public draw(view: mat4, transform: mat4) {
 		this.setShader(this.gridShaderProgram)
 		this.prepareDraw(view)
-		this.drawMesh(this.grid, { pos: true, color: true })
+		this.drawMesh(this.grid, {pos: true, color: true})
 
 		const copy = mat4.clone(view)
 		mat4.multiply(copy, copy, transform)
 		this.setShader(this.meshShaderProgram)
 		this.setTexture(this.cubeTexture)
 		this.prepareDraw(copy)
-		this.drawMesh(this.mesh, { pos: true, texture: true, normal: true })
+		this.drawMesh(this.mesh, {pos: true, texture: true, normal: true})
 	}
 }

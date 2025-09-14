@@ -78,7 +78,8 @@ export function ItemTooltipGenerator({}: Props) {
 		setInputValue(value)
 		try {
 			setter(hexToHsv(value))
-		} catch {}
+		} catch {
+		}
 	}
 
 	async function colorizeTemplate(templateUrl: string, color: string): Promise<Blob> {

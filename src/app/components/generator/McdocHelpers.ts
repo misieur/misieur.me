@@ -3,21 +3,21 @@ import type {JsonNode, JsonPairNode} from '@spyglassmc/json'
 import {JsonArrayNode, JsonObjectNode, JsonStringNode} from '@spyglassmc/json'
 import {JsonStringOptions} from '@spyglassmc/json/lib/parser/string.js'
 import type {
-    Attributes,
-    AttributeValue,
-    ListType,
-    McdocType,
-    NumericType,
-    PrimitiveArrayType,
-    TupleType,
-    UnionType,
+	Attributes,
+	AttributeValue,
+	ListType,
+	McdocType,
+	NumericType,
+	PrimitiveArrayType,
+	TupleType,
+	UnionType,
 } from '@spyglassmc/mcdoc'
 import {NumericRange, RangeKind} from '@spyglassmc/mcdoc'
 import type {
-    McdocCheckerContext,
-    SimplifiedMcdocType,
-    SimplifiedMcdocTypeNoUnion,
-    SimplifyValueNode,
+	McdocCheckerContext,
+	SimplifiedMcdocType,
+	SimplifiedMcdocTypeNoUnion,
+	SimplifyValueNode,
 } from '@spyglassmc/mcdoc/lib/runtime/checker/index.js'
 import {simplify} from '@spyglassmc/mcdoc/lib/runtime/checker/index.js'
 import config from '../../Config.js'

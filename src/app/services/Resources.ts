@@ -2,13 +2,13 @@ import {isObject} from '@spyglassmc/core'
 import type {ItemComponentsProvider, ItemModelProvider} from 'deepslate'
 import {ItemModel, NbtString} from 'deepslate'
 import type {
-    BlockDefinitionProvider,
-    BlockFlagsProvider,
-    BlockModelProvider,
-    BlockPropertiesProvider,
-    ItemStack,
-    TextureAtlasProvider,
-    UV,
+	BlockDefinitionProvider,
+	BlockFlagsProvider,
+	BlockModelProvider,
+	BlockPropertiesProvider,
+	ItemStack,
+	TextureAtlasProvider,
+	UV,
 } from 'deepslate/render'
 import {BlockDefinition, BlockModel, Identifier, ItemRenderer, TextureAtlas, upperPowerOfTwo} from 'deepslate/render'
 import config from '../Config.js'

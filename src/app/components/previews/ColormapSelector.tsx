@@ -1,5 +1,4 @@
 import {useCallback} from 'preact/hooks'
-import {Analytics} from '../../Analytics.js'
 import {Store} from '../../Store.js'
 import {Btn} from '../Btn.jsx'
 import {BtnMenu} from '../BtnMenu.jsx'
@@ -12,7 +11,6 @@ interface Props {
 }
 export function ColormapSelector({ value, onChange }: Props) {
 	const doChange = useCallback((type: ColormapType) => {
-		Analytics.setColormap(type)
 		Store.setColormap(type)
 		onChange(type)
 	}, [onChange])

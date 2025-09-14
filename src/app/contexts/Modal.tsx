@@ -17,7 +17,7 @@ export function useModal() {
 	return context
 }
 
-export function ModalProvider({ children }: { children: ComponentChildren }) {
+export function ModalProvider({children}: { children: ComponentChildren }) {
 	const [modal, setModal] = useState<FunctionComponent>()
 
 	const showModal = useCallback((component: FunctionComponent) => {

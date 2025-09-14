@@ -29,7 +29,7 @@ export function watchSpyglassUri(
 	handler: (docAndNode: DocAndNode) => void,
 	inputs: Inputs = [],
 ) {
-	const { service } = useSpyglass()
+	const {service} = useSpyglass()
 
 	useEffect(() => {
 		if (!uri || !service) {
@@ -56,11 +56,11 @@ export function useDocAndNode(original: DocAndNode | undefined, inputs: Inputs =
 	return wrapped
 }
 
-export function SpyglassProvider({ children }: { children: ComponentChildren }) {
-	const { version } = useVersion()
+export function SpyglassProvider({children}: { children: ComponentChildren }) {
+	const {version} = useVersion()
 	const [client] = useState(new SpyglassClient())
 
-	const { value: service, loading: serviceLoading } = useAsync(() => {
+	const {value: service, loading: serviceLoading} = useAsync(() => {
 		return client.createService(version)
 	}, [client, version])
 

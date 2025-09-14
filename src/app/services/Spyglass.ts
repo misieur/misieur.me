@@ -84,7 +84,7 @@ export class SpyglassService {
 	private readonly fileWatchers = new Map<string, ((docAndNode: core.DocAndNode) => void)[]>()
 	private readonly treeWatchers: { prefix: string, handler: (uris: string[]) => void }[] = []
 
-	private constructor (
+	private constructor(
 		public readonly version: VersionId,
 		private readonly service: core.Service,
 		private readonly client: SpyglassClient,
@@ -106,7 +106,7 @@ export class SpyglassService {
 				}
 				hasPendingTask = false
 				await new Promise((res) => setTimeout(res, 5))
-				await Promise.all(this.treeWatchers.map(async ({ prefix, handler }) => {
+				await Promise.all(this.treeWatchers.map(async ({prefix, handler}) => {
 					const entries = await client.fs.readdir(prefix)
 					handler(entries.flatMap(e => {
 						return e.isFile() ? [e.name.slice(prefix.length)] : []
@@ -126,7 +126,7 @@ export class SpyglassService {
 		if (errors) {
 			err.errors = errors
 		}
-		return core.CheckerContext.create(this.service.project, { doc, err })
+		return core.CheckerContext.create(this.service.project, {doc, err})
 	}
 
 	public dissectUri(uri: string) {
@@ -146,7 +146,7 @@ export class SpyglassService {
 		}
 		const document = this.client.documents.get(uri)
 		if (document === undefined) {
-			this.client.documents.set(uri, { doc: docAndNode.doc, undoStack: [], redoStack: [] })
+			this.client.documents.set(uri, {doc: docAndNode.doc, undoStack: [], redoStack: []})
 		}
 		return docAndNode
 	}
@@ -163,7 +163,7 @@ export class SpyglassService {
 	private async notifyChange(doc: TextDocument) {
 		const docAndNode = this.service.project.getClientManaged(doc.uri)
 		if (docAndNode) {
-			await this.service.project.onDidChange(doc.uri, [{ text: doc.getText() }], doc.version + 1)
+			await this.service.project.onDidChange(doc.uri, [{text: doc.getText()}], doc.version + 1)
 		} else {
 			await this.service.project.onDidOpen(doc.uri, doc.languageId, doc.version, doc.getText())
 		}
@@ -175,7 +175,7 @@ export class SpyglassService {
 		if (document) {
 			document.undoStack.push(document.doc.getText())
 			document.redoStack = []
-			TextDocument.update(document.doc, [{ text: content }], document.doc.version + 1)
+			TextDocument.update(document.doc, [{text: content}], document.doc.version + 1)
 		}
 		await this.service.project.externals.fs.writeFile(uri, content)
 		if (document) {
@@ -193,7 +193,7 @@ export class SpyglassService {
 		const d = this.client.documents.get(oldUri)
 		if (d) {
 			const doc = TextDocument.create(newUri, d.doc.languageId, d.doc.version, d.doc.getText())
-			this.client.documents.set(newUri, { ...d, doc })
+			this.client.documents.set(newUri, {...d, doc})
 			this.client.documents.delete(oldUri)
 		}
 	}
@@ -209,7 +209,7 @@ export class SpyglassService {
 			}
 			edit(docAndNode.node)
 			const newText = this.service.format(docAndNode.node, docAndNode.doc, 2, true)
-			TextDocument.update(document.doc, [{ text: newText }], document.doc.version + 1)
+			TextDocument.update(document.doc, [{text: newText}], document.doc.version + 1)
 			await this.service.project.externals.fs.writeFile(uri, document.doc.getText())
 			await this.notifyChange(document.doc)
 		}
@@ -218,7 +218,7 @@ export class SpyglassService {
 	public formatNode(node: json.JsonNode, uri: string) {
 		const formatter = this.service.project.meta.getFormatter(node.type)
 		const doc = TextDocument.create(uri, 'json', 1, '')
-		const ctx = core.FormatterContext.create(this.service.project, { doc, tabSize: 2, insertSpaces: true })
+		const ctx = core.FormatterContext.create(this.service.project, {doc, tabSize: 2, insertSpaces: true})
 		return formatter(node, ctx)
 	}
 
@@ -232,7 +232,7 @@ export class SpyglassService {
 			return
 		}
 		document.redoStack.push(document.doc.getText())
-		TextDocument.update(document.doc, [{ text: lastUndo }], document.doc.version + 1)
+		TextDocument.update(document.doc, [{text: lastUndo}], document.doc.version + 1)
 		await this.service.project.externals.fs.writeFile(uri, document.doc.getText())
 		await this.notifyChange(document.doc)
 	}
@@ -247,7 +247,7 @@ export class SpyglassService {
 			return
 		}
 		document.undoStack.push(document.doc.getText())
-		TextDocument.update(document.doc, [{ text: lastRedo }], document.doc.version + 1)
+		TextDocument.update(document.doc, [{text: lastRedo}], document.doc.version + 1)
 		await this.service.project.externals.fs.writeFile(uri, document.doc.getText())
 		await this.notifyChange(document.doc)
 	}
@@ -272,7 +272,7 @@ export class SpyglassService {
 	}
 
 	public watchTree(prefix: string, handler: (uris: string[]) => void) {
-		this.treeWatchers.push({ prefix, handler })
+		this.treeWatchers.push({prefix, handler})
 	}
 
 	public unwatchTree(prefix: string, handler: (uris: string[]) => void) {
@@ -323,8 +323,8 @@ export class SpyglassService {
 						idOmitDefaultNamespace: false,
 						undeclaredSymbol: [
 							{
-								if: { category: ['bossbar', 'objective', 'team', 'shader'] },
-								then: { declare: 'block' },
+								if: {category: ['bossbar', 'objective', 'team', 'shader']},
+								then: {declare: 'block'},
 							},
 							...core.VanillaConfig.lint.undeclaredSymbol as any[],
 						],
@@ -352,7 +352,7 @@ async function decompressBall(buffer: Uint8Array, options?: { stripLevel?: numbe
 		const data = await e.getData?.(new zip.Uint8ArrayWriter())
 		const path = options?.stripLevel === 1 ? e.filename.substring(e.filename.indexOf('/') + 1) : e.filename
 		const type = e.directory ? 'dir' : 'file'
-		return { data, path, mtime: '', type, mode: 0 }
+		return {data, path, mtime: '', type, mode: 0}
 	}))
 }
 
@@ -365,7 +365,7 @@ async function compressBall(files: [string, string][]): Promise<Uint8Array> {
 }
 
 const initialize: core.ProjectInitializer = async (ctx) => {
-	const { config, logger, meta, externals, cacheRoot } = ctx
+	const {config, logger, meta, externals, cacheRoot} = ctx
 
 	const vanillaMcdoc = await fetchVanillaMcdoc()
 	meta.registerSymbolRegistrar('vanilla-mcdoc', {
@@ -377,7 +377,7 @@ const initialize: core.ProjectInitializer = async (ctx) => {
 		const uri: string = new core.Uri('downloads/misode-mcdoc.tar.gz', cacheRoot).toString()
 		const buffer = await compressBall([['builtin.mcdoc', builtinMcdoc]])
 		await core.fileUtil.writeFile(externals, uri, buffer)
-		return { uri }
+		return {uri}
 	})
 
 	meta.registerUriBinder(je.binder.uriBinder)
@@ -397,7 +397,7 @@ const initialize: core.ProjectInitializer = async (ctx) => {
 		blocks: Object.fromEntries([...(await fetchBlockStates(version.id)).entries()]
 			.map(([id, data]) => [id, data])),
 		fluids: je.dependency.Fluids,
-		commands: { type: 'root', children: {} },
+		commands: {type: 'root', children: {}},
 	}
 
 	const versionChecksum = getVersionChecksum(version.id)
@@ -414,7 +414,7 @@ const initialize: core.ProjectInitializer = async (ctx) => {
 	je.mcf.initialize(ctx, summary.commands, release)
 	nbt.initialize(ctx)
 
-	return { loadedVersion: release }
+	return {loadedVersion: release}
 }
 
 // Duplicate these from spyglass for now, until they are exported separately
@@ -444,14 +444,14 @@ function registerAttributes(meta: core.MetaRegistry, release: ReleaseVersion, ve
 		{
 			mapField: (config, field, ctx) => {
 				if (config === undefined) {
-					return { ...field, deprecated: true }
+					return {...field, deprecated: true}
 				}
 				if (!config.startsWith('1.')) {
 					ctx.logger.warn(`Invalid mcdoc attribute for "deprecated": ${config}`)
 					return field
 				}
 				if (ReleaseVersion.cmp(release, config as ReleaseVersion) >= 0) {
-					return { ...field, deprecated: true }
+					return {...field, deprecated: true}
 				}
 				return field
 			},
@@ -484,18 +484,18 @@ function vanillaMcdocRegistrar(vanillaMcdoc: VanillaMcdocSymbols): core.SymbolRe
 		const start = performance.now()
 		for (const [id, typeDef] of Object.entries(vanillaMcdoc.mcdoc)) {
 			symbols.query(VanillaMcdocUri, 'mcdoc', id).enter({
-				data: { data: { typeDef } },
-				usage: { type: 'declaration' },
+				data: {data: {typeDef}},
+				usage: {type: 'declaration'},
 			})
 		}
 		for (const [dispatcher, ids] of Object.entries(vanillaMcdoc['mcdoc/dispatcher'])) {
 			symbols.query(VanillaMcdocUri, 'mcdoc/dispatcher', dispatcher)
-				.enter({ usage: { type: 'declaration' } })
+				.enter({usage: {type: 'declaration'}})
 				.onEach(Object.entries(ids), ([id, typeDef], query) => {
 					query.member(id, (memberQuery) => {
 						memberQuery.enter({
-							data: { data: { typeDef } },
-							usage: { type: 'declaration' },
+							data: {data: {typeDef}},
+							usage: {type: 'declaration'},
 						})
 					})
 				})

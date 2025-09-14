@@ -1,19 +1,19 @@
 import type {
-    BlockDefinitionProvider,
-    BlockFlagsProvider,
-    BlockModelProvider,
-    BlockPropertiesProvider,
-    ItemStack,
-    TextureAtlasProvider,
-    UV,
+	BlockDefinitionProvider,
+	BlockFlagsProvider,
+	BlockModelProvider,
+	BlockPropertiesProvider,
+	ItemStack,
+	TextureAtlasProvider,
+	UV,
 } from 'deepslate-1.20.4/render'
 import {
-    BlockDefinition,
-    BlockModel,
-    Identifier,
-    ItemRenderer,
-    TextureAtlas,
-    upperPowerOfTwo,
+	BlockDefinition,
+	BlockModel,
+	Identifier,
+	ItemRenderer,
+	TextureAtlas,
+	upperPowerOfTwo,
 } from 'deepslate-1.20.4/render'
 import config from '../Config.js'
 import {message} from '../Utils.js'

@@ -1,5 +1,4 @@
 import {useCallback, useState} from 'preact/hooks'
-import {Analytics} from '../../Analytics.js'
 import {useLocale} from '../../contexts/index.js'
 import {useModal} from '../../contexts/Modal.jsx'
 import {Btn} from '../Btn.js'
@@ -26,7 +25,6 @@ export function FileRenaming({ oldId, onRename }: Props) {
 			setError('Invalid resource location')
 			return
 		}
-		Analytics.renameProjectFile('menu')
 		onRename(fileId)
 		hideModal()
 	}, [fileId, hideModal])

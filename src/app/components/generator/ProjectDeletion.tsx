@@ -1,5 +1,4 @@
 import {useCallback} from 'preact/hooks'
-import {Analytics} from '../../Analytics.js'
 import {useLocale, useProject} from '../../contexts/index.js'
 import {useModal} from '../../contexts/Modal.jsx'
 import {Btn} from '../Btn.js'
@@ -14,7 +13,6 @@ export function ProjectDeletion() {
 		if (!project) {
 			return
 		}
-		Analytics.deleteProject('menu')
 		deleteProject(project!.name)
 		hideModal()
 	}, [deleteProject, hideModal])

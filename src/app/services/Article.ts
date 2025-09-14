@@ -65,7 +65,7 @@ export function getArticleLink(version: string): string | undefined {
 		return ARTICLE_PREFIX + 'minecraft-' + match[1].replaceAll('.', '-') + '-pre-release-' + match[2]
 	}
 	if ((match = version.match(/^(\d+\.\d+(?:\.\d+)?)-rc([0-9]+)$/)) && match[1]) {
-		return ARTICLE_PREFIX + 'minecraft-' + match[1].replaceAll('.', '-') + '-release-candidate-' + match[2] 
+		return ARTICLE_PREFIX + 'minecraft-' + match[1].replaceAll('.', '-') + '-release-candidate-' + match[2]
 	}
 	if (version.match(/^\d+\.\d+(\.\d+)?$/)) {
 		return ARTICLE_PREFIX + 'minecraft-java-edition-' + version.replaceAll('.', '-')

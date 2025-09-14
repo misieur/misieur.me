@@ -6,7 +6,7 @@ import {useAsyncFn} from './index.js'
 export function useAsync<R>(
 	fn: () => Promise<R | typeof AsyncCancel>,
 	inputs: Inputs = [],
-	initialState: AsyncState<R> = { loading: true },
+	initialState: AsyncState<R> = {loading: true},
 ): AsyncState<R> & { refresh: () => Promise<unknown> } {
 	const [state, callback] = useAsyncFn<R, () => Promise<R | typeof AsyncCancel>>(fn, inputs, initialState)
 

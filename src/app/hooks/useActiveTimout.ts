@@ -5,7 +5,12 @@ interface ActiveTimeoutOptions {
 	invert?: boolean,
 	initial?: boolean,
 }
-export function useActiveTimeout({ cooldown, invert, initial }: ActiveTimeoutOptions = {}): [boolean | undefined, () => unknown] {
+
+export function useActiveTimeout({
+	cooldown,
+	invert,
+	initial,
+}: ActiveTimeoutOptions = {}): [boolean | undefined, () => unknown] {
 	const [active, setActive] = useState(initial)
 	const timeout = useRef<number | undefined>(undefined)
 

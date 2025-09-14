@@ -12,18 +12,19 @@ interface Store {
 
 const Store = createContext<Store>({
 	biomeColors: {},
-	setBiomeColor: () => {},
+	setBiomeColor: () => {
+	},
 })
 
 export function useStore() {
 	return useContext(Store)
 }
 
-export function StoreProvider({ children }: { children: ComponentChildren }) {
+export function StoreProvider({children}: { children: ComponentChildren }) {
 	const [biomeColors, setBiomeColors] = useLocalStorage<Record<string, Color>>('misode_biome_colors', {}, s => safeJsonParse(s) ?? {}, JSON.stringify)
 
 	const setBiomeColor = useCallback((biome: string, color: Color) => {
-		setBiomeColors({...biomeColors, [biome]: color })
+		setBiomeColors({...biomeColors, [biome]: color})
 	}, [biomeColors])
 
 	const value: Store = {

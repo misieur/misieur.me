@@ -8,14 +8,14 @@ const ShareCache = new Map<string, string>()
 export async function shareSnippet(type: string, version: VersionId, text: string, show_preview: boolean) {
 	try {
 		const data = lz.compressToBase64(text)
-		const body = JSON.stringify({ data, type, version, show_preview })
+		const body = JSON.stringify({data, type, version, show_preview})
 		let id = ShareCache.get(body)
 		if (!id) {
 			const snippet = await fetchApi('/upload', body)
 			ShareCache.set(body, snippet.id)
 			id = snippet.id as string
 		}
-		return { id, length: text.length, compressed: data.length, rate: text.length / data.length }
+		return {id, length: text.length, compressed: data.length, rate: text.length / data.length}
 	} catch (e) {
 		if (e instanceof Error) {
 			e.message = `Error creating share link: ${e.message}`
@@ -42,7 +42,7 @@ export async function getSnippet(id: string) {
 async function fetchApi(url: string, body?: string) {
 	const res = await fetch(API_PREFIX + url, body ? {
 		method: 'post',
-		headers: { 'Content-Type': 'application/json' },
+		headers: {'Content-Type': 'application/json'},
 		body,
 	} : undefined)
 	if (!res.ok) {

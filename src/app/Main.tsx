@@ -4,12 +4,12 @@ import '../styles/main.css'
 import '../styles/nodes.css'
 import {App} from './App.js'
 import {
-    LocaleProvider,
-    ProjectProvider,
-    StoreProvider,
-    ThemeProvider,
-    TitleProvider,
-    VersionProvider,
+	LocaleProvider,
+	ProjectProvider,
+	StoreProvider,
+	ThemeProvider,
+	TitleProvider,
+	VersionProvider,
 } from './contexts/index.js'
 import {ModalProvider} from './contexts/Modal.jsx'
 import {SpyglassProvider} from './contexts/Spyglass.jsx'
@@ -24,7 +24,7 @@ function Main() {
 							<SpyglassProvider>
 								<ProjectProvider>
 									<ModalProvider>
-										<App />
+										<App/>
 									</ModalProvider>
 								</ProjectProvider>
 							</SpyglassProvider>
@@ -36,4 +36,4 @@ function Main() {
 	)
 }
 
-render(<Main />, document.body)
+render(<Main/>, document.body)

@@ -1,8 +1,6 @@
 import type {DocAndNode} from '@spyglassmc/core'
 import {Identifier} from 'deepslate'
 import {useCallback, useState} from 'preact/hooks'
-import type {Method} from '../../Analytics.js'
-import {Analytics} from '../../Analytics.js'
 import type {ConfigGenerator} from '../../Config.js'
 import {getProjectRoot, useLocale, useProject, useVersion} from '../../contexts/index.js'
 import {useModal} from '../../contexts/Modal.jsx'
@@ -15,9 +13,8 @@ import {Modal} from '../Modal.js'
 interface Props {
 	docAndNode: DocAndNode,
 	gen: ConfigGenerator,
-	method: Method,
 }
-export function FileCreation({ docAndNode, gen, method }: Props) {
+export function FileCreation({ docAndNode, gen }: Props) {
 	const { locale } = useLocale()
 	const { version } = useVersion()
 	const { hideModal } = useModal()
@@ -46,7 +43,6 @@ export function FileCreation({ docAndNode, gen, method }: Props) {
 		const uri = gen.id === 'pack_mcmeta'
 			? `${projectRoot}pack.mcmeta`
 			: `${projectRoot}${pack}/${id.namespace}/${genPath(gen, version)}/${id.path}${gen.ext ?? '.json'}`
-		Analytics.saveProjectFile(method)
 		const text = docAndNode.doc.getText()
 		client.fs.writeFile(uri, text).then(() => {
 			hideModal()

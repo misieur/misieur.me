@@ -1,7 +1,5 @@
 import {route} from 'preact-router'
 import {useCallback, useEffect, useErrorBoundary, useMemo, useRef, useState} from 'preact/hooks'
-import type {Method} from '../../Analytics.js'
-import {Analytics} from '../../Analytics.js'
 import type {ConfigGenerator} from '../../Config.js'
 import config from '../../Config.js'
 import {useLocale, useProject} from '../../contexts/index.js' // removed useVersion
@@ -10,30 +8,30 @@ import {useSpyglass, watchSpyglassUri} from '../../contexts/Spyglass.jsx'
 import {AsyncCancel, useActiveTimeout, useAsync, useLocalStorage, useSearchParam} from '../../hooks/index.js'
 import type {VersionId} from '../../services/index.js'
 import {
-    checkVersion,
-    fetchDependencyMcdoc,
-    fetchLocalPresetIds,
-    fetchPreset,
-    fetchRegistries,
-    getSnippet,
-    shareSnippet
+	checkVersion,
+	fetchDependencyMcdoc,
+	fetchLocalPresetIds,
+	fetchPreset,
+	fetchRegistries,
+	getSnippet,
+	shareSnippet,
 } from '../../services/index.js'
 import {DEPENDENCY_URI} from '../../services/Spyglass.js'
 import {Store} from '../../Store.js'
 import {cleanUrl, genPath} from '../../Utils.js'
 import {FancyMenu} from '../FancyMenu.jsx'
 import {
-    Btn,
-    BtnMenu,
-    ErrorPanel,
-    FileCreation,
-    FileView,
-    HasPreview,
-    Octicon,
-    PreviewPanel,
-    ProjectPanel,
-    SourcePanel,
-    TextInput
+	Btn,
+	BtnMenu,
+	ErrorPanel,
+	FileCreation,
+	FileView,
+	HasPreview,
+	Octicon,
+	PreviewPanel,
+	ProjectPanel,
+	SourcePanel,
+	TextInput,
 } from '../index.js' // VersionSwitcher will be removed from JSX
 import {getRootDefault} from './McdocHelpers.js'
 
@@ -105,7 +103,6 @@ export function SchemaGenerator({ gen, allowedVersions }: Props) {
 				setPreviewShown(true)
 				setSourceShown(false)
 			}
-			Analytics.openSnippet(gen.id, sharedSnippetId, version)
 			text = snippet.text
 		}
 		if (!service || !uri) {
@@ -133,7 +130,6 @@ export function SchemaGenerator({ gen, allowedVersions }: Props) {
 		ignoreChange.current = true
 		const docAndNode = await service.openFile(uri)
 		ignoreChange.current = false
-		Analytics.setGenerator(gen.id)
 		return docAndNode
 	}, [gen.id, version, sharedSnippetId, currentPreset, service, uri])
 
@@ -152,7 +148,6 @@ export function SchemaGenerator({ gen, allowedVersions }: Props) {
 		if (!service || !uri) {
 			return
 		}
-		Analytics.resetGenerator(gen.id, 1, 'menu')
 		const node = getRootDefault(gen.id, service.getCheckerContext())
 		const newText = service.formatNode(node, uri)
 		await service.writeFile(uri, newText)
@@ -162,7 +157,6 @@ export function SchemaGenerator({ gen, allowedVersions }: Props) {
 		if (!service || !uri) {
 			return
 		}
-		Analytics.undoGenerator(gen.id, 1, 'menu')
 		await service.undoEdit(uri)
 	}
 	const redo = async (e: MouseEvent) => {
@@ -170,7 +164,6 @@ export function SchemaGenerator({ gen, allowedVersions }: Props) {
 		if (!service || !uri) {
 			return
 		}
-		Analytics.redoGenerator(gen.id, 1, 'menu')
 		await service?.redoEdit(uri)
 	}
 
@@ -188,11 +181,9 @@ export function SchemaGenerator({ gen, allowedVersions }: Props) {
 			}
 			if (e.ctrlKey && e.key === 'z') {
 				e.preventDefault()
-				Analytics.undoGenerator(gen.id, 1, 'hotkey')
 				await service.undoEdit(uri)
 			} else if (e.ctrlKey && e.key === 'y') {
 				e.preventDefault()
-				Analytics.redoGenerator(gen.id, 1, 'hotkey')
 				await service.redoEdit(uri)
 			} else if (e.ctrlKey && e.key === 's') {
 				saveFile('hotkey')
@@ -237,7 +228,6 @@ export function SchemaGenerator({ gen, allowedVersions }: Props) {
 	}, [presets])
 
 	const selectPreset = (id: string) => {
-		Analytics.loadPreset(gen.id, id)
 		setSharedSnippetId(undefined, true)
 		setCurrentPreset(id)
 	}
@@ -269,7 +259,6 @@ export function SchemaGenerator({ gen, allowedVersions }: Props) {
 			setShareLoading(true)
 			shareSnippet(gen.id, version, doc.getText(), previewShown)
 				.then(({ id, length, compressed, rate }) => {
-					Analytics.createSnippet(gen.id, id, version, length, compressed, rate)
 					const url = `${location.origin}/${gen.url}/?${SHARE_KEY}=${id}`
 					setShareUrl(url)
 					setShareShown(true)
@@ -299,19 +288,12 @@ export function SchemaGenerator({ gen, allowedVersions }: Props) {
 	const [doImport, setImport] = useState(0)
 
 	const copySource = () => {
-		Analytics.copyOutput(gen.id, 'menu')
 		setCopy(doCopy + 1)
 	}
 	const downloadSource = () => {
-		Analytics.downloadOutput(gen.id, 'menu')
 		setDownload(doDownload + 1)
 	}
 	const toggleSource = () => {
-		if (sourceShown) {
-			Analytics.hideOutput(gen.id, 'menu')
-		} else {
-			Analytics.showOutput(gen.id, 'menu')
-		}
 		setSourceShown(!sourceShown)
 		setCopy(0)
 		setDownload(0)
@@ -328,22 +310,12 @@ export function SchemaGenerator({ gen, allowedVersions }: Props) {
 	if (sourceShown) actionsShown += 2
 
 	const togglePreview = () => {
-		if (sourceShown) {
-			Analytics.hidePreview(gen.id, 'menu')
-		} else {
-			Analytics.showPreview(gen.id, 'menu')
-		}
 		Store.setPreviewPanelOpen(!previewShown)
 		setPreviewShown(!previewShown)
 	}
 
 	const [projectShown, setProjectShown] = useState(Store.getProjectPanelOpen() ?? false)
 	const toggleProjectShown = useCallback(() => {
-		if (projectShown) {
-			Analytics.hideProject('menu')
-		} else {
-			Analytics.showProject('menu')
-		}
 		Store.setProjectPanelOpen(!projectShown)
 		setProjectShown(!projectShown)
 	}, [projectShown])

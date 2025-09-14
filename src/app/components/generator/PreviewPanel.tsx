@@ -6,18 +6,18 @@ import {checkVersion} from '../../services/index.js'
 import {safeJsonParse} from '../../Utils.js'
 import {ErrorPanel} from '../ErrorPanel.jsx'
 import {
-    BiomeSourcePreview,
-    BlockStatePreview,
-    DecoratorPreview,
-    DensityFunctionPreview,
-    DialogPreview,
-    ItemModelPreview,
-    LootTablePreview,
-    ModelPreview,
-    NoisePreview,
-    NoiseSettingsPreview,
-    RecipePreview,
-    StructureSetPreview,
+	BiomeSourcePreview,
+	BlockStatePreview,
+	DecoratorPreview,
+	DensityFunctionPreview,
+	DialogPreview,
+	ItemModelPreview,
+	LootTablePreview,
+	ModelPreview,
+	NoisePreview,
+	NoiseSettingsPreview,
+	RecipePreview,
+	StructureSetPreview,
 } from '../previews/index.js'
 
 export const HasPreview = ['loot_table', 'recipe', 'dialog', 'dimension', 'worldgen/density_function', 'worldgen/noise', 'worldgen/noise_settings', 'worldgen/configured_feature', 'worldgen/placed_feature', 'worldgen/structure_set', 'block_definition', 'item_definition', 'model']

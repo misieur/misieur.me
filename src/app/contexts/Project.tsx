@@ -57,6 +57,7 @@ interface ProjectContext {
 	changeProject: (name: string) => void,
 	updateProject: (project: Partial<ProjectMeta>) => void,
 }
+
 const Project = createContext<ProjectContext | undefined>(undefined)
 
 export function useProject() {
@@ -67,11 +68,11 @@ export function useProject() {
 	return context
 }
 
-export function ProjectProvider({ children }: { children: ComponentChildren }) {
+export function ProjectProvider({children}: { children: ComponentChildren }) {
 	const [projects, setProjects] = useState<ProjectMeta[]>(Store.getProjects())
 	const [openProject, setOpenProject] = useState<string>(Store.getOpenProject())
 
-	const { value: project } = useAsync(async () => {
+	const {value: project} = useAsync(async () => {
 		const project = projects.find(p => p.name === openProject)
 		if (!project) {
 			if (openProject !== undefined && openProject !== DRAFT_PROJECT.name) {
@@ -92,9 +93,9 @@ export function ProjectProvider({ children }: { children: ComponentChildren }) {
 							return
 						}
 						const type = genPath(gen, project.version ?? DEFAULT_VERSION)
-						const { namespace, path } = Identifier.parse(file.id)
+						const {namespace, path} = Identifier.parse(file.id)
 						const uri = type === 'pack_mcmeta'
-							?	`${projectRoot}data/pack.mcmeta`
+							? `${projectRoot}data/pack.mcmeta`
 							: `${projectRoot}data/${namespace}/${type}/${path}${gen.ext ?? '.json'}`
 						return SpyglassClient.FS.writeFile(uri, JSON.stringify(file.data, null, 2))
 					}))
@@ -105,7 +106,7 @@ export function ProjectProvider({ children }: { children: ComponentChildren }) {
 						return SpyglassClient.FS.writeFile(uri, file.data)
 					}))
 				}
-				const newProject: ProjectMeta = { ...project, storage: { type: 'indexeddb', rootUri: projectRoot } }
+				const newProject: ProjectMeta = {...project, storage: {type: 'indexeddb', rootUri: projectRoot}}
 				changeProjects(projects.map(p => p === project ? newProject : p))
 				return newProject
 			} catch (e) {
@@ -146,7 +147,7 @@ export function ProjectProvider({ children }: { children: ComponentChildren }) {
 	}, [])
 
 	const updateProject = useCallback((edits: Partial<ProjectMeta>) => {
-		changeProjects(projects.map(p => p.name === openProject ?	{ ...p, ...edits } : p))
+		changeProjects(projects.map(p => p.name === openProject ? {...p, ...edits} : p))
 	}, [projects, openProject])
 
 	const value: ProjectContext = {

@@ -4,14 +4,15 @@ import {useLocale, useTitle} from '../contexts/index.js'
 interface Props {
 	path?: string
 }
+
 export function Generators({}: Props) {
-	const { locale } = useLocale()
+	const {locale} = useLocale()
 	useTitle(locale('title.generators'))
 
 	return <main>
 		<div class="legacy-container">
-			<GeneratorList predicate={gen => !gen.tags?.includes('partners')} />
+			<GeneratorList predicate={gen => !gen.tags?.includes('partners')}/>
 		</div>
-		<Footer />
+		<Footer/>
 	</main>
 }

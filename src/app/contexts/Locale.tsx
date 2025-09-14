@@ -2,7 +2,6 @@
 import type {ComponentChildren} from 'preact'
 import {createContext} from 'preact'
 import {useCallback, useContext, useEffect, useState} from 'preact/hooks'
-import {Analytics} from '../Analytics.js'
 import config from '../Config.js'
 import {Store} from '../Store.js'
 // const require = createRequire(import.meta.url)
@@ -14,10 +13,12 @@ interface Locale {
 	locale: (key: string, ...params: string[]) => string,
 	changeLocale: (lang: string) => unknown,
 }
+
 const Locale = createContext<Locale>({
 	lang: 'none',
 	locale: key => key,
-	changeLocale: () => {},
+	changeLocale: () => {
+	},
 })
 
 export const Locales: {
@@ -30,7 +31,7 @@ export const Locales: {
 
 export function localize(lang: string, key: string, ...params: string[]) {
 	const value: string | undefined = Locales[lang]?.[key]
-	?? Locales.en?.[key] ?? Locales.fallback[key] ?? key
+        ?? Locales.en?.[key] ?? Locales.fallback[key] ?? key
 	return resolveLocaleParams(value, params)
 }
 
@@ -53,7 +54,7 @@ export function useLocale() {
 	return useContext(Locale)
 }
 
-export function LocaleProvider({ children }: { children: ComponentChildren }) {
+export function LocaleProvider({children}: { children: ComponentChildren }) {
 	const [lang, setLanguage] = useState('none')
 
 	const locale = useCallback((key: string, ...params: string[]) => {
@@ -62,7 +63,6 @@ export function LocaleProvider({ children }: { children: ComponentChildren }) {
 
 	const changeLocale = useCallback(async (newLang: string) => {
 		await loadLocale(newLang)
-		Analytics.changeLocale(lang, newLang)
 		Store.setLanguage(newLang)
 		setLanguage(newLang)
 	}, [lang])
@@ -70,7 +70,6 @@ export function LocaleProvider({ children }: { children: ComponentChildren }) {
 	useEffect(() => {
 		(async () => {
 			const target = Store.getLanguage()
-			Analytics.setLocale(target)
 			await Promise.all([
 				loadLocale('en'),
 				...(target !== 'en' ? [loadLocale(target)] : []),

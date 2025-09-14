@@ -5,11 +5,11 @@ import {useLocale} from '../../contexts/index.js'
 import {useDocAndNode, useSpyglass} from '../../contexts/Spyglass.jsx'
 import {useLocalStorage} from '../../hooks/index.js'
 import {
-    getSourceFormats,
-    getSourceIndent,
-    getSourceIndents,
-    parseSource,
-    stringifySource,
+	getSourceFormats,
+	getSourceIndent,
+	getSourceIndents,
+	parseSource,
+	stringifySource,
 } from '../../services/index.js'
 import {Store} from '../../Store.js'
 import {message} from '../../Utils.js'

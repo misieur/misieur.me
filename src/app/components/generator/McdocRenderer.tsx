@@ -3,31 +3,31 @@ import {ColorFormat} from '@spyglassmc/core'
 import type {JsonPairNode} from '@spyglassmc/json'
 import * as json from '@spyglassmc/json'
 import {
-    JsonArrayNode,
-    JsonBooleanNode,
-    JsonNode,
-    JsonNumberNode,
-    JsonObjectNode,
-    JsonStringNode
+	JsonArrayNode,
+	JsonBooleanNode,
+	JsonNode,
+	JsonNumberNode,
+	JsonObjectNode,
+	JsonStringNode,
 } from '@spyglassmc/json'
 import {localeQuote} from '@spyglassmc/locales'
 import type {
-    ListType,
-    LiteralType,
-    McdocType,
-    NumericType,
-    PrimitiveArrayType,
-    StringType,
-    TupleType,
-    UnionType,
+	ListType,
+	LiteralType,
+	McdocType,
+	NumericType,
+	PrimitiveArrayType,
+	StringType,
+	TupleType,
+	UnionType,
 } from '@spyglassmc/mcdoc'
 import {handleAttributes} from '@spyglassmc/mcdoc/lib/runtime/attribute/index.js'
 import type {
-    SimplifiedEnum,
-    SimplifiedMcdocType,
-    SimplifiedMcdocTypeNoUnion,
-    SimplifiedStructType,
-    SimplifiedStructTypePairField,
+	SimplifiedEnum,
+	SimplifiedMcdocType,
+	SimplifiedMcdocTypeNoUnion,
+	SimplifiedStructType,
+	SimplifiedStructTypePairField,
 } from '@spyglassmc/mcdoc/lib/runtime/checker/index.js'
 import {getValues} from '@spyglassmc/mcdoc/lib/runtime/completer/index.js'
 import {Identifier, ItemStack} from 'deepslate'
@@ -42,19 +42,19 @@ import {Btn} from '../Btn.jsx'
 import {ItemDisplay} from '../ItemDisplay.jsx'
 import {Octicon} from '../Octicon.jsx'
 import {
-    formatIdentifier,
-    getCategory,
-    getChange,
-    getDefault,
-    getItemType,
-    isDefaultCollapsedType,
-    isFixedList,
-    isInlineTuple,
-    isListOrArray,
-    isNumericType,
-    isSelectRegistry,
-    quickEqualTypes,
-    simplifyType,
+	formatIdentifier,
+	getCategory,
+	getChange,
+	getDefault,
+	getItemType,
+	isDefaultCollapsedType,
+	isFixedList,
+	isInlineTuple,
+	isListOrArray,
+	isNumericType,
+	isSelectRegistry,
+	quickEqualTypes,
+	simplifyType,
 } from './McdocHelpers.js'
 
 export interface McdocContext extends core.CheckerContext {

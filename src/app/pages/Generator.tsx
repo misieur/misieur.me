@@ -13,13 +13,14 @@ export const SHARE_KEY = 'share'
 interface Props {
 	default?: true,
 }
+
 export function Generator({}: Props) {
-	const { locale } = useLocale()
-	const { version, changeVersion } = useVersion()
+	const {locale} = useLocale()
+	const {version, changeVersion} = useVersion()
 
 	const gen = getGenerator(getCurrentUrl())
 	if (!gen) {
-		return <main><ErrorPanel error={locale('generator.not_found', getCurrentUrl())} /></main>
+		return <main><ErrorPanel error={locale('generator.not_found', getCurrentUrl())}/></main>
 	}
 
 	const allowedVersions = useMemo(() => {
@@ -35,7 +36,8 @@ export function Generator({}: Props) {
 		const lower = !checkVersion(version, gen.minVersion)
 		const proposedVersion = (lower ? gen.minVersion : gen.maxVersion) as VersionId
 		return <main>
-			<ErrorPanel error={locale(`generator.error_${lower ? 'min' : 'max'}_version`, proposedVersion)} reportable={false}>
+			<ErrorPanel error={locale(`generator.error_${lower ? 'min' : 'max'}_version`, proposedVersion)}
+				reportable={false}>
 				<div class="error-actions">
 					<div class="error-action" onClick={() => changeVersion(proposedVersion)}>
 						{locale('generator.switch_version', proposedVersion)} {Octicon.arrow_right}
@@ -47,5 +49,5 @@ export function Generator({}: Props) {
 			</ErrorPanel>
 		</main>
 	}
-	return <SchemaGenerator gen={gen} allowedVersions={allowedVersions} />
+	return <SchemaGenerator gen={gen} allowedVersions={allowedVersions}/>
 }
