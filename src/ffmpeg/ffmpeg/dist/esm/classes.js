@@ -1,6 +1,7 @@
-import { FFMessageType } from "./const.js";
-import { getMessageID } from "./utils.js";
-import { ERROR_TERMINATED, ERROR_NOT_LOADED } from "./errors.js";
+import {FFMessageType} from "./const.js";
+import {getMessageID} from "./utils.js";
+import {ERROR_NOT_LOADED, ERROR_TERMINATED} from "./errors.js";
+
 /**
  * Provides APIs to interact with ffmpeg web worker.
  *

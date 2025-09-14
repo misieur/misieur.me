@@ -1,21 +1,41 @@
-import { route } from 'preact-router'
-import { useCallback, useEffect, useErrorBoundary, useMemo, useRef, useState } from 'preact/hooks'
-import type { Method } from '../../Analytics.js'
-import { Analytics } from '../../Analytics.js'
-import type { ConfigGenerator } from '../../Config.js'
+import {route} from 'preact-router'
+import {useCallback, useEffect, useErrorBoundary, useMemo, useRef, useState} from 'preact/hooks'
+import type {Method} from '../../Analytics.js'
+import {Analytics} from '../../Analytics.js'
+import type {ConfigGenerator} from '../../Config.js'
 import config from '../../Config.js'
-import { useLocale, useProject } from '../../contexts/index.js' // removed useVersion
-import { useModal } from '../../contexts/Modal.jsx'
-import { useSpyglass, watchSpyglassUri } from '../../contexts/Spyglass.jsx'
-import { AsyncCancel, useActiveTimeout, useAsync, useLocalStorage, useSearchParam } from '../../hooks/index.js'
-import type { VersionId } from '../../services/index.js'
-import { checkVersion, fetchDependencyMcdoc, fetchPreset, fetchRegistries, fetchLocalPresetIds, getSnippet, shareSnippet } from '../../services/index.js'
-import { DEPENDENCY_URI } from '../../services/Spyglass.js'
-import { Store } from '../../Store.js'
-import { cleanUrl, genPath } from '../../Utils.js'
-import { FancyMenu } from '../FancyMenu.jsx'
-import { Btn, BtnMenu, ErrorPanel, FileCreation, FileView, HasPreview, Octicon, PreviewPanel, ProjectPanel, SourcePanel, TextInput } from '../index.js' // VersionSwitcher will be removed from JSX
-import { getRootDefault } from './McdocHelpers.js'
+import {useLocale, useProject} from '../../contexts/index.js' // removed useVersion
+import {useModal} from '../../contexts/Modal.jsx'
+import {useSpyglass, watchSpyglassUri} from '../../contexts/Spyglass.jsx'
+import {AsyncCancel, useActiveTimeout, useAsync, useLocalStorage, useSearchParam} from '../../hooks/index.js'
+import type {VersionId} from '../../services/index.js'
+import {
+    checkVersion,
+    fetchDependencyMcdoc,
+    fetchLocalPresetIds,
+    fetchPreset,
+    fetchRegistries,
+    getSnippet,
+    shareSnippet
+} from '../../services/index.js'
+import {DEPENDENCY_URI} from '../../services/Spyglass.js'
+import {Store} from '../../Store.js'
+import {cleanUrl, genPath} from '../../Utils.js'
+import {FancyMenu} from '../FancyMenu.jsx'
+import {
+    Btn,
+    BtnMenu,
+    ErrorPanel,
+    FileCreation,
+    FileView,
+    HasPreview,
+    Octicon,
+    PreviewPanel,
+    ProjectPanel,
+    SourcePanel,
+    TextInput
+} from '../index.js' // VersionSwitcher will be removed from JSX
+import {getRootDefault} from './McdocHelpers.js'
 
 export const SHARE_KEY = 'share'
 const MIN_PROJECT_PANEL_WIDTH = 200

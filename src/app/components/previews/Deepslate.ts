@@ -9,7 +9,7 @@ import {
     deepEqual,
     isObject,
     safeJsonParse,
-    square
+    square,
 } from '../../Utils.js'
 
 export type ProjectData = Record<string, Record<string, unknown>>

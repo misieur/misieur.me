@@ -1,5 +1,6 @@
-import { ERROR_RESPONSE_BODY_READER, ERROR_INCOMPLETED_DOWNLOAD, } from "./errors.js";
-import { HeaderContentLength } from "./const.js";
+import {ERROR_INCOMPLETED_DOWNLOAD, ERROR_RESPONSE_BODY_READER,} from "./errors.js";
+import {HeaderContentLength} from "./const.js";
+
 const readFromBlobOrFile = (blob) => new Promise((resolve, reject) => {
     const fileReader = new FileReader();
     fileReader.onload = () => {

@@ -17,7 +17,7 @@ import {
     NoisePreview,
     NoiseSettingsPreview,
     RecipePreview,
-    StructureSetPreview
+    StructureSetPreview,
 } from '../previews/index.js'
 
 export const HasPreview = ['loot_table', 'recipe', 'dialog', 'dimension', 'worldgen/density_function', 'worldgen/noise', 'worldgen/noise_settings', 'worldgen/configured_feature', 'worldgen/placed_feature', 'worldgen/structure_set', 'block_definition', 'item_definition', 'model']

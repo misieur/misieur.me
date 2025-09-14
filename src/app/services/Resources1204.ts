@@ -5,7 +5,7 @@ import type {
     BlockPropertiesProvider,
     ItemStack,
     TextureAtlasProvider,
-    UV
+    UV,
 } from 'deepslate-1.20.4/render'
 import {
     BlockDefinition,
@@ -13,7 +13,7 @@ import {
     Identifier,
     ItemRenderer,
     TextureAtlas,
-    upperPowerOfTwo
+    upperPowerOfTwo,
 } from 'deepslate-1.20.4/render'
 import config from '../Config.js'
 import {message} from '../Utils.js'

@@ -78,20 +78,20 @@ export function Transformation({}: Props) {
 		setMatrix(composeMatrix(translation, value, scale, rightRotation))
 	}, [translation, scale, rightRotation])
 
-    function updateQuatPreserveEdited(q: quat, editedIndex: number) {
-        if (editedIndex === 3) return q
-        let x = q[0], y = q[1], z = q[2]
-        let lenSq = x*x + y*y + z*z
-        if (lenSq > 1) {
-            const s = 1 / Math.sqrt(lenSq)
-            x *= s; y *= s; z *= s
-            q[0] = x; q[1] = y; q[2] = z
-            lenSq = 1
-        }
-        const sign = q[3] >= 0 ? 1 : -1
-        q[3] = sign * Math.sqrt(Math.max(0, 1 - lenSq))
-        return q
-    }
+	function updateQuatPreserveEdited(q: quat, editedIndex: number) {
+		if (editedIndex === 3) return q
+		let x = q[0], y = q[1], z = q[2]
+		let lenSq = x*x + y*y + z*z
+		if (lenSq > 1) {
+			const s = 1 / Math.sqrt(lenSq)
+			x *= s; y *= s; z *= s
+			q[0] = x; q[1] = y; q[2] = z
+			lenSq = 1
+		}
+		const sign = q[3] >= 0 ? 1 : -1
+		q[3] = sign * Math.sqrt(Math.max(0, 1 - lenSq))
+		return q
+	}
 
 	const changeLeftRotation = useCallback((i: number, value: number) => {
 		const copy = quat.clone(leftRotation)

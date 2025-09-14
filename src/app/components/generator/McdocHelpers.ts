@@ -10,14 +10,14 @@ import type {
     NumericType,
     PrimitiveArrayType,
     TupleType,
-    UnionType
+    UnionType,
 } from '@spyglassmc/mcdoc'
 import {NumericRange, RangeKind} from '@spyglassmc/mcdoc'
 import type {
     McdocCheckerContext,
     SimplifiedMcdocType,
     SimplifiedMcdocTypeNoUnion,
-    SimplifyValueNode
+    SimplifyValueNode,
 } from '@spyglassmc/mcdoc/lib/runtime/checker/index.js'
 import {simplify} from '@spyglassmc/mcdoc/lib/runtime/checker/index.js'
 import config from '../../Config.js'

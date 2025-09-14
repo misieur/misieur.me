@@ -9,7 +9,7 @@ import {
     StoreProvider,
     ThemeProvider,
     TitleProvider,
-    VersionProvider
+    VersionProvider,
 } from './contexts/index.js'
 import {ModalProvider} from './contexts/Modal.jsx'
 import {SpyglassProvider} from './contexts/Spyglass.jsx'

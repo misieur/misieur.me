@@ -5,13 +5,13 @@ import '../styles/nodes.css'
 import {Analytics} from './Analytics.js'
 import {Header} from './components/index.js'
 import {
-	Generator,
-	Generators,
-	Home,
-	Transformation,
-	EmbedPage,
-	AudioConverter,
-	ItemTooltipGenerator,
+    AudioConverter,
+    EmbedPage,
+    Generator,
+    Generators,
+    Home,
+    ItemTooltipGenerator,
+    Transformation,
 } from './pages/index.js'
 import {cleanUrl} from './Utils.js'
 

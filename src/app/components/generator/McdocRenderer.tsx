@@ -19,7 +19,7 @@ import type {
     PrimitiveArrayType,
     StringType,
     TupleType,
-    UnionType
+    UnionType,
 } from '@spyglassmc/mcdoc'
 import {handleAttributes} from '@spyglassmc/mcdoc/lib/runtime/attribute/index.js'
 import type {
@@ -27,7 +27,7 @@ import type {
     SimplifiedMcdocType,
     SimplifiedMcdocTypeNoUnion,
     SimplifiedStructType,
-    SimplifiedStructTypePairField
+    SimplifiedStructTypePairField,
 } from '@spyglassmc/mcdoc/lib/runtime/checker/index.js'
 import {getValues} from '@spyglassmc/mcdoc/lib/runtime/completer/index.js'
 import {Identifier, ItemStack} from 'deepslate'
@@ -54,7 +54,7 @@ import {
     isNumericType,
     isSelectRegistry,
     quickEqualTypes,
-    simplifyType
+    simplifyType,
 } from './McdocHelpers.js'
 
 export interface McdocContext extends core.CheckerContext {

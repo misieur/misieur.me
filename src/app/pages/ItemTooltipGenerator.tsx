@@ -1,7 +1,7 @@
 import {Footer} from '../components/index.js'
 import {useState} from 'preact/hooks'
 import {HsvaColorPicker} from 'react-colorful'
-import {ZipWriter, BlobWriter, BlobReader, TextReader} from '@zip.js/zip.js'
+import {BlobReader, BlobWriter, TextReader, ZipWriter} from '@zip.js/zip.js'
 import Color from 'color'
 
 interface Props {

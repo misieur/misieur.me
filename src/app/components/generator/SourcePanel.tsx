@@ -9,7 +9,7 @@ import {
     getSourceIndent,
     getSourceIndents,
     parseSource,
-    stringifySource
+    stringifySource,
 } from '../../services/index.js'
 import {Store} from '../../Store.js'
 import {message} from '../../Utils.js'

@@ -1,4 +1,5 @@
-import { ProgressCallback } from "./types.js";
+import {ProgressCallback} from "./types.js";
+
 /**
  * An util function to fetch data from url string, base64, URL, File or Blob format.
  *
