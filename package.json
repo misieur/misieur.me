@@ -15,7 +15,6 @@
   "author": "Misieur",
   "license": "MIT",
   "dependencies": {
-    "@giscus/react": "^2.2.3",
     "@spyglassmc/core": "^0.4.33",
     "@spyglassmc/java-edition": "^0.3.44",
     "@spyglassmc/json": "^0.3.37",

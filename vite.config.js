@@ -57,12 +57,6 @@ export default defineConfig({
 	},
 	plugins: [
 		preact(),
-		viteStaticCopy({
-			targets: [
-				{ src: 'src/styles/giscus.css', dest: 'assets' },
-				{ src: 'src/styles/giscus-burn.css', dest: 'assets' },
-			],
-		}),
 		visualizer({ open: true }),
 	],
 })

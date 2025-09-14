@@ -3100,11 +3100,6 @@ hr {
     background-color: var(--background-3);
 }
 
-.giscus-container {
-    margin-top: 16px;
-    min-height: 325.667px;
-}
-
 .card-group {
     display: grid;
     grid-template-columns: 1fr 1fr;
