@@ -59,7 +59,7 @@ function Tools() {
 			desc="A BlockBench Plugin made to create and edit hitbox models" />
 		<ToolCard title="⬜ Minecraft Rank Generator"
 			link="embed?url=https://itemsadder.github.io/minecraft-rank-generator/"
-			desc="The ItemsAdder\'s Official tool to create custom ranks" />
+			desc="ItemsAdder's Official tool to create custom ranks" />
 		<ToolCard title="🟪 Item Tooltip Generator For ItemsAdder"
 			link="/item-tooltip-generator"
 		/>
