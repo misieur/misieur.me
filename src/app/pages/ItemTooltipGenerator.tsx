@@ -1,5 +1,5 @@
 import {Footer} from '../components/index.js'
-import {useState} from 'preact/hooks'
+import {useState, useEffect} from 'preact/hooks'
 import {HsvaColorPicker} from 'react-colorful'
 import {BlobReader, BlobWriter, TextReader, ZipWriter} from '@zip.js/zip.js'
 import Color from 'color'
@@ -62,6 +62,7 @@ export function ItemTooltipGenerator({}: Props) {
 	const [isFrameInputFocused, setFrameInputFocused] = useState(false)
 	const [backgroundInputValue, setBackgroundInputValue] = useState(hsvToHex(backgroundColorHsv))
 	const [frameInputValue, setFrameInputValue] = useState(hsvToHex(frameColorHsv))
+	const [previewSrc, setPreviewSrc] = useState<string>('')
 
 	if (!isBackgroundInputFocused && backgroundInputValue !== hsvToHex(backgroundColorHsv)) {
 		setBackgroundInputValue(hsvToHex(backgroundColorHsv))
@@ -102,6 +103,63 @@ export function ItemTooltipGenerator({}: Props) {
 			}
 		})
 	}
+
+	async function colorizePreview(templateUrl: string, background: string, frame: string): Promise<string> {
+		return new Promise((resolve) => {
+			const img = new Image()
+			img.crossOrigin = 'anonymous'
+			img.src = templateUrl
+			img.onload = () => {
+				const canvas = document.createElement('canvas')
+				canvas.width = img.width
+				canvas.height = img.height
+				const ctx = canvas.getContext('2d')!
+				ctx.drawImage(img, 0, 0)
+
+				const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height)
+				const data = imageData.data
+
+				const bgColor = Color(background)
+				const bgRgb = bgColor.rgb().array().slice(0, 3).map(x => Math.round(x))
+				const bgAlpha = Math.round(bgColor.alpha() * 255)
+				const frameColor = Color(frame)
+				const frameRgb = frameColor.rgb().array().slice(0, 3).map(x => Math.round(x))
+				const frameAlpha = Math.round(frameColor.alpha() * 255)
+
+				for (let i = 0; i < data.length; i += 4) {
+					// #00ff00 (green) - background
+					if (data[i] === 0 && data[i + 1] === 255 && data[i + 2] === 0) {
+						data[i] = bgRgb[0]
+						data[i + 1] = bgRgb[1]
+						data[i + 2] = bgRgb[2]
+						data[i + 3] = bgAlpha
+					}
+					// #0000ff (blue) - frame over background
+					else if (data[i] === 0 && data[i + 1] === 0 && data[i + 2] === 255) {
+						// Alpha blending: frame over background
+						const fa = frameAlpha / 255
+						const ba = bgAlpha / 255
+						const outA = fa + ba * (1 - fa)
+						data[i] = Math.round((frameRgb[0] * fa + bgRgb[0] * ba * (1 - fa)) / outA)
+						data[i + 1] = Math.round((frameRgb[1] * fa + bgRgb[1] * ba * (1 - fa)) / outA)
+						data[i + 2] = Math.round((frameRgb[2] * fa + bgRgb[2] * ba * (1 - fa)) / outA)
+						data[i + 3] = Math.round(outA * 255)
+					}
+				}
+
+				ctx.putImageData(imageData, 0, 0)
+				resolve(canvas.toDataURL('image/png'))
+			}
+		})
+	}
+
+	useEffect(() => {
+		colorizePreview(
+			'/assets/tooltip/templates/preview.png',
+			hsvToRgbaString(backgroundColorHsv),
+			hsvToRgbaString(frameColorHsv)
+		).then(setPreviewSrc)
+	}, [backgroundColorHsv, frameColorHsv])
 
 	const downloadZipWithImages = async () => {
 		const blobWriter = new BlobWriter()
@@ -199,6 +257,18 @@ export function ItemTooltipGenerator({}: Props) {
 						</button>
 					</div>
 				</form>
+                Preview
+				<img
+					src={previewSrc}
+					alt="Tooltip Preview"
+					style={{
+						display: 'block',
+						margin: '10px',
+						width: '200px',
+						height: 'auto',
+						imageRendering: 'pixelated',
+					}}
+				/>
 				<Footer/>
 			</div>
 		</main>
