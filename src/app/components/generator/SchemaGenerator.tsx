@@ -256,7 +256,7 @@ export function SchemaGenerator({ gen, allowedVersions }: Props) {
 		} else if (doc) {
 			setShareLoading(true)
 			shareSnippet(gen.id, version, doc.getText(), previewShown)
-				.then(({ id, length, compressed, rate }) => {
+				.then(({ id }) => {
 					const url = `${location.origin}/${gen.url}/?${SHARE_KEY}=${id}`
 					setShareUrl(url)
 					setShareShown(true)
