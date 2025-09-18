@@ -59,8 +59,6 @@ export function SchemaGenerator({ gen, allowedVersions }: Props) {
 
 	const version = allowedVersions?.[0] ?? ''
 
-	useEffect(() => Store.visitGenerator(gen.id), [gen.id])
-
 	const uri = useMemo(() => {
 		if (!service) {
 			return undefined

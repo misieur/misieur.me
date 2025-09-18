@@ -60,7 +60,7 @@ export function AudioConverter({}: Props) {
 	return (
 		<main>
 			<div class="legacy-container tool-box">
-				<h1 class="main-title">Offline Audio Converter</h1>
+				<h1 class="main-title">Audio Converter</h1>
 				<p class="main-subtitle">Convert your audio files to OGG format</p>
 				<form onSubmit={handleConvert}>
 					<input type="file" id="fileInput" accept="audio/*" onChange={handleFileChange}/>

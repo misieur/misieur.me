@@ -63,7 +63,7 @@ export function LocaleProvider({children}: { children: ComponentChildren }) {
 
 	const changeLocale = useCallback(async (newLang: string) => {
 		await loadLocale(newLang)
-		Store.setLanguage(newLang)
+		Store.setLanguage()
 		setLanguage(newLang)
 	}, [lang])
 
