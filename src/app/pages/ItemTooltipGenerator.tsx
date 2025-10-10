@@ -128,15 +128,16 @@ export function ItemTooltipGenerator({}: Props) {
 
 				for (let i = 0; i < data.length; i += 4) {
 					// #00ff00 (green) - background
-					if (data[i] === 0 && data[i + 1] === 255 && data[i + 2] === 0) {
+					// Firefox breaks colors for some reason I may not really care,
+					// but this just forces me to check if the color is close enough to green and blue
+					if (Math.abs(data[i]) < 100 && Math.abs(data[i + 1] - 255) < 100 && Math.abs(data[i + 2]) < 100) {
 						data[i] = bgRgb[0]
 						data[i + 1] = bgRgb[1]
 						data[i + 2] = bgRgb[2]
 						data[i + 3] = bgAlpha
 					}
 					// #0000ff (blue) - frame over background
-					else if (data[i] === 0 && data[i + 1] === 0 && data[i + 2] === 255) {
-						// Alpha blending: frame over background
+					else if (Math.abs(data[i]) < 100 && Math.abs(data[i + 1]) < 100 && Math.abs(data[i + 2] - 255) < 100) {
 						const fa = frameAlpha / 255
 						const ba = bgAlpha / 255
 						const outA = fa + ba * (1 - fa)
